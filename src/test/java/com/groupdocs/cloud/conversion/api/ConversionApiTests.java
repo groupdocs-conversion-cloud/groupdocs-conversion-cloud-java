@@ -72,7 +72,7 @@ public class ConversionApiTests extends BaseApiTest {
      * @throws ApiException if the Api call fails
      */
     @Test
-    public void getSupportedFileFormatsTest() throws ApiException {
+    public void getSupportedConversionTypesTest() throws ApiException {
         List<SupportedFormat> response = conversionApi.getSupportedConversionTypes(new GetSupportedConversionTypesRequest());
 
         assertTrue(response.size() > 0);

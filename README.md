@@ -60,6 +60,7 @@ Please follow the [installation](#installation) instruction and execute the foll
 ```java
 import com.groupdocs.cloud.conversion.client.*;
 import com.groupdocs.cloud.conversion.model.*;
+import com.groupdocs.cloud.conversion.model.requests.*;
 import com.groupdocs.cloud.conversion.api.ConversionApi;
 
 import java.util.*;
@@ -76,9 +77,11 @@ public class ApiExample {
         ConversionApi conversionApi = new ConversionApi(configuration);
 
         try {
-            FormatsResult response = conversionApi.getSupportedFileFormats();
-            for (Format format : response.getFormats()) {
-                System.out.println(format.getFileFormat());
+            GetSupportedCibversionTypesRequest request = new GetSupportedConversionTypesRequest();
+            List<SupportedFormat> response = conversionApi.getSupportedConversionTypes(request);
+            
+            for (SupportedFormat format : response) {
+                System.out.println(format.getSourceFormat());
             }
         } catch (ApiException e) {
             System.err.println("Exception when calling FileApi#copyFile");
