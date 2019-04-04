@@ -48,6 +48,9 @@ public class StoredConvertedResult {
   @SerializedName("size")
   private Long size = null;
 
+  @SerializedName("path")
+  private String path = null;
+
   @SerializedName("url")
   private String url = null;
 
@@ -87,16 +90,34 @@ public class StoredConvertedResult {
     this.size = size;
   }
 
+  public StoredConvertedResult path(String path) {
+    this.path = path;
+    return this;
+  }
+
+   /**
+   * Path of resource file in storage
+   * @return path
+  **/
+  @ApiModelProperty(value = "Path of resource file in storage")
+  public String getPath() {
+    return path;
+  }
+
+  public void setPath(String path) {
+    this.path = path;
+  }
+
   public StoredConvertedResult url(String url) {
     this.url = url;
     return this;
   }
 
    /**
-   * Uri in the storage of the covnerted item
+   * Uri in the storage of the converted item
    * @return url
   **/
-  @ApiModelProperty(value = "Uri in the storage of the covnerted item")
+  @ApiModelProperty(value = "Uri in the storage of the converted item")
   public String getUrl() {
     return url;
   }
@@ -117,12 +138,13 @@ public class StoredConvertedResult {
     StoredConvertedResult storedConvertedResult = (StoredConvertedResult) o;
     return Objects.equals(this.name, storedConvertedResult.name) &&
         Objects.equals(this.size, storedConvertedResult.size) &&
+        Objects.equals(this.path, storedConvertedResult.path) &&
         Objects.equals(this.url, storedConvertedResult.url);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, size, url);
+    return Objects.hash(name, size, path, url);
   }
 
 
@@ -133,6 +155,7 @@ public class StoredConvertedResult {
     
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
+    sb.append("    path: ").append(toIndentedString(path)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");
     return sb.toString();

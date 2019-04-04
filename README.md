@@ -37,7 +37,7 @@ Add following repository and dependency to your project's POM
 <dependency>
     <groupId>com.groupdocs</groupId>
     <artifactId>groupdocs-conversion-cloud</artifactId>
-    <version>19.3</version>
+    <version>19.4</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -50,7 +50,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/groupdocs-conversion-cloud-19.3.jar
+* target/groupdocs-conversion-cloud-19.4.jar
 * target/lib/*.jar
 
 ## Getting Started

@@ -34,6 +34,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.groupdocs.cloud.conversion.model.ConvertOptions;
+import com.groupdocs.cloud.conversion.model.WatermarkOptions;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -58,6 +59,9 @@ public class WordProcessingConvertOptions extends ConvertOptions {
 
   @SerializedName("zoom")
   private Integer zoom = null;
+
+  @SerializedName("watermarkOptions")
+  private WatermarkOptions watermarkOptions = null;
 
   public WordProcessingConvertOptions width(Integer width) {
     this.width = width;
@@ -149,6 +153,24 @@ public class WordProcessingConvertOptions extends ConvertOptions {
     this.zoom = zoom;
   }
 
+  public WordProcessingConvertOptions watermarkOptions(WatermarkOptions watermarkOptions) {
+    this.watermarkOptions = watermarkOptions;
+    return this;
+  }
+
+   /**
+   * Watermark specific options
+   * @return watermarkOptions
+  **/
+  @ApiModelProperty(value = "Watermark specific options")
+  public WatermarkOptions getWatermarkOptions() {
+    return watermarkOptions;
+  }
+
+  public void setWatermarkOptions(WatermarkOptions watermarkOptions) {
+    this.watermarkOptions = watermarkOptions;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -164,12 +186,13 @@ public class WordProcessingConvertOptions extends ConvertOptions {
         Objects.equals(this.dpi, wordProcessingConvertOptions.dpi) &&
         Objects.equals(this.password, wordProcessingConvertOptions.password) &&
         Objects.equals(this.zoom, wordProcessingConvertOptions.zoom) &&
+        Objects.equals(this.watermarkOptions, wordProcessingConvertOptions.watermarkOptions) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(width, height, dpi, password, zoom, super.hashCode());
+    return Objects.hash(width, height, dpi, password, zoom, watermarkOptions, super.hashCode());
   }
 
 
@@ -183,6 +206,7 @@ public class WordProcessingConvertOptions extends ConvertOptions {
     sb.append("    dpi: ").append(toIndentedString(dpi)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("    zoom: ").append(toIndentedString(zoom)).append("\n");
+    sb.append("    watermarkOptions: ").append(toIndentedString(watermarkOptions)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -46,6 +46,108 @@ public class TxtLoadOptions extends LoadOptions {
   @SerializedName("detectNumberingWithWhitespaces")
   private Boolean detectNumberingWithWhitespaces = null;
 
+  /**
+   * Gets or sets preferred option of a trailing space handling. Default value is Trim.
+   */
+  @JsonAdapter(TrailingSpacesOptionsEnum.Adapter.class)
+  public enum TrailingSpacesOptionsEnum {
+    PRESERVE("Preserve"),
+    
+    TRIM("Trim");
+
+    private String value;
+
+    TrailingSpacesOptionsEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static TrailingSpacesOptionsEnum fromValue(String text) {
+      for (TrailingSpacesOptionsEnum b : TrailingSpacesOptionsEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<TrailingSpacesOptionsEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final TrailingSpacesOptionsEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public TrailingSpacesOptionsEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return TrailingSpacesOptionsEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
+  @SerializedName("trailingSpacesOptions")
+  private TrailingSpacesOptionsEnum trailingSpacesOptions = null;
+
+  /**
+   * Gets or sets preferred option of a leading space handling. Default value is ConvertToIndent.
+   */
+  @JsonAdapter(LeadingSpacesOptionsEnum.Adapter.class)
+  public enum LeadingSpacesOptionsEnum {
+    CONVERTTOINDENT("ConvertToIndent"),
+    
+    PRESERVE("Preserve"),
+    
+    TRIM("Trim");
+
+    private String value;
+
+    LeadingSpacesOptionsEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static LeadingSpacesOptionsEnum fromValue(String text) {
+      for (LeadingSpacesOptionsEnum b : LeadingSpacesOptionsEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<LeadingSpacesOptionsEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final LeadingSpacesOptionsEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public LeadingSpacesOptionsEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return LeadingSpacesOptionsEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
+  @SerializedName("leadingSpacesOptions")
+  private LeadingSpacesOptionsEnum leadingSpacesOptions = null;
+
   public TxtLoadOptions detectNumberingWithWhitespaces(Boolean detectNumberingWithWhitespaces) {
     this.detectNumberingWithWhitespaces = detectNumberingWithWhitespaces;
     return this;
@@ -64,6 +166,42 @@ public class TxtLoadOptions extends LoadOptions {
     this.detectNumberingWithWhitespaces = detectNumberingWithWhitespaces;
   }
 
+  public TxtLoadOptions trailingSpacesOptions(TrailingSpacesOptionsEnum trailingSpacesOptions) {
+    this.trailingSpacesOptions = trailingSpacesOptions;
+    return this;
+  }
+
+   /**
+   * Gets or sets preferred option of a trailing space handling. Default value is Trim.
+   * @return trailingSpacesOptions
+  **/
+  @ApiModelProperty(required = true, value = "Gets or sets preferred option of a trailing space handling. Default value is Trim.")
+  public TrailingSpacesOptionsEnum getTrailingSpacesOptions() {
+    return trailingSpacesOptions;
+  }
+
+  public void setTrailingSpacesOptions(TrailingSpacesOptionsEnum trailingSpacesOptions) {
+    this.trailingSpacesOptions = trailingSpacesOptions;
+  }
+
+  public TxtLoadOptions leadingSpacesOptions(LeadingSpacesOptionsEnum leadingSpacesOptions) {
+    this.leadingSpacesOptions = leadingSpacesOptions;
+    return this;
+  }
+
+   /**
+   * Gets or sets preferred option of a leading space handling. Default value is ConvertToIndent.
+   * @return leadingSpacesOptions
+  **/
+  @ApiModelProperty(required = true, value = "Gets or sets preferred option of a leading space handling. Default value is ConvertToIndent.")
+  public LeadingSpacesOptionsEnum getLeadingSpacesOptions() {
+    return leadingSpacesOptions;
+  }
+
+  public void setLeadingSpacesOptions(LeadingSpacesOptionsEnum leadingSpacesOptions) {
+    this.leadingSpacesOptions = leadingSpacesOptions;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -75,12 +213,14 @@ public class TxtLoadOptions extends LoadOptions {
     }
     TxtLoadOptions txtLoadOptions = (TxtLoadOptions) o;
     return Objects.equals(this.detectNumberingWithWhitespaces, txtLoadOptions.detectNumberingWithWhitespaces) &&
+        Objects.equals(this.trailingSpacesOptions, txtLoadOptions.trailingSpacesOptions) &&
+        Objects.equals(this.leadingSpacesOptions, txtLoadOptions.leadingSpacesOptions) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(detectNumberingWithWhitespaces, super.hashCode());
+    return Objects.hash(detectNumberingWithWhitespaces, trailingSpacesOptions, leadingSpacesOptions, super.hashCode());
   }
 
 
@@ -90,6 +230,8 @@ public class TxtLoadOptions extends LoadOptions {
     sb.append("class TxtLoadOptions {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    detectNumberingWithWhitespaces: ").append(toIndentedString(detectNumberingWithWhitespaces)).append("\n");
+    sb.append("    trailingSpacesOptions: ").append(toIndentedString(trailingSpacesOptions)).append("\n");
+    sb.append("    leadingSpacesOptions: ").append(toIndentedString(leadingSpacesOptions)).append("\n");
     sb.append("}");
     return sb.toString();
   }

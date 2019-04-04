@@ -28,8 +28,11 @@
 package com.groupdocs.cloud.conversion.api;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
+import java.io.File;
 import java.util.List;
 
 import com.groupdocs.cloud.conversion.client.ApiException;
@@ -61,10 +64,32 @@ public class ConversionApiTests extends BaseApiTest {
 
         ConvertDocumentRequest request = new ConvertDocumentRequest(convertSettings);
         
-        conversionApi.convertDocument(request);
+        List<StoredConvertedResult> result = conversionApi.convertDocument(request);
 
-        assertTrue(true);
+        assertNotNull(result);
+        assertTrue(result.size() > 0);
     }
+
+    /**
+     * Converts source document to specified type
+     *
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void convertDocumentDownloadTest() throws ApiException {
+        ConvertSettings convertSettings = new ConvertSettings();
+        convertSettings.setFilePath(TestFiles.OnePageDocx.getPath());
+        convertSettings.setFormat("pdf");
+        convertSettings.setConvertOptions(new PdfConvertOptions());
+        
+        ConvertDocumentRequest request = new ConvertDocumentRequest(convertSettings);
+        
+        File file = conversionApi.convertDocumentDownload(request);
+
+        assertNotNull(file);
+        assertTrue(file.length() > 0);
+    }
+
 
     /**
      * Retrieves list of supported file formats.

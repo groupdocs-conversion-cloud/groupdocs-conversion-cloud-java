@@ -34,6 +34,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.groupdocs.cloud.conversion.model.ConvertOptions;
+import com.groupdocs.cloud.conversion.model.WatermarkOptions;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -52,6 +53,9 @@ public class SpreadsheetConvertOptions extends ConvertOptions {
 
   @SerializedName("usePdf")
   private Boolean usePdf = null;
+
+  @SerializedName("watermarkOptions")
+  private WatermarkOptions watermarkOptions = null;
 
   public SpreadsheetConvertOptions password(String password) {
     this.password = password;
@@ -107,6 +111,24 @@ public class SpreadsheetConvertOptions extends ConvertOptions {
     this.usePdf = usePdf;
   }
 
+  public SpreadsheetConvertOptions watermarkOptions(WatermarkOptions watermarkOptions) {
+    this.watermarkOptions = watermarkOptions;
+    return this;
+  }
+
+   /**
+   * Watermark specific options
+   * @return watermarkOptions
+  **/
+  @ApiModelProperty(value = "Watermark specific options")
+  public WatermarkOptions getWatermarkOptions() {
+    return watermarkOptions;
+  }
+
+  public void setWatermarkOptions(WatermarkOptions watermarkOptions) {
+    this.watermarkOptions = watermarkOptions;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -120,12 +142,13 @@ public class SpreadsheetConvertOptions extends ConvertOptions {
     return Objects.equals(this.password, spreadsheetConvertOptions.password) &&
         Objects.equals(this.zoom, spreadsheetConvertOptions.zoom) &&
         Objects.equals(this.usePdf, spreadsheetConvertOptions.usePdf) &&
+        Objects.equals(this.watermarkOptions, spreadsheetConvertOptions.watermarkOptions) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(password, zoom, usePdf, super.hashCode());
+    return Objects.hash(password, zoom, usePdf, watermarkOptions, super.hashCode());
   }
 
 
@@ -137,6 +160,7 @@ public class SpreadsheetConvertOptions extends ConvertOptions {
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("    zoom: ").append(toIndentedString(zoom)).append("\n");
     sb.append("    usePdf: ").append(toIndentedString(usePdf)).append("\n");
+    sb.append("    watermarkOptions: ").append(toIndentedString(watermarkOptions)).append("\n");
     sb.append("}");
     return sb.toString();
   }

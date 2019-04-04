@@ -34,6 +34,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.groupdocs.cloud.conversion.model.ImageConvertOptions;
+import com.groupdocs.cloud.conversion.model.WatermarkOptions;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -49,6 +50,122 @@ public class PsdConvertOptions extends ImageConvertOptions {
 
   @SerializedName("channelsCount")
   private Integer channelsCount = null;
+
+  /**
+   * Psd color mode
+   */
+  @JsonAdapter(ColorModeEnum.Adapter.class)
+  public enum ColorModeEnum {
+    BITMAP("Bitmap"),
+    
+    GRAYSCALE("Grayscale"),
+    
+    INDEXED("Indexed"),
+    
+    RGB("Rgb"),
+    
+    CMYK("Cmyk"),
+    
+    MULTICHANNEL("Multichannel"),
+    
+    DUOTONE("Duotone"),
+    
+    LAB("Lab");
+
+    private String value;
+
+    ColorModeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static ColorModeEnum fromValue(String text) {
+      for (ColorModeEnum b : ColorModeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<ColorModeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final ColorModeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public ColorModeEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return ColorModeEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
+  @SerializedName("colorMode")
+  private ColorModeEnum colorMode = null;
+
+  /**
+   * Psd compression method
+   */
+  @JsonAdapter(CompressionMethodEnum.Adapter.class)
+  public enum CompressionMethodEnum {
+    RAW("Raw"),
+    
+    RLE("Rle"),
+    
+    ZIPWITHOUTPREDICTION("ZipWithoutPrediction"),
+    
+    ZIPWITHPREDICTION("ZipWithPrediction");
+
+    private String value;
+
+    CompressionMethodEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static CompressionMethodEnum fromValue(String text) {
+      for (CompressionMethodEnum b : CompressionMethodEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<CompressionMethodEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final CompressionMethodEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public CompressionMethodEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return CompressionMethodEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
+  @SerializedName("compressionMethod")
+  private CompressionMethodEnum compressionMethod = null;
 
   @SerializedName("version")
   private Integer version = null;
@@ -89,6 +206,42 @@ public class PsdConvertOptions extends ImageConvertOptions {
     this.channelsCount = channelsCount;
   }
 
+  public PsdConvertOptions colorMode(ColorModeEnum colorMode) {
+    this.colorMode = colorMode;
+    return this;
+  }
+
+   /**
+   * Psd color mode
+   * @return colorMode
+  **/
+  @ApiModelProperty(required = true, value = "Psd color mode")
+  public ColorModeEnum getColorMode() {
+    return colorMode;
+  }
+
+  public void setColorMode(ColorModeEnum colorMode) {
+    this.colorMode = colorMode;
+  }
+
+  public PsdConvertOptions compressionMethod(CompressionMethodEnum compressionMethod) {
+    this.compressionMethod = compressionMethod;
+    return this;
+  }
+
+   /**
+   * Psd compression method
+   * @return compressionMethod
+  **/
+  @ApiModelProperty(required = true, value = "Psd compression method")
+  public CompressionMethodEnum getCompressionMethod() {
+    return compressionMethod;
+  }
+
+  public void setCompressionMethod(CompressionMethodEnum compressionMethod) {
+    this.compressionMethod = compressionMethod;
+  }
+
   public PsdConvertOptions version(Integer version) {
     this.version = version;
     return this;
@@ -119,13 +272,15 @@ public class PsdConvertOptions extends ImageConvertOptions {
     PsdConvertOptions psdConvertOptions = (PsdConvertOptions) o;
     return Objects.equals(this.channelBitsCount, psdConvertOptions.channelBitsCount) &&
         Objects.equals(this.channelsCount, psdConvertOptions.channelsCount) &&
+        Objects.equals(this.colorMode, psdConvertOptions.colorMode) &&
+        Objects.equals(this.compressionMethod, psdConvertOptions.compressionMethod) &&
         Objects.equals(this.version, psdConvertOptions.version) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(channelBitsCount, channelsCount, version, super.hashCode());
+    return Objects.hash(channelBitsCount, channelsCount, colorMode, compressionMethod, version, super.hashCode());
   }
 
 
@@ -136,6 +291,8 @@ public class PsdConvertOptions extends ImageConvertOptions {
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    channelBitsCount: ").append(toIndentedString(channelBitsCount)).append("\n");
     sb.append("    channelsCount: ").append(toIndentedString(channelsCount)).append("\n");
+    sb.append("    colorMode: ").append(toIndentedString(colorMode)).append("\n");
+    sb.append("    compressionMethod: ").append(toIndentedString(compressionMethod)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("}");
     return sb.toString();

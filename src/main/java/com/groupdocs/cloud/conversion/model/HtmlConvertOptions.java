@@ -34,6 +34,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.groupdocs.cloud.conversion.model.ConvertOptions;
+import com.groupdocs.cloud.conversion.model.WatermarkOptions;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -52,6 +53,9 @@ public class HtmlConvertOptions extends ConvertOptions {
 
   @SerializedName("zoom")
   private Integer zoom = null;
+
+  @SerializedName("watermarkOptions")
+  private WatermarkOptions watermarkOptions = null;
 
   public HtmlConvertOptions usePdf(Boolean usePdf) {
     this.usePdf = usePdf;
@@ -107,6 +111,24 @@ public class HtmlConvertOptions extends ConvertOptions {
     this.zoom = zoom;
   }
 
+  public HtmlConvertOptions watermarkOptions(WatermarkOptions watermarkOptions) {
+    this.watermarkOptions = watermarkOptions;
+    return this;
+  }
+
+   /**
+   * Watermark specific options
+   * @return watermarkOptions
+  **/
+  @ApiModelProperty(value = "Watermark specific options")
+  public WatermarkOptions getWatermarkOptions() {
+    return watermarkOptions;
+  }
+
+  public void setWatermarkOptions(WatermarkOptions watermarkOptions) {
+    this.watermarkOptions = watermarkOptions;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -120,12 +142,13 @@ public class HtmlConvertOptions extends ConvertOptions {
     return Objects.equals(this.usePdf, htmlConvertOptions.usePdf) &&
         Objects.equals(this.fixedLayout, htmlConvertOptions.fixedLayout) &&
         Objects.equals(this.zoom, htmlConvertOptions.zoom) &&
+        Objects.equals(this.watermarkOptions, htmlConvertOptions.watermarkOptions) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(usePdf, fixedLayout, zoom, super.hashCode());
+    return Objects.hash(usePdf, fixedLayout, zoom, watermarkOptions, super.hashCode());
   }
 
 
@@ -137,6 +160,7 @@ public class HtmlConvertOptions extends ConvertOptions {
     sb.append("    usePdf: ").append(toIndentedString(usePdf)).append("\n");
     sb.append("    fixedLayout: ").append(toIndentedString(fixedLayout)).append("\n");
     sb.append("    zoom: ").append(toIndentedString(zoom)).append("\n");
+    sb.append("    watermarkOptions: ").append(toIndentedString(watermarkOptions)).append("\n");
     sb.append("}");
     return sb.toString();
   }

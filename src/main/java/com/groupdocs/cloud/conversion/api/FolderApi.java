@@ -208,6 +208,7 @@ public class FolderApi {
         apiClient.executeAsync(call, callback);
         return call;
     }
+    
     /**
      * Build call for createFolder
      * @param request The request model
@@ -329,6 +330,7 @@ public class FolderApi {
         apiClient.executeAsync(call, callback);
         return call;
     }
+    
     /**
      * Build call for deleteFolder
      * @param request The request model
@@ -452,6 +454,7 @@ public class FolderApi {
         apiClient.executeAsync(call, callback);
         return call;
     }
+    
     /**
      * Build call for getFilesList
      * @param request The request model
@@ -577,6 +580,7 @@ public class FolderApi {
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
+    
     /**
      * Build call for moveFolder
      * @param request The request model
@@ -707,5 +711,6 @@ public class FolderApi {
         apiClient.executeAsync(call, callback);
         return call;
     }
+    
 }
 

@@ -34,6 +34,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.groupdocs.cloud.conversion.model.ConvertOptions;
+import com.groupdocs.cloud.conversion.model.WatermarkOptions;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -70,6 +71,9 @@ public class XpsConvertOptions extends ConvertOptions {
 
   @SerializedName("usePdf")
   private Boolean usePdf = null;
+
+  @SerializedName("watermarkOptions")
+  private WatermarkOptions watermarkOptions = null;
 
   public XpsConvertOptions width(Integer width) {
     this.width = width;
@@ -233,6 +237,24 @@ public class XpsConvertOptions extends ConvertOptions {
     this.usePdf = usePdf;
   }
 
+  public XpsConvertOptions watermarkOptions(WatermarkOptions watermarkOptions) {
+    this.watermarkOptions = watermarkOptions;
+    return this;
+  }
+
+   /**
+   * Watermark specific options
+   * @return watermarkOptions
+  **/
+  @ApiModelProperty(value = "Watermark specific options")
+  public WatermarkOptions getWatermarkOptions() {
+    return watermarkOptions;
+  }
+
+  public void setWatermarkOptions(WatermarkOptions watermarkOptions) {
+    this.watermarkOptions = watermarkOptions;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -252,12 +274,13 @@ public class XpsConvertOptions extends ConvertOptions {
         Objects.equals(this.marginLeft, xpsConvertOptions.marginLeft) &&
         Objects.equals(this.marginRight, xpsConvertOptions.marginRight) &&
         Objects.equals(this.usePdf, xpsConvertOptions.usePdf) &&
+        Objects.equals(this.watermarkOptions, xpsConvertOptions.watermarkOptions) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(width, height, dpi, password, marginTop, marginBottom, marginLeft, marginRight, usePdf, super.hashCode());
+    return Objects.hash(width, height, dpi, password, marginTop, marginBottom, marginLeft, marginRight, usePdf, watermarkOptions, super.hashCode());
   }
 
 
@@ -275,6 +298,7 @@ public class XpsConvertOptions extends ConvertOptions {
     sb.append("    marginLeft: ").append(toIndentedString(marginLeft)).append("\n");
     sb.append("    marginRight: ").append(toIndentedString(marginRight)).append("\n");
     sb.append("    usePdf: ").append(toIndentedString(usePdf)).append("\n");
+    sb.append("    watermarkOptions: ").append(toIndentedString(watermarkOptions)).append("\n");
     sb.append("}");
     return sb.toString();
   }

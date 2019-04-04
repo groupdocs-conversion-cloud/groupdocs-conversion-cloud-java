@@ -197,6 +197,7 @@ public class StorageApi {
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
+    
     /**
      * Build call for getFileVersions
      * @param request The request model
@@ -322,6 +323,7 @@ public class StorageApi {
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
+    
     /**
      * Build call for objectExists
      * @param request The request model
@@ -449,6 +451,7 @@ public class StorageApi {
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
+    
     /**
      * Build call for storageExists
      * @param request The request model
@@ -572,5 +575,6 @@ public class StorageApi {
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
+    
 }
 

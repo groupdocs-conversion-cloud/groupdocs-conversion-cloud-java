@@ -54,21 +54,21 @@ public class GetSupportedConversionTypesRequest {
     /**
     * Initializes a new instance of the GetSupportedConversionTypesRequest class.    
     * @param filePath Absolute path to a document in the storage
-    * @param storage Storage which contains the document
+    * @param storageName StorageName which contains the document
     * @param format If provided only supported conversions for specified format will be returned
     */
-    public GetSupportedConversionTypesRequest(String filePath, String storage, String format)
+    public GetSupportedConversionTypesRequest(String filePath, String storageName, String format)
     {
         this.filePath = filePath;
-        this.storage = storage;
+        this.storageName = storageName;
         this.format = format;
     }
 
   @SerializedName("filePath")
   private String filePath = null;
 
-  @SerializedName("storage")
-  private String storage = null;
+  @SerializedName("storageName")
+  private String storageName = null;
 
   @SerializedName("format")
   private String format = null;
@@ -87,16 +87,16 @@ public class GetSupportedConversionTypesRequest {
   }
 
   /**
-   * Storage which contains the document
-   * @return Storage which contains the document
+   * StorageName which contains the document
+   * @return StorageName which contains the document
   **/
-  @ApiModelProperty(example = "storage_example", value = "Storage which contains the document")
-  public String getStorage() {
-    return storage;
+  @ApiModelProperty(example = "storageName_example", value = "StorageName which contains the document")
+  public String getStorageName() {
+    return storageName;
   }
 
-  public void setStorage(String storage) {
-    this.storage = storage;
+  public void setStorageName(String storageName) {
+    this.storageName = storageName;
   }
 
   /**
@@ -124,13 +124,13 @@ public class GetSupportedConversionTypesRequest {
     
     GetSupportedConversionTypesRequest request = (GetSupportedConversionTypesRequest) o;
     return Objects.equals(this.filePath, request.filePath) &&
-        Objects.equals(this.storage, request.storage) &&
+        Objects.equals(this.storageName, request.storageName) &&
         Objects.equals(this.format, request.format);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(filePath, storage, format);
+    return Objects.hash(filePath, storageName, format);
   }
 
   @Override
@@ -138,7 +138,7 @@ public class GetSupportedConversionTypesRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class GetSupportedConversionTypes {\n");
     sb.append("    filePath: ").append(toIndentedString(filePath)).append("\n");
-    sb.append("    storage: ").append(toIndentedString(storage)).append("\n");
+    sb.append("    storageName: ").append(toIndentedString(storageName)).append("\n");
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("}");
     return sb.toString();

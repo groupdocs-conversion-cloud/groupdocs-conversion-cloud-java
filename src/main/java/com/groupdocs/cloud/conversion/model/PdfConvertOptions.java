@@ -34,6 +34,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.groupdocs.cloud.conversion.model.ConvertOptions;
+import com.groupdocs.cloud.conversion.model.WatermarkOptions;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -68,6 +69,84 @@ public class PdfConvertOptions extends ConvertOptions {
   @SerializedName("marginRight")
   private Integer marginRight = null;
 
+  /**
+   * Set the pdf format of the converted document.
+   */
+  @JsonAdapter(PdfFormatEnum.Adapter.class)
+  public enum PdfFormatEnum {
+    DEFAULT("Default"),
+    
+    PDFA_1A("PdfA_1A"),
+    
+    PDFA_1B("PdfA_1B"),
+    
+    PDFA_2A("PdfA_2A"),
+    
+    PDFA_3A("PdfA_3A"),
+    
+    PDFA_2B("PdfA_2B"),
+    
+    PDFA_2U("PdfA_2U"),
+    
+    PDFA_3B("PdfA_3B"),
+    
+    PDFA_3U("PdfA_3U"),
+    
+    V1_3("v1_3"),
+    
+    V1_4("v1_4"),
+    
+    V1_5("v1_5"),
+    
+    V1_6("v1_6"),
+    
+    V1_7("v1_7"),
+    
+    PDFX_1A("PdfX_1A"),
+    
+    PDFX3("PdfX3");
+
+    private String value;
+
+    PdfFormatEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static PdfFormatEnum fromValue(String text) {
+      for (PdfFormatEnum b : PdfFormatEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<PdfFormatEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final PdfFormatEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public PdfFormatEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return PdfFormatEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
+  @SerializedName("pdfFormat")
+  private PdfFormatEnum pdfFormat = null;
+
   @SerializedName("removePdfaCompliance")
   private Boolean removePdfaCompliance = null;
 
@@ -101,6 +180,56 @@ public class PdfConvertOptions extends ConvertOptions {
   @SerializedName("centerWindow")
   private Boolean centerWindow = null;
 
+  /**
+   * Sets reading order of text: L2R (left to right) or R2L (right to left). Default: L2R.
+   */
+  @JsonAdapter(DirectionEnum.Adapter.class)
+  public enum DirectionEnum {
+    L2R("L2R"),
+    
+    R2L("R2L");
+
+    private String value;
+
+    DirectionEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static DirectionEnum fromValue(String text) {
+      for (DirectionEnum b : DirectionEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<DirectionEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final DirectionEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public DirectionEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return DirectionEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
+  @SerializedName("direction")
+  private DirectionEnum direction = null;
+
   @SerializedName("displayDocTitle")
   private Boolean displayDocTitle = null;
 
@@ -116,6 +245,182 @@ public class PdfConvertOptions extends ConvertOptions {
   @SerializedName("hideWindowUI")
   private Boolean hideWindowUI = null;
 
+  /**
+   * Sets page mode, specifying how to display the document on exiting full-screen mode.
+   */
+  @JsonAdapter(NonFullScreenPageModeEnum.Adapter.class)
+  public enum NonFullScreenPageModeEnum {
+    USENONE("UseNone"),
+    
+    USEOUTLINES("UseOutlines"),
+    
+    USETHUMBS("UseThumbs"),
+    
+    FULLSCREEN("FullScreen"),
+    
+    USEOC("UseOC"),
+    
+    USEATTACHMENTS("UseAttachments");
+
+    private String value;
+
+    NonFullScreenPageModeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static NonFullScreenPageModeEnum fromValue(String text) {
+      for (NonFullScreenPageModeEnum b : NonFullScreenPageModeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<NonFullScreenPageModeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final NonFullScreenPageModeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public NonFullScreenPageModeEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return NonFullScreenPageModeEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
+  @SerializedName("nonFullScreenPageMode")
+  private NonFullScreenPageModeEnum nonFullScreenPageMode = null;
+
+  /**
+   * Sets page layout which shall be used when the document is opened.
+   */
+  @JsonAdapter(PageLayoutEnum.Adapter.class)
+  public enum PageLayoutEnum {
+    DEFAULT("Default"),
+    
+    SINGLEPAGE("SinglePage"),
+    
+    ONECOLUMN("OneColumn"),
+    
+    TWOCOLUMNLEFT("TwoColumnLeft"),
+    
+    TWOCOLUMNRIGHT("TwoColumnRight"),
+    
+    TWOPAGELEFT("TwoPageLeft"),
+    
+    TWOPAGERIGHT("TwoPageRight");
+
+    private String value;
+
+    PageLayoutEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static PageLayoutEnum fromValue(String text) {
+      for (PageLayoutEnum b : PageLayoutEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<PageLayoutEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final PageLayoutEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public PageLayoutEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return PageLayoutEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
+  @SerializedName("pageLayout")
+  private PageLayoutEnum pageLayout = null;
+
+  /**
+   * Sets page mode, specifying how document should be displayed when opened.
+   */
+  @JsonAdapter(PageModeEnum.Adapter.class)
+  public enum PageModeEnum {
+    USENONE("UseNone"),
+    
+    USEOUTLINES("UseOutlines"),
+    
+    USETHUMBS("UseThumbs"),
+    
+    FULLSCREEN("FullScreen"),
+    
+    USEOC("UseOC"),
+    
+    USEATTACHMENTS("UseAttachments");
+
+    private String value;
+
+    PageModeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static PageModeEnum fromValue(String text) {
+      for (PageModeEnum b : PageModeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<PageModeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final PageModeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public PageModeEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return PageModeEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
+  @SerializedName("pageMode")
+  private PageModeEnum pageMode = null;
+
   @SerializedName("bookmarksOutlineLevel")
   private Integer bookmarksOutlineLevel = null;
 
@@ -124,6 +429,63 @@ public class PdfConvertOptions extends ConvertOptions {
 
   @SerializedName("expandedOutlineLevels")
   private Integer expandedOutlineLevels = null;
+
+  /**
+   * Rotate page
+   */
+  @JsonAdapter(RotateEnum.Adapter.class)
+  public enum RotateEnum {
+    NONE("None"),
+    
+    ON90("On90"),
+    
+    ON180("On180"),
+    
+    ON270("On270");
+
+    private String value;
+
+    RotateEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static RotateEnum fromValue(String text) {
+      for (RotateEnum b : RotateEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<RotateEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final RotateEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public RotateEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return RotateEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
+  @SerializedName("rotate")
+  private RotateEnum rotate = null;
+
+  @SerializedName("watermarkOptions")
+  private WatermarkOptions watermarkOptions = null;
 
   public PdfConvertOptions width(Integer width) {
     this.width = width;
@@ -267,6 +629,24 @@ public class PdfConvertOptions extends ConvertOptions {
 
   public void setMarginRight(Integer marginRight) {
     this.marginRight = marginRight;
+  }
+
+  public PdfConvertOptions pdfFormat(PdfFormatEnum pdfFormat) {
+    this.pdfFormat = pdfFormat;
+    return this;
+  }
+
+   /**
+   * Set the pdf format of the converted document.
+   * @return pdfFormat
+  **/
+  @ApiModelProperty(required = true, value = "Set the pdf format of the converted document.")
+  public PdfFormatEnum getPdfFormat() {
+    return pdfFormat;
+  }
+
+  public void setPdfFormat(PdfFormatEnum pdfFormat) {
+    this.pdfFormat = pdfFormat;
   }
 
   public PdfConvertOptions removePdfaCompliance(Boolean removePdfaCompliance) {
@@ -467,6 +847,24 @@ public class PdfConvertOptions extends ConvertOptions {
     this.centerWindow = centerWindow;
   }
 
+  public PdfConvertOptions direction(DirectionEnum direction) {
+    this.direction = direction;
+    return this;
+  }
+
+   /**
+   * Sets reading order of text: L2R (left to right) or R2L (right to left). Default: L2R.
+   * @return direction
+  **/
+  @ApiModelProperty(required = true, value = "Sets reading order of text: L2R (left to right) or R2L (right to left). Default: L2R.")
+  public DirectionEnum getDirection() {
+    return direction;
+  }
+
+  public void setDirection(DirectionEnum direction) {
+    this.direction = direction;
+  }
+
   public PdfConvertOptions displayDocTitle(Boolean displayDocTitle) {
     this.displayDocTitle = displayDocTitle;
     return this;
@@ -557,6 +955,60 @@ public class PdfConvertOptions extends ConvertOptions {
     this.hideWindowUI = hideWindowUI;
   }
 
+  public PdfConvertOptions nonFullScreenPageMode(NonFullScreenPageModeEnum nonFullScreenPageMode) {
+    this.nonFullScreenPageMode = nonFullScreenPageMode;
+    return this;
+  }
+
+   /**
+   * Sets page mode, specifying how to display the document on exiting full-screen mode.
+   * @return nonFullScreenPageMode
+  **/
+  @ApiModelProperty(required = true, value = "Sets page mode, specifying how to display the document on exiting full-screen mode.")
+  public NonFullScreenPageModeEnum getNonFullScreenPageMode() {
+    return nonFullScreenPageMode;
+  }
+
+  public void setNonFullScreenPageMode(NonFullScreenPageModeEnum nonFullScreenPageMode) {
+    this.nonFullScreenPageMode = nonFullScreenPageMode;
+  }
+
+  public PdfConvertOptions pageLayout(PageLayoutEnum pageLayout) {
+    this.pageLayout = pageLayout;
+    return this;
+  }
+
+   /**
+   * Sets page layout which shall be used when the document is opened.
+   * @return pageLayout
+  **/
+  @ApiModelProperty(required = true, value = "Sets page layout which shall be used when the document is opened.")
+  public PageLayoutEnum getPageLayout() {
+    return pageLayout;
+  }
+
+  public void setPageLayout(PageLayoutEnum pageLayout) {
+    this.pageLayout = pageLayout;
+  }
+
+  public PdfConvertOptions pageMode(PageModeEnum pageMode) {
+    this.pageMode = pageMode;
+    return this;
+  }
+
+   /**
+   * Sets page mode, specifying how document should be displayed when opened.
+   * @return pageMode
+  **/
+  @ApiModelProperty(required = true, value = "Sets page mode, specifying how document should be displayed when opened.")
+  public PageModeEnum getPageMode() {
+    return pageMode;
+  }
+
+  public void setPageMode(PageModeEnum pageMode) {
+    this.pageMode = pageMode;
+  }
+
   public PdfConvertOptions bookmarksOutlineLevel(Integer bookmarksOutlineLevel) {
     this.bookmarksOutlineLevel = bookmarksOutlineLevel;
     return this;
@@ -611,6 +1063,42 @@ public class PdfConvertOptions extends ConvertOptions {
     this.expandedOutlineLevels = expandedOutlineLevels;
   }
 
+  public PdfConvertOptions rotate(RotateEnum rotate) {
+    this.rotate = rotate;
+    return this;
+  }
+
+   /**
+   * Rotate page
+   * @return rotate
+  **/
+  @ApiModelProperty(required = true, value = "Rotate page")
+  public RotateEnum getRotate() {
+    return rotate;
+  }
+
+  public void setRotate(RotateEnum rotate) {
+    this.rotate = rotate;
+  }
+
+  public PdfConvertOptions watermarkOptions(WatermarkOptions watermarkOptions) {
+    this.watermarkOptions = watermarkOptions;
+    return this;
+  }
+
+   /**
+   * Watermark specific options
+   * @return watermarkOptions
+  **/
+  @ApiModelProperty(value = "Watermark specific options")
+  public WatermarkOptions getWatermarkOptions() {
+    return watermarkOptions;
+  }
+
+  public void setWatermarkOptions(WatermarkOptions watermarkOptions) {
+    this.watermarkOptions = watermarkOptions;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -629,6 +1117,7 @@ public class PdfConvertOptions extends ConvertOptions {
         Objects.equals(this.marginBottom, pdfConvertOptions.marginBottom) &&
         Objects.equals(this.marginLeft, pdfConvertOptions.marginLeft) &&
         Objects.equals(this.marginRight, pdfConvertOptions.marginRight) &&
+        Objects.equals(this.pdfFormat, pdfConvertOptions.pdfFormat) &&
         Objects.equals(this.removePdfaCompliance, pdfConvertOptions.removePdfaCompliance) &&
         Objects.equals(this.zoom, pdfConvertOptions.zoom) &&
         Objects.equals(this.linearize, pdfConvertOptions.linearize) &&
@@ -640,20 +1129,26 @@ public class PdfConvertOptions extends ConvertOptions {
         Objects.equals(this.unembedFonts, pdfConvertOptions.unembedFonts) &&
         Objects.equals(this.grayscale, pdfConvertOptions.grayscale) &&
         Objects.equals(this.centerWindow, pdfConvertOptions.centerWindow) &&
+        Objects.equals(this.direction, pdfConvertOptions.direction) &&
         Objects.equals(this.displayDocTitle, pdfConvertOptions.displayDocTitle) &&
         Objects.equals(this.fitWindow, pdfConvertOptions.fitWindow) &&
         Objects.equals(this.hideMenubar, pdfConvertOptions.hideMenubar) &&
         Objects.equals(this.hideToolBar, pdfConvertOptions.hideToolBar) &&
         Objects.equals(this.hideWindowUI, pdfConvertOptions.hideWindowUI) &&
+        Objects.equals(this.nonFullScreenPageMode, pdfConvertOptions.nonFullScreenPageMode) &&
+        Objects.equals(this.pageLayout, pdfConvertOptions.pageLayout) &&
+        Objects.equals(this.pageMode, pdfConvertOptions.pageMode) &&
         Objects.equals(this.bookmarksOutlineLevel, pdfConvertOptions.bookmarksOutlineLevel) &&
         Objects.equals(this.headingsOutlineLevels, pdfConvertOptions.headingsOutlineLevels) &&
         Objects.equals(this.expandedOutlineLevels, pdfConvertOptions.expandedOutlineLevels) &&
+        Objects.equals(this.rotate, pdfConvertOptions.rotate) &&
+        Objects.equals(this.watermarkOptions, pdfConvertOptions.watermarkOptions) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(width, height, dpi, password, marginTop, marginBottom, marginLeft, marginRight, removePdfaCompliance, zoom, linearize, linkDuplicateStreams, removeUnusedObjects, removeUnusedStreams, compressImages, imageQuality, unembedFonts, grayscale, centerWindow, displayDocTitle, fitWindow, hideMenubar, hideToolBar, hideWindowUI, bookmarksOutlineLevel, headingsOutlineLevels, expandedOutlineLevels, super.hashCode());
+    return Objects.hash(width, height, dpi, password, marginTop, marginBottom, marginLeft, marginRight, pdfFormat, removePdfaCompliance, zoom, linearize, linkDuplicateStreams, removeUnusedObjects, removeUnusedStreams, compressImages, imageQuality, unembedFonts, grayscale, centerWindow, direction, displayDocTitle, fitWindow, hideMenubar, hideToolBar, hideWindowUI, nonFullScreenPageMode, pageLayout, pageMode, bookmarksOutlineLevel, headingsOutlineLevels, expandedOutlineLevels, rotate, watermarkOptions, super.hashCode());
   }
 
 
@@ -670,6 +1165,7 @@ public class PdfConvertOptions extends ConvertOptions {
     sb.append("    marginBottom: ").append(toIndentedString(marginBottom)).append("\n");
     sb.append("    marginLeft: ").append(toIndentedString(marginLeft)).append("\n");
     sb.append("    marginRight: ").append(toIndentedString(marginRight)).append("\n");
+    sb.append("    pdfFormat: ").append(toIndentedString(pdfFormat)).append("\n");
     sb.append("    removePdfaCompliance: ").append(toIndentedString(removePdfaCompliance)).append("\n");
     sb.append("    zoom: ").append(toIndentedString(zoom)).append("\n");
     sb.append("    linearize: ").append(toIndentedString(linearize)).append("\n");
@@ -681,14 +1177,20 @@ public class PdfConvertOptions extends ConvertOptions {
     sb.append("    unembedFonts: ").append(toIndentedString(unembedFonts)).append("\n");
     sb.append("    grayscale: ").append(toIndentedString(grayscale)).append("\n");
     sb.append("    centerWindow: ").append(toIndentedString(centerWindow)).append("\n");
+    sb.append("    direction: ").append(toIndentedString(direction)).append("\n");
     sb.append("    displayDocTitle: ").append(toIndentedString(displayDocTitle)).append("\n");
     sb.append("    fitWindow: ").append(toIndentedString(fitWindow)).append("\n");
     sb.append("    hideMenubar: ").append(toIndentedString(hideMenubar)).append("\n");
     sb.append("    hideToolBar: ").append(toIndentedString(hideToolBar)).append("\n");
     sb.append("    hideWindowUI: ").append(toIndentedString(hideWindowUI)).append("\n");
+    sb.append("    nonFullScreenPageMode: ").append(toIndentedString(nonFullScreenPageMode)).append("\n");
+    sb.append("    pageLayout: ").append(toIndentedString(pageLayout)).append("\n");
+    sb.append("    pageMode: ").append(toIndentedString(pageMode)).append("\n");
     sb.append("    bookmarksOutlineLevel: ").append(toIndentedString(bookmarksOutlineLevel)).append("\n");
     sb.append("    headingsOutlineLevels: ").append(toIndentedString(headingsOutlineLevels)).append("\n");
     sb.append("    expandedOutlineLevels: ").append(toIndentedString(expandedOutlineLevels)).append("\n");
+    sb.append("    rotate: ").append(toIndentedString(rotate)).append("\n");
+    sb.append("    watermarkOptions: ").append(toIndentedString(watermarkOptions)).append("\n");
     sb.append("}");
     return sb.toString();
   }

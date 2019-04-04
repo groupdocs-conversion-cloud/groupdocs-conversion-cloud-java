@@ -44,8 +44,8 @@ import java.io.IOException;
  */
 @ApiModel(description = "Defines conversion request")
 public class ConvertSettings {
-  @SerializedName("storage")
-  private String storage = null;
+  @SerializedName("storageName")
+  private String storageName = null;
 
   @SerializedName("filePath")
   private String filePath = null;
@@ -62,22 +62,22 @@ public class ConvertSettings {
   @SerializedName("outputPath")
   private String outputPath = null;
 
-  public ConvertSettings storage(String storage) {
-    this.storage = storage;
+  public ConvertSettings storageName(String storageName) {
+    this.storageName = storageName;
     return this;
   }
 
    /**
-   * Storage which contains the file
-   * @return storage
+   * StorageName which contains the file
+   * @return storageName
   **/
-  @ApiModelProperty(value = "Storage which contains the file")
-  public String getStorage() {
-    return storage;
+  @ApiModelProperty(value = "StorageName which contains the file")
+  public String getStorageName() {
+    return storageName;
   }
 
-  public void setStorage(String storage) {
-    this.storage = storage;
+  public void setStorageName(String storageName) {
+    this.storageName = storageName;
   }
 
   public ConvertSettings filePath(String filePath) {
@@ -180,7 +180,7 @@ public class ConvertSettings {
       return false;
     }
     ConvertSettings convertSettings = (ConvertSettings) o;
-    return Objects.equals(this.storage, convertSettings.storage) &&
+    return Objects.equals(this.storageName, convertSettings.storageName) &&
         Objects.equals(this.filePath, convertSettings.filePath) &&
         Objects.equals(this.format, convertSettings.format) &&
         Objects.equals(this.loadOptions, convertSettings.loadOptions) &&
@@ -190,7 +190,7 @@ public class ConvertSettings {
 
   @Override
   public int hashCode() {
-    return Objects.hash(storage, filePath, format, loadOptions, convertOptions, outputPath);
+    return Objects.hash(storageName, filePath, format, loadOptions, convertOptions, outputPath);
   }
 
 
@@ -199,7 +199,7 @@ public class ConvertSettings {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConvertSettings {\n");
     
-    sb.append("    storage: ").append(toIndentedString(storage)).append("\n");
+    sb.append("    storageName: ").append(toIndentedString(storageName)).append("\n");
     sb.append("    filePath: ").append(toIndentedString(filePath)).append("\n");
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    loadOptions: ").append(toIndentedString(loadOptions)).append("\n");

@@ -145,22 +145,25 @@ public class ConversionApi {
      * Converts specified input document to format specified in the convertSettings with specified options
      * 
      * @param request The request model
+     * @return List&lt;StoredConvertedResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void convertDocument(ConvertDocumentRequest request) throws ApiException {
-        convertDocumentWithHttpInfo(request);
+    public List<StoredConvertedResult> convertDocument(ConvertDocumentRequest request) throws ApiException {
+        ApiResponse<List<StoredConvertedResult>> resp = convertDocumentWithHttpInfo(request);
+        return resp.getData();
     }
 
     /**
      * Converts specified input document to format specified in the convertSettings with specified options
      * 
      * @param request The request model
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;List&lt;StoredConvertedResult&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> convertDocumentWithHttpInfo(ConvertDocumentRequest request) throws ApiException {
+    public ApiResponse<List<StoredConvertedResult>> convertDocumentWithHttpInfo(ConvertDocumentRequest request) throws ApiException {
         com.squareup.okhttp.Call call = convertDocumentValidateBeforeCall(request, null, null);
-        return apiClient.execute(call);
+        Type localVarReturnType = new TypeToken<List<StoredConvertedResult>>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
     }
 
     /**
@@ -196,6 +199,129 @@ public class ConversionApi {
         apiClient.executeAsync(call, callback);
         return call;
     }
+
+    /**
+     * Build call for convertDocumentDownload
+     * @param request The request model
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call convertDocumentDownloadCall(ConvertDocumentRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = request.getconvertSettings();
+
+        // create path and map variables
+        String localVarPath = "/conversion";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "JWT" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call convertDocumentDownloadValidateBeforeCall(ConvertDocumentRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'convertSettings' is set
+        if (request.getconvertSettings() == null) {
+            throw new ApiException("Missing the required parameter 'convertSettings' when calling convertDocument(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = convertDocumentDownloadCall(request, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Converts specified input document to format specified in the convertSettings with specified options and download
+     * 
+     * @param request The request model
+     * @return File
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public File convertDocumentDownload(ConvertDocumentRequest request) throws ApiException {
+        ApiResponse<File> resp = convertDocumentDownloadWithHttpInfo(request);
+        return resp.getData();
+    }
+
+    /**
+     * Converts specified input document to format specified in the convertSettings with specified options and download
+     * 
+     * @param request The request model
+     * @return ApiResponse&lt;File&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<File> convertDocumentDownloadWithHttpInfo(ConvertDocumentRequest request) throws ApiException {
+        com.squareup.okhttp.Call call = convertDocumentDownloadValidateBeforeCall(request, null, null);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Converts specified input document to format specified in the convertSettings with specified options (asynchronously) and download
+     * 
+     * @param request The request model
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call convertDocumentDownloadAsync(ConvertDocumentRequest request, final ApiCallback<Void> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = convertDocumentDownloadValidateBeforeCall(request, progressListener, progressRequestListener);
+        apiClient.executeAsync(call, callback);
+        return call;
+    }    
+    
     /**
      * Build call for getSupportedConversionTypes
      * @param request The request model
@@ -214,8 +340,8 @@ public class ConversionApi {
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (request.getFilePath() != null)
             localVarQueryParams.addAll(apiClient.parameterToPair("filePath", request.getFilePath()));
-        if (request.getStorage() != null)
-            localVarQueryParams.addAll(apiClient.parameterToPair("storage", request.getStorage()));
+        if (request.getStorageName() != null)
+            localVarQueryParams.addAll(apiClient.parameterToPair("storageName", request.getStorageName()));
         if (request.getformat() != null)
             localVarQueryParams.addAll(apiClient.parameterToPair("format", request.getformat()));
 
@@ -319,5 +445,6 @@ public class ConversionApi {
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
+    
 }
 

@@ -28,6 +28,7 @@
 package com.groupdocs.cloud.conversion.model;
 
 import java.util.Objects;
+import com.groupdocs.cloud.conversion.model.WatermarkOptions;
 import com.groupdocs.cloud.conversion.model.WordProcessingConvertOptions;
 import io.swagger.annotations.ApiModel;
 import java.util.List;

@@ -210,6 +210,7 @@ public class FileApi {
         apiClient.executeAsync(call, callback);
         return call;
     }
+    
     /**
      * Build call for deleteFile
      * @param request The request model
@@ -333,6 +334,7 @@ public class FileApi {
         apiClient.executeAsync(call, callback);
         return call;
     }
+    
     /**
      * Build call for downloadFile
      * @param request The request model
@@ -460,6 +462,7 @@ public class FileApi {
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
+    
     /**
      * Build call for moveFile
      * @param request The request model
@@ -592,6 +595,7 @@ public class FileApi {
         apiClient.executeAsync(call, callback);
         return call;
     }
+    
     /**
      * Build call for uploadFile
      * @param request The request model
@@ -724,5 +728,6 @@ public class FileApi {
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
+    
 }
 

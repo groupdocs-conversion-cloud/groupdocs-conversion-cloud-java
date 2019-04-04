@@ -34,6 +34,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.groupdocs.cloud.conversion.model.ConvertOptions;
+import com.groupdocs.cloud.conversion.model.WatermarkOptions;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -64,6 +65,9 @@ public class ImageConvertOptions extends ConvertOptions {
 
   @SerializedName("usePdf")
   private Boolean usePdf = null;
+
+  @SerializedName("watermarkOptions")
+  private WatermarkOptions watermarkOptions = null;
 
   public ImageConvertOptions width(Integer width) {
     this.width = width;
@@ -191,6 +195,24 @@ public class ImageConvertOptions extends ConvertOptions {
     this.usePdf = usePdf;
   }
 
+  public ImageConvertOptions watermarkOptions(WatermarkOptions watermarkOptions) {
+    this.watermarkOptions = watermarkOptions;
+    return this;
+  }
+
+   /**
+   * Watermark specific options
+   * @return watermarkOptions
+  **/
+  @ApiModelProperty(value = "Watermark specific options")
+  public WatermarkOptions getWatermarkOptions() {
+    return watermarkOptions;
+  }
+
+  public void setWatermarkOptions(WatermarkOptions watermarkOptions) {
+    this.watermarkOptions = watermarkOptions;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -208,12 +230,13 @@ public class ImageConvertOptions extends ConvertOptions {
         Objects.equals(this.grayscale, imageConvertOptions.grayscale) &&
         Objects.equals(this.rotateAngle, imageConvertOptions.rotateAngle) &&
         Objects.equals(this.usePdf, imageConvertOptions.usePdf) &&
+        Objects.equals(this.watermarkOptions, imageConvertOptions.watermarkOptions) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(width, height, horizontalResolution, verticalResolution, grayscale, rotateAngle, usePdf, super.hashCode());
+    return Objects.hash(width, height, horizontalResolution, verticalResolution, grayscale, rotateAngle, usePdf, watermarkOptions, super.hashCode());
   }
 
 
@@ -229,6 +252,7 @@ public class ImageConvertOptions extends ConvertOptions {
     sb.append("    grayscale: ").append(toIndentedString(grayscale)).append("\n");
     sb.append("    rotateAngle: ").append(toIndentedString(rotateAngle)).append("\n");
     sb.append("    usePdf: ").append(toIndentedString(usePdf)).append("\n");
+    sb.append("    watermarkOptions: ").append(toIndentedString(watermarkOptions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
