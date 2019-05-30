@@ -7,7 +7,8 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({
     AuthApiTests.class,
-    ConversionApiTests.class,
+    ConvertApiTests.class,
+    InfoApiTests.class,
     StorageApiTests.class,
     FolderApiTests.class,
     FileApiTests.class

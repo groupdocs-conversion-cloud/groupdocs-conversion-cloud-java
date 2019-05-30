@@ -44,11 +44,12 @@ import org.junit.After;
 import org.junit.Before;
 
 /**
- * API tests for ConversionApi
+ * API tests
  */
 public class BaseApiTest {
 
-    protected ConversionApi conversionApi;
+    protected ConvertApi convertApi;
+    protected InfoApi infoApi;
     protected StorageApi storageApi;
     protected FileApi fileApi;
     protected FolderApi folderApi;
@@ -59,7 +60,8 @@ public class BaseApiTest {
         Configuration configuration = new Configuration(Config.AppSID, Config.AppKey);
         configuration.setApiBaseUrl(Config.ApiBaseUrl);
 
-        conversionApi = new ConversionApi(configuration);
+        convertApi = new ConvertApi(configuration);
+        infoApi = new InfoApi(configuration);
         storageApi = new StorageApi(configuration);
         fileApi = new FileApi(configuration);
         folderApi = new FolderApi(configuration);

@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="ConversionApi.java">
+ * <copyright company="Aspose Pty Ltd" file="ConvertApi.java">
  *   Copyright (c) 2003-2018 Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -40,23 +40,23 @@ import com.groupdocs.cloud.conversion.client.*;
 import com.groupdocs.cloud.conversion.model.*;
 import com.groupdocs.cloud.conversion.model.requests.*;
 
-public class ConversionApi {
+public class ConvertApi {
     private ApiClient apiClient;
 
     /**
-     * Initializes new instance of ConversionApi
+     * Initializes new instance of ConvertApi
      * @param appSid Application identifier (App SID)
      * @param appKey Application private key (App Key)
      */
-    public ConversionApi(String appSid, String appKey) {
+    public ConvertApi(String appSid, String appKey) {
         this(new Configuration(appSid, appKey));
     }
 
     /**
-     * Initializes new instance of ConversionApi
+     * Initializes new instance of ConvertApi
      * @param configuration Configuration The configuration
      */
-    public ConversionApi(Configuration configuration) {
+    public ConvertApi(Configuration configuration) {
         this.apiClient = new ApiClient(configuration);
     }
 
@@ -321,130 +321,6 @@ public class ConversionApi {
         apiClient.executeAsync(call, callback);
         return call;
     }    
-    
-    /**
-     * Build call for getSupportedConversionTypes
-     * @param request The request model
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call getSupportedConversionTypesCall(GetSupportedConversionTypesRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/conversion/formats";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        if (request.getFilePath() != null)
-            localVarQueryParams.addAll(apiClient.parameterToPair("filePath", request.getFilePath()));
-        if (request.getStorageName() != null)
-            localVarQueryParams.addAll(apiClient.parameterToPair("storageName", request.getStorageName()));
-        if (request.getformat() != null)
-            localVarQueryParams.addAll(apiClient.parameterToPair("format", request.getformat()));
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] { "JWT" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getSupportedConversionTypesValidateBeforeCall(GetSupportedConversionTypesRequest request, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-
-        com.squareup.okhttp.Call call = getSupportedConversionTypesCall(request, progressListener, progressRequestListener);
-        return call;
-
-    }
-
-    /**
-     * Returns all supported conversion types
-     * 
-     * @param request The request model
-     * @return List&lt;SupportedFormat&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public List<SupportedFormat> getSupportedConversionTypes(GetSupportedConversionTypesRequest request) throws ApiException {
-        ApiResponse<List<SupportedFormat>> resp = getSupportedConversionTypesWithHttpInfo(request);
-        return resp.getData();
-    }
-
-    /**
-     * Returns all supported conversion types
-     * 
-     * @param request The request model
-     * @return ApiResponse&lt;List&lt;SupportedFormat&gt;&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<List<SupportedFormat>> getSupportedConversionTypesWithHttpInfo(GetSupportedConversionTypesRequest request) throws ApiException {
-        com.squareup.okhttp.Call call = getSupportedConversionTypesValidateBeforeCall(request, null, null);
-        Type localVarReturnType = new TypeToken<List<SupportedFormat>>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     * Returns all supported conversion types (asynchronously)
-     * 
-     * @param request The request model
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call getSupportedConversionTypesAsync(GetSupportedConversionTypesRequest request, final ApiCallback<List<SupportedFormat>> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = getSupportedConversionTypesValidateBeforeCall(request, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<List<SupportedFormat>>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
     
 }
 

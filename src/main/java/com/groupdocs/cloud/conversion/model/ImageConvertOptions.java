@@ -69,6 +69,69 @@ public class ImageConvertOptions extends ConvertOptions {
   @SerializedName("watermarkOptions")
   private WatermarkOptions watermarkOptions = null;
 
+  @SerializedName("brightness")
+  private Integer brightness = null;
+
+  @SerializedName("contrast")
+  private Integer contrast = null;
+
+  @SerializedName("gamma")
+  private Double gamma = null;
+
+  /**
+   * Image flip mode
+   */
+  @JsonAdapter(FlipModeEnum.Adapter.class)
+  public enum FlipModeEnum {
+    NONE("None"),
+    
+    FLIPX("FlipX"),
+    
+    FLIPY("FlipY"),
+    
+    FLIPXY("FlipXY");
+
+    private String value;
+
+    FlipModeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static FlipModeEnum fromValue(String text) {
+      for (FlipModeEnum b : FlipModeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<FlipModeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final FlipModeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public FlipModeEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return FlipModeEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
+  @SerializedName("flipMode")
+  private FlipModeEnum flipMode = null;
+
   public ImageConvertOptions width(Integer width) {
     this.width = width;
     return this;
@@ -213,6 +276,78 @@ public class ImageConvertOptions extends ConvertOptions {
     this.watermarkOptions = watermarkOptions;
   }
 
+  public ImageConvertOptions brightness(Integer brightness) {
+    this.brightness = brightness;
+    return this;
+  }
+
+   /**
+   * Adjust image brightness
+   * @return brightness
+  **/
+  @ApiModelProperty(required = true, value = "Adjust image brightness")
+  public Integer getBrightness() {
+    return brightness;
+  }
+
+  public void setBrightness(Integer brightness) {
+    this.brightness = brightness;
+  }
+
+  public ImageConvertOptions contrast(Integer contrast) {
+    this.contrast = contrast;
+    return this;
+  }
+
+   /**
+   * Adjust image contrast
+   * @return contrast
+  **/
+  @ApiModelProperty(required = true, value = "Adjust image contrast")
+  public Integer getContrast() {
+    return contrast;
+  }
+
+  public void setContrast(Integer contrast) {
+    this.contrast = contrast;
+  }
+
+  public ImageConvertOptions gamma(Double gamma) {
+    this.gamma = gamma;
+    return this;
+  }
+
+   /**
+   * Adjust image gamma
+   * @return gamma
+  **/
+  @ApiModelProperty(required = true, value = "Adjust image gamma")
+  public Double getGamma() {
+    return gamma;
+  }
+
+  public void setGamma(Double gamma) {
+    this.gamma = gamma;
+  }
+
+  public ImageConvertOptions flipMode(FlipModeEnum flipMode) {
+    this.flipMode = flipMode;
+    return this;
+  }
+
+   /**
+   * Image flip mode
+   * @return flipMode
+  **/
+  @ApiModelProperty(required = true, value = "Image flip mode")
+  public FlipModeEnum getFlipMode() {
+    return flipMode;
+  }
+
+  public void setFlipMode(FlipModeEnum flipMode) {
+    this.flipMode = flipMode;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -231,12 +366,16 @@ public class ImageConvertOptions extends ConvertOptions {
         Objects.equals(this.rotateAngle, imageConvertOptions.rotateAngle) &&
         Objects.equals(this.usePdf, imageConvertOptions.usePdf) &&
         Objects.equals(this.watermarkOptions, imageConvertOptions.watermarkOptions) &&
+        Objects.equals(this.brightness, imageConvertOptions.brightness) &&
+        Objects.equals(this.contrast, imageConvertOptions.contrast) &&
+        Objects.equals(this.gamma, imageConvertOptions.gamma) &&
+        Objects.equals(this.flipMode, imageConvertOptions.flipMode) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(width, height, horizontalResolution, verticalResolution, grayscale, rotateAngle, usePdf, watermarkOptions, super.hashCode());
+    return Objects.hash(width, height, horizontalResolution, verticalResolution, grayscale, rotateAngle, usePdf, watermarkOptions, brightness, contrast, gamma, flipMode, super.hashCode());
   }
 
 
@@ -253,6 +392,10 @@ public class ImageConvertOptions extends ConvertOptions {
     sb.append("    rotateAngle: ").append(toIndentedString(rotateAngle)).append("\n");
     sb.append("    usePdf: ").append(toIndentedString(usePdf)).append("\n");
     sb.append("    watermarkOptions: ").append(toIndentedString(watermarkOptions)).append("\n");
+    sb.append("    brightness: ").append(toIndentedString(brightness)).append("\n");
+    sb.append("    contrast: ").append(toIndentedString(contrast)).append("\n");
+    sb.append("    gamma: ").append(toIndentedString(gamma)).append("\n");
+    sb.append("    flipMode: ").append(toIndentedString(flipMode)).append("\n");
     sb.append("}");
     return sb.toString();
   }

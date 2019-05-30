@@ -28,64 +28,52 @@
 package com.groupdocs.cloud.conversion.api;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
+
+import java.io.File;
+import java.util.List;
 
 import com.groupdocs.cloud.conversion.client.ApiException;
-import com.groupdocs.cloud.conversion.client.Configuration;
-
 import com.groupdocs.cloud.conversion.model.*;
 import com.groupdocs.cloud.conversion.model.requests.*;
 
 import org.junit.Test;
 
+import junit.framework.Assert;
+
 /**
  * API tests for InfoApi
  */
-public class AuthApiTests {
+public class InfoApiTests extends BaseApiTest {
 
     /**
-     * Throws exception in case AppSid not found
+     * Retrieves list of supported file formats.
+     *
+     * @throws ApiException if the Api call fails
      */
     @Test
-    public void errorWhenAppSidNotFoundTest() {
+    public void getSupportedConversionTypesTest() throws ApiException {
+        List<SupportedFormat> response = infoApi.getSupportedConversionTypes(new GetSupportedConversionTypesRequest());
 
-        String appSid = "test";
-        String appKey = "test";
-
-        Configuration configuration = new Configuration(appSid, appKey);
-        configuration.setApiBaseUrl(Config.ApiBaseUrl);
-
-        InfoApi infoApi = new InfoApi(configuration);
-        infoApi.getApiClient().setConnectTimeout(10 * 1000);
-
-        try {
-            infoApi.getSupportedConversionTypes(new GetSupportedConversionTypesRequest());
-            fail("Expected ApiException was not thrown.");
-        } catch (ApiException ex) {
-            assertEquals("invalid_client", ex.getMessage());
+        assertTrue(response.size() > 0);
+        for (SupportedFormat format : response) {
+            assertFalse(format.getSourceFormat() == null);
         }
     }
 
+
     /**
-     * Throws exception in case AppSid not found
+     * Retrieves document metadata.
+     *
+     * @throws ApiException if the Api call fails
      */
     @Test
-    public void errorWhenAppKeyNotFoundTest() {
+    public void getDocumentMetadataTest() throws ApiException {
+        DocumentMetadata response = infoApi.getDocumentMetadata(new GetDocumentMetadataRequest(TestFiles.FourPagesDocx.getPath(), ""));
 
-        String appSid = Config.AppSID;
-        String appKey = "test";
-
-        Configuration configuration = new Configuration(appSid, appKey);
-        configuration.setApiBaseUrl(Config.ApiBaseUrl);
-
-        InfoApi infoApi = new InfoApi(configuration);
-        infoApi.getApiClient().setConnectTimeout(10 * 1000);
-
-        try {
-            infoApi.getSupportedConversionTypes(new GetSupportedConversionTypesRequest());
-            fail("Expected ApiException was not thrown.");
-        } catch (ApiException ex) {
-            assertEquals("invalid_client", ex.getMessage());
-        }
+        assertTrue(4 == response.getPageCount());
     }
 }

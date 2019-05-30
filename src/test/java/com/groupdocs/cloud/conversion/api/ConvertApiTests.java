@@ -44,9 +44,9 @@ import org.junit.Test;
 import junit.framework.Assert;
 
 /**
- * API tests for ConversionApi
+ * API tests for ConvertApi
  */
-public class ConversionApiTests extends BaseApiTest {
+public class ConvertApiTests extends BaseApiTest {
 
     /**
      * Converts source document to specified type
@@ -64,7 +64,7 @@ public class ConversionApiTests extends BaseApiTest {
 
         ConvertDocumentRequest request = new ConvertDocumentRequest(convertSettings);
         
-        List<StoredConvertedResult> result = conversionApi.convertDocument(request);
+        List<StoredConvertedResult> result = convertApi.convertDocument(request);
 
         assertNotNull(result);
         assertTrue(result.size() > 0);
@@ -84,25 +84,9 @@ public class ConversionApiTests extends BaseApiTest {
         
         ConvertDocumentRequest request = new ConvertDocumentRequest(convertSettings);
         
-        File file = conversionApi.convertDocumentDownload(request);
+        File file = convertApi.convertDocumentDownload(request);
 
         assertNotNull(file);
         assertTrue(file.length() > 0);
-    }
-
-
-    /**
-     * Retrieves list of supported file formats.
-     *
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void getSupportedConversionTypesTest() throws ApiException {
-        List<SupportedFormat> response = conversionApi.getSupportedConversionTypes(new GetSupportedConversionTypesRequest());
-
-        assertTrue(response.size() > 0);
-        for (SupportedFormat format : response) {
-            assertFalse(format.getSourceFormat() == null);
-        }
     }
 }

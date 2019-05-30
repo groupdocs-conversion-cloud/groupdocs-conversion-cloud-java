@@ -37,7 +37,7 @@ Add following repository and dependency to your project's POM
 <dependency>
     <groupId>com.groupdocs</groupId>
     <artifactId>groupdocs-conversion-cloud</artifactId>
-    <version>19.4</version>
+    <version>19.5</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -50,7 +50,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/groupdocs-conversion-cloud-19.4.jar
+* target/groupdocs-conversion-cloud-19.5.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -61,7 +61,7 @@ Please follow the [installation](#installation) instruction and execute the foll
 import com.groupdocs.cloud.conversion.client.*;
 import com.groupdocs.cloud.conversion.model.*;
 import com.groupdocs.cloud.conversion.model.requests.*;
-import com.groupdocs.cloud.conversion.api.ConversionApi;
+import com.groupdocs.cloud.conversion.api.InfoApi;
 
 import java.util.*;
 
@@ -74,11 +74,11 @@ public class ApiExample {
 
         Configuration configuration = new Configuration(appSid, appKey);
         
-        ConversionApi conversionApi = new ConversionApi(configuration);
+        InfoApi api = new InfoApi(configuration);
 
         try {
             GetSupportedCibversionTypesRequest request = new GetSupportedConversionTypesRequest();
-            List<SupportedFormat> response = conversionApi.getSupportedConversionTypes(request);
+            List<SupportedFormat> response = api.getSupportedConversionTypes(request);
             
             for (SupportedFormat format : response) {
                 System.out.println(format.getSourceFormat());
