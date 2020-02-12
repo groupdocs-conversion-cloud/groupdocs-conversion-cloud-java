@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd">
- *   Copyright (c) 2003-2019 Aspose Pty Ltd
+ *   Copyright (c) 2003-2020 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -27,22 +27,18 @@
 
 package com.groupdocs.cloud.conversion.api;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-import java.io.File;
 import java.util.List;
 
 import com.groupdocs.cloud.conversion.client.ApiException;
-import com.groupdocs.cloud.conversion.model.*;
-import com.groupdocs.cloud.conversion.model.requests.*;
+import com.groupdocs.cloud.conversion.model.DocumentMetadata;
+import com.groupdocs.cloud.conversion.model.SupportedFormat;
+import com.groupdocs.cloud.conversion.model.requests.GetDocumentMetadataRequest;
+import com.groupdocs.cloud.conversion.model.requests.GetSupportedConversionTypesRequest;
 
 import org.junit.Test;
-
-import junit.framework.Assert;
 
 /**
  * API tests for InfoApi

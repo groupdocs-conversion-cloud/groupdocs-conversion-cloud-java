@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd">
- *   Copyright (c) 2003-2019 Aspose Pty Ltd
+ *   Copyright (c) 2003-2020 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -27,9 +27,7 @@
 
 package com.groupdocs.cloud.conversion.api;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
@@ -37,11 +35,9 @@ import java.util.List;
 
 import com.groupdocs.cloud.conversion.client.ApiException;
 import com.groupdocs.cloud.conversion.model.*;
-import com.groupdocs.cloud.conversion.model.requests.*;
+import com.groupdocs.cloud.conversion.model.requests.ConvertDocumentRequest;
 
 import org.junit.Test;
-
-import junit.framework.Assert;
 
 /**
  * API tests for ConvertApi
@@ -57,11 +53,10 @@ public class ConvertApiTests extends BaseApiTest {
     public void convertDocumentTest() throws ApiException {
         ConvertSettings convertSettings = new ConvertSettings();
         convertSettings.setFilePath(TestFiles.OnePageDocx.getPath());
-        convertSettings.setFormat("pdf");
-        convertSettings.setConvertOptions(new PdfConvertOptions());
+        convertSettings.setFormat("jpg");
+        convertSettings.setConvertOptions(new JpgConvertOptions());
         convertSettings.setOutputPath("converted");
         
-
         ConvertDocumentRequest request = new ConvertDocumentRequest(convertSettings);
         
         List<StoredConvertedResult> result = convertApi.convertDocument(request);

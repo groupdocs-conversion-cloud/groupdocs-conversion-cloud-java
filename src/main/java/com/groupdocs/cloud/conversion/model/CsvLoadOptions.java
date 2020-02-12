@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="CsvLoadOptions.java">
- *   Copyright (c) 2003-2019 Aspose Pty Ltd
+ *   Copyright (c) 2003-2020 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -57,6 +57,9 @@ public class CsvLoadOptions extends LoadOptions {
 
   @SerializedName("convertDateTimeData")
   private Boolean convertDateTimeData = null;
+
+  @SerializedName("encoding")
+  private String encoding = null;
 
   public CsvLoadOptions separator(String separator) {
     this.separator = separator;
@@ -148,6 +151,24 @@ public class CsvLoadOptions extends LoadOptions {
     this.convertDateTimeData = convertDateTimeData;
   }
 
+  public CsvLoadOptions encoding(String encoding) {
+    this.encoding = encoding;
+    return this;
+  }
+
+   /**
+   * File encoding
+   * @return encoding
+  **/
+  @ApiModelProperty(value = "File encoding")
+  public String getEncoding() {
+    return encoding;
+  }
+
+  public void setEncoding(String encoding) {
+    this.encoding = encoding;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -163,12 +184,13 @@ public class CsvLoadOptions extends LoadOptions {
         Objects.equals(this.hasFormula, csvLoadOptions.hasFormula) &&
         Objects.equals(this.convertNumericData, csvLoadOptions.convertNumericData) &&
         Objects.equals(this.convertDateTimeData, csvLoadOptions.convertDateTimeData) &&
+        Objects.equals(this.encoding, csvLoadOptions.encoding) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(separator, isMultiEncoded, hasFormula, convertNumericData, convertDateTimeData, super.hashCode());
+    return Objects.hash(separator, isMultiEncoded, hasFormula, convertNumericData, convertDateTimeData, encoding, super.hashCode());
   }
 
 
@@ -182,6 +204,7 @@ public class CsvLoadOptions extends LoadOptions {
     sb.append("    hasFormula: ").append(toIndentedString(hasFormula)).append("\n");
     sb.append("    convertNumericData: ").append(toIndentedString(convertNumericData)).append("\n");
     sb.append("    convertDateTimeData: ").append(toIndentedString(convertDateTimeData)).append("\n");
+    sb.append("    encoding: ").append(toIndentedString(encoding)).append("\n");
     sb.append("}");
     return sb.toString();
   }

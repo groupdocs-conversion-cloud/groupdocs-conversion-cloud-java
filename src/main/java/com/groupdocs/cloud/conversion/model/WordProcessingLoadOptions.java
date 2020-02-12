@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="WordProcessingLoadOptions.java">
- *   Copyright (c) 2003-2019 Aspose Pty Ltd
+ *   Copyright (c) 2003-2020 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -63,6 +63,15 @@ public class WordProcessingLoadOptions extends LoadOptions {
 
   @SerializedName("hideComments")
   private Boolean hideComments = null;
+
+  @SerializedName("bookmarksOutlineLevel")
+  private Integer bookmarksOutlineLevel = null;
+
+  @SerializedName("headingsOutlineLevels")
+  private Integer headingsOutlineLevels = null;
+
+  @SerializedName("expandedOutlineLevels")
+  private Integer expandedOutlineLevels = null;
 
   public WordProcessingLoadOptions defaultFont(String defaultFont) {
     this.defaultFont = defaultFont;
@@ -180,6 +189,60 @@ public class WordProcessingLoadOptions extends LoadOptions {
     this.hideComments = hideComments;
   }
 
+  public WordProcessingLoadOptions bookmarksOutlineLevel(Integer bookmarksOutlineLevel) {
+    this.bookmarksOutlineLevel = bookmarksOutlineLevel;
+    return this;
+  }
+
+   /**
+   * Specifies the default level in the document outline at which to display Word bookmarks. Default is 0. Valid range is 0 to 9.
+   * @return bookmarksOutlineLevel
+  **/
+  @ApiModelProperty(required = true, value = "Specifies the default level in the document outline at which to display Word bookmarks. Default is 0. Valid range is 0 to 9.")
+  public Integer getBookmarksOutlineLevel() {
+    return bookmarksOutlineLevel;
+  }
+
+  public void setBookmarksOutlineLevel(Integer bookmarksOutlineLevel) {
+    this.bookmarksOutlineLevel = bookmarksOutlineLevel;
+  }
+
+  public WordProcessingLoadOptions headingsOutlineLevels(Integer headingsOutlineLevels) {
+    this.headingsOutlineLevels = headingsOutlineLevels;
+    return this;
+  }
+
+   /**
+   * Specifies how many levels of headings (paragraphs formatted with the Heading styles) to include in the document outline. Default is 0. Valid range is 0 to 9.
+   * @return headingsOutlineLevels
+  **/
+  @ApiModelProperty(required = true, value = "Specifies how many levels of headings (paragraphs formatted with the Heading styles) to include in the document outline. Default is 0. Valid range is 0 to 9.")
+  public Integer getHeadingsOutlineLevels() {
+    return headingsOutlineLevels;
+  }
+
+  public void setHeadingsOutlineLevels(Integer headingsOutlineLevels) {
+    this.headingsOutlineLevels = headingsOutlineLevels;
+  }
+
+  public WordProcessingLoadOptions expandedOutlineLevels(Integer expandedOutlineLevels) {
+    this.expandedOutlineLevels = expandedOutlineLevels;
+    return this;
+  }
+
+   /**
+   * Specifies how many levels in the document outline to show expanded when the file is viewed. Default is 0. Valid range is 0 to 9. Note that this options will not work when saving to XPS.
+   * @return expandedOutlineLevels
+  **/
+  @ApiModelProperty(required = true, value = "Specifies how many levels in the document outline to show expanded when the file is viewed. Default is 0. Valid range is 0 to 9. Note that this options will not work when saving to XPS.")
+  public Integer getExpandedOutlineLevels() {
+    return expandedOutlineLevels;
+  }
+
+  public void setExpandedOutlineLevels(Integer expandedOutlineLevels) {
+    this.expandedOutlineLevels = expandedOutlineLevels;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -196,12 +259,15 @@ public class WordProcessingLoadOptions extends LoadOptions {
         Objects.equals(this.password, wordProcessingLoadOptions.password) &&
         Objects.equals(this.hideWordTrackedChanges, wordProcessingLoadOptions.hideWordTrackedChanges) &&
         Objects.equals(this.hideComments, wordProcessingLoadOptions.hideComments) &&
+        Objects.equals(this.bookmarksOutlineLevel, wordProcessingLoadOptions.bookmarksOutlineLevel) &&
+        Objects.equals(this.headingsOutlineLevels, wordProcessingLoadOptions.headingsOutlineLevels) &&
+        Objects.equals(this.expandedOutlineLevels, wordProcessingLoadOptions.expandedOutlineLevels) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultFont, autoFontSubstitution, fontSubstitutes, password, hideWordTrackedChanges, hideComments, super.hashCode());
+    return Objects.hash(defaultFont, autoFontSubstitution, fontSubstitutes, password, hideWordTrackedChanges, hideComments, bookmarksOutlineLevel, headingsOutlineLevels, expandedOutlineLevels, super.hashCode());
   }
 
 
@@ -216,6 +282,9 @@ public class WordProcessingLoadOptions extends LoadOptions {
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("    hideWordTrackedChanges: ").append(toIndentedString(hideWordTrackedChanges)).append("\n");
     sb.append("    hideComments: ").append(toIndentedString(hideComments)).append("\n");
+    sb.append("    bookmarksOutlineLevel: ").append(toIndentedString(bookmarksOutlineLevel)).append("\n");
+    sb.append("    headingsOutlineLevels: ").append(toIndentedString(headingsOutlineLevels)).append("\n");
+    sb.append("    expandedOutlineLevels: ").append(toIndentedString(expandedOutlineLevels)).append("\n");
     sb.append("}");
     return sb.toString();
   }

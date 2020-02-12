@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="OAuth.java">
- *   Copyright (c) 2003-2019 Aspose Pty Ltd
+ *   Copyright (c) 2003-2020 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -73,7 +73,7 @@ public class OAuth implements Authentication {
 
     this.httpClient = new OkHttpClient();
     this.httpClient.setConnectTimeout(configuration.getTimeout(), TimeUnit.MILLISECONDS);
-
+    this.httpClient.setReadTimeout(configuration.getTimeout(), TimeUnit.MILLISECONDS);
     this.json = new JSON();
   }
 

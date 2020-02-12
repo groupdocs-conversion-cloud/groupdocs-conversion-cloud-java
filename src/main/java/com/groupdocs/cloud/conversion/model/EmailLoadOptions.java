@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="EmailLoadOptions.java">
- *   Copyright (c) 2003-2019 Aspose Pty Ltd
+ *   Copyright (c) 2003-2020 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -60,6 +60,12 @@ public class EmailLoadOptions extends LoadOptions {
 
   @SerializedName("displayBccEmailAddress")
   private Boolean displayBccEmailAddress = null;
+
+  @SerializedName("timeZoneOffset")
+  private String timeZoneOffset = null;
+
+  @SerializedName("convertAttachments")
+  private Boolean convertAttachments = null;
 
   public EmailLoadOptions displayHeader(Boolean displayHeader) {
     this.displayHeader = displayHeader;
@@ -169,6 +175,42 @@ public class EmailLoadOptions extends LoadOptions {
     this.displayBccEmailAddress = displayBccEmailAddress;
   }
 
+  public EmailLoadOptions timeZoneOffset(String timeZoneOffset) {
+    this.timeZoneOffset = timeZoneOffset;
+    return this;
+  }
+
+   /**
+   * Gets or sets the Coordinated Universal Time (UTC) offset for the message dates. This property defines the time zone difference, between the localtime and UTC.
+   * @return timeZoneOffset
+  **/
+  @ApiModelProperty(value = "Gets or sets the Coordinated Universal Time (UTC) offset for the message dates. This property defines the time zone difference, between the localtime and UTC.")
+  public String getTimeZoneOffset() {
+    return timeZoneOffset;
+  }
+
+  public void setTimeZoneOffset(String timeZoneOffset) {
+    this.timeZoneOffset = timeZoneOffset;
+  }
+
+  public EmailLoadOptions convertAttachments(Boolean convertAttachments) {
+    this.convertAttachments = convertAttachments;
+    return this;
+  }
+
+   /**
+   * Option to convert attachments in source email or not. Default: false.
+   * @return convertAttachments
+  **/
+  @ApiModelProperty(required = true, value = "Option to convert attachments in source email or not. Default: false.")
+  public Boolean getConvertAttachments() {
+    return convertAttachments;
+  }
+
+  public void setConvertAttachments(Boolean convertAttachments) {
+    this.convertAttachments = convertAttachments;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -185,12 +227,14 @@ public class EmailLoadOptions extends LoadOptions {
         Objects.equals(this.displayToEmailAddress, emailLoadOptions.displayToEmailAddress) &&
         Objects.equals(this.displayCcEmailAddress, emailLoadOptions.displayCcEmailAddress) &&
         Objects.equals(this.displayBccEmailAddress, emailLoadOptions.displayBccEmailAddress) &&
+        Objects.equals(this.timeZoneOffset, emailLoadOptions.timeZoneOffset) &&
+        Objects.equals(this.convertAttachments, emailLoadOptions.convertAttachments) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayHeader, displayFromEmailAddress, displayEmailAddress, displayToEmailAddress, displayCcEmailAddress, displayBccEmailAddress, super.hashCode());
+    return Objects.hash(displayHeader, displayFromEmailAddress, displayEmailAddress, displayToEmailAddress, displayCcEmailAddress, displayBccEmailAddress, timeZoneOffset, convertAttachments, super.hashCode());
   }
 
 
@@ -205,6 +249,8 @@ public class EmailLoadOptions extends LoadOptions {
     sb.append("    displayToEmailAddress: ").append(toIndentedString(displayToEmailAddress)).append("\n");
     sb.append("    displayCcEmailAddress: ").append(toIndentedString(displayCcEmailAddress)).append("\n");
     sb.append("    displayBccEmailAddress: ").append(toIndentedString(displayBccEmailAddress)).append("\n");
+    sb.append("    timeZoneOffset: ").append(toIndentedString(timeZoneOffset)).append("\n");
+    sb.append("    convertAttachments: ").append(toIndentedString(convertAttachments)).append("\n");
     sb.append("}");
     return sb.toString();
   }

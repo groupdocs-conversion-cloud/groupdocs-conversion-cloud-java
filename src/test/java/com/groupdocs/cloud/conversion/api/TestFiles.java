@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd">
- *   Copyright (c) 2003-2019 Aspose Pty Ltd
+ *   Copyright (c) 2003-2020 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -32,16 +32,10 @@ import java.util.ArrayList;
 public class TestFiles {
 
     
-    public static TestFile OnePageDocx = new TestFile("one-page.docx", "words\\docx\\");
+    public static TestFile OnePageDocx = new TestFile("one-page.docx", "WordProcessing\\");
     public static TestFile NotExist = new TestFile("NotExist.docx", "some-folder/");
-    public static TestFile PasswordProtectedDocx = new TestFile("password-protected.docx", "words\\docx\\");
-    public static TestFile TwoHiddenPagesVsd = new TestFile("two-hidden-pages.vsd", "diagram\\vsd\\");
-    public static TestFile WithHiddenRowsAndColumns = new TestFile("with-hidden-rows-and-columns.xlsx", "cells\\xlsx\\");
-    public static TestFile ThreeLayoutsDwf = new TestFile("three-layouts.dwf", "cad\\dwf\\");    
-    public static TestFile ProjectMpp = new TestFile("sample.mpp", "project\\mpp\\");
-    public static TestFile UsesCustomFontPptx = new TestFile("uses-custom-font.pptx", "slides\\pptx\\");    
-    public static TestFile FontTtf = new TestFile("foo.ttf", "font\\ttf\\");
-    public static TestFile FourPagesDocx = new TestFile("four-pages.docx", "words\\docx\\");    
+    public static TestFile PasswordProtectedDocx = new TestFile("password-protected.docx", "WordProcessing\\");
+    public static TestFile FourPagesDocx = new TestFile("four-pages.docx", "WordProcessing\\");    
     
     static {
         PasswordProtectedDocx.setPassword("password");
@@ -53,12 +47,6 @@ public class TestFiles {
 
         files.add(OnePageDocx);
         files.add(PasswordProtectedDocx);
-        files.add(TwoHiddenPagesVsd);
-        files.add(WithHiddenRowsAndColumns);
-        files.add(ThreeLayoutsDwf);
-        files.add(ProjectMpp);
-        files.add(UsesCustomFontPptx);
-        files.add(FontTtf);
         files.add(FourPagesDocx);
 
         return files; 

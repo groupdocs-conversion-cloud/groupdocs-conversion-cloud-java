@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="PdfConvertOptions.java">
- *   Copyright (c) 2003-2019 Aspose Pty Ltd
+ *   Copyright (c) 2003-2020 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -236,8 +236,8 @@ public class PdfConvertOptions extends ConvertOptions {
   @SerializedName("fitWindow")
   private Boolean fitWindow = null;
 
-  @SerializedName("hideMenubar")
-  private Boolean hideMenubar = null;
+  @SerializedName("hideMenuBar")
+  private Boolean hideMenuBar = null;
 
   @SerializedName("hideToolBar")
   private Boolean hideToolBar = null;
@@ -420,15 +420,6 @@ public class PdfConvertOptions extends ConvertOptions {
 
   @SerializedName("pageMode")
   private PageModeEnum pageMode = null;
-
-  @SerializedName("bookmarksOutlineLevel")
-  private Integer bookmarksOutlineLevel = null;
-
-  @SerializedName("headingsOutlineLevels")
-  private Integer headingsOutlineLevels = null;
-
-  @SerializedName("expandedOutlineLevels")
-  private Integer expandedOutlineLevels = null;
 
   /**
    * Rotate page
@@ -901,22 +892,22 @@ public class PdfConvertOptions extends ConvertOptions {
     this.fitWindow = fitWindow;
   }
 
-  public PdfConvertOptions hideMenubar(Boolean hideMenubar) {
-    this.hideMenubar = hideMenubar;
+  public PdfConvertOptions hideMenuBar(Boolean hideMenuBar) {
+    this.hideMenuBar = hideMenuBar;
     return this;
   }
 
    /**
    * Specify whether menu bar should be hidden when document is active. Default: false.
-   * @return hideMenubar
+   * @return hideMenuBar
   **/
   @ApiModelProperty(required = true, value = "Specify whether menu bar should be hidden when document is active. Default: false.")
-  public Boolean getHideMenubar() {
-    return hideMenubar;
+  public Boolean getHideMenuBar() {
+    return hideMenuBar;
   }
 
-  public void setHideMenubar(Boolean hideMenubar) {
-    this.hideMenubar = hideMenubar;
+  public void setHideMenuBar(Boolean hideMenuBar) {
+    this.hideMenuBar = hideMenuBar;
   }
 
   public PdfConvertOptions hideToolBar(Boolean hideToolBar) {
@@ -1009,60 +1000,6 @@ public class PdfConvertOptions extends ConvertOptions {
     this.pageMode = pageMode;
   }
 
-  public PdfConvertOptions bookmarksOutlineLevel(Integer bookmarksOutlineLevel) {
-    this.bookmarksOutlineLevel = bookmarksOutlineLevel;
-    return this;
-  }
-
-   /**
-   * Specifies the default level in the document outline at which to display Word bookmarks. Default is 0. Valid range is 0 to 9.
-   * @return bookmarksOutlineLevel
-  **/
-  @ApiModelProperty(required = true, value = "Specifies the default level in the document outline at which to display Word bookmarks. Default is 0. Valid range is 0 to 9.")
-  public Integer getBookmarksOutlineLevel() {
-    return bookmarksOutlineLevel;
-  }
-
-  public void setBookmarksOutlineLevel(Integer bookmarksOutlineLevel) {
-    this.bookmarksOutlineLevel = bookmarksOutlineLevel;
-  }
-
-  public PdfConvertOptions headingsOutlineLevels(Integer headingsOutlineLevels) {
-    this.headingsOutlineLevels = headingsOutlineLevels;
-    return this;
-  }
-
-   /**
-   * Specifies how many levels of headings (paragraphs formatted with the Heading styles) to include in the document outline. Default is 0. Valid range is 0 to 9.
-   * @return headingsOutlineLevels
-  **/
-  @ApiModelProperty(required = true, value = "Specifies how many levels of headings (paragraphs formatted with the Heading styles) to include in the document outline. Default is 0. Valid range is 0 to 9.")
-  public Integer getHeadingsOutlineLevels() {
-    return headingsOutlineLevels;
-  }
-
-  public void setHeadingsOutlineLevels(Integer headingsOutlineLevels) {
-    this.headingsOutlineLevels = headingsOutlineLevels;
-  }
-
-  public PdfConvertOptions expandedOutlineLevels(Integer expandedOutlineLevels) {
-    this.expandedOutlineLevels = expandedOutlineLevels;
-    return this;
-  }
-
-   /**
-   * Specifies how many levels in the document outline to show expanded when the file is viewed. Default is 0. Valid range is 0 to 9. Note that this options will not work when saving to XPS.
-   * @return expandedOutlineLevels
-  **/
-  @ApiModelProperty(required = true, value = "Specifies how many levels in the document outline to show expanded when the file is viewed. Default is 0. Valid range is 0 to 9. Note that this options will not work when saving to XPS.")
-  public Integer getExpandedOutlineLevels() {
-    return expandedOutlineLevels;
-  }
-
-  public void setExpandedOutlineLevels(Integer expandedOutlineLevels) {
-    this.expandedOutlineLevels = expandedOutlineLevels;
-  }
-
   public PdfConvertOptions rotate(RotateEnum rotate) {
     this.rotate = rotate;
     return this;
@@ -1132,15 +1069,12 @@ public class PdfConvertOptions extends ConvertOptions {
         Objects.equals(this.direction, pdfConvertOptions.direction) &&
         Objects.equals(this.displayDocTitle, pdfConvertOptions.displayDocTitle) &&
         Objects.equals(this.fitWindow, pdfConvertOptions.fitWindow) &&
-        Objects.equals(this.hideMenubar, pdfConvertOptions.hideMenubar) &&
+        Objects.equals(this.hideMenuBar, pdfConvertOptions.hideMenuBar) &&
         Objects.equals(this.hideToolBar, pdfConvertOptions.hideToolBar) &&
         Objects.equals(this.hideWindowUI, pdfConvertOptions.hideWindowUI) &&
         Objects.equals(this.nonFullScreenPageMode, pdfConvertOptions.nonFullScreenPageMode) &&
         Objects.equals(this.pageLayout, pdfConvertOptions.pageLayout) &&
         Objects.equals(this.pageMode, pdfConvertOptions.pageMode) &&
-        Objects.equals(this.bookmarksOutlineLevel, pdfConvertOptions.bookmarksOutlineLevel) &&
-        Objects.equals(this.headingsOutlineLevels, pdfConvertOptions.headingsOutlineLevels) &&
-        Objects.equals(this.expandedOutlineLevels, pdfConvertOptions.expandedOutlineLevels) &&
         Objects.equals(this.rotate, pdfConvertOptions.rotate) &&
         Objects.equals(this.watermarkOptions, pdfConvertOptions.watermarkOptions) &&
         super.equals(o);
@@ -1148,7 +1082,7 @@ public class PdfConvertOptions extends ConvertOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(width, height, dpi, password, marginTop, marginBottom, marginLeft, marginRight, pdfFormat, removePdfaCompliance, zoom, linearize, linkDuplicateStreams, removeUnusedObjects, removeUnusedStreams, compressImages, imageQuality, unembedFonts, grayscale, centerWindow, direction, displayDocTitle, fitWindow, hideMenubar, hideToolBar, hideWindowUI, nonFullScreenPageMode, pageLayout, pageMode, bookmarksOutlineLevel, headingsOutlineLevels, expandedOutlineLevels, rotate, watermarkOptions, super.hashCode());
+    return Objects.hash(width, height, dpi, password, marginTop, marginBottom, marginLeft, marginRight, pdfFormat, removePdfaCompliance, zoom, linearize, linkDuplicateStreams, removeUnusedObjects, removeUnusedStreams, compressImages, imageQuality, unembedFonts, grayscale, centerWindow, direction, displayDocTitle, fitWindow, hideMenuBar, hideToolBar, hideWindowUI, nonFullScreenPageMode, pageLayout, pageMode, rotate, watermarkOptions, super.hashCode());
   }
 
 
@@ -1180,15 +1114,12 @@ public class PdfConvertOptions extends ConvertOptions {
     sb.append("    direction: ").append(toIndentedString(direction)).append("\n");
     sb.append("    displayDocTitle: ").append(toIndentedString(displayDocTitle)).append("\n");
     sb.append("    fitWindow: ").append(toIndentedString(fitWindow)).append("\n");
-    sb.append("    hideMenubar: ").append(toIndentedString(hideMenubar)).append("\n");
+    sb.append("    hideMenuBar: ").append(toIndentedString(hideMenuBar)).append("\n");
     sb.append("    hideToolBar: ").append(toIndentedString(hideToolBar)).append("\n");
     sb.append("    hideWindowUI: ").append(toIndentedString(hideWindowUI)).append("\n");
     sb.append("    nonFullScreenPageMode: ").append(toIndentedString(nonFullScreenPageMode)).append("\n");
     sb.append("    pageLayout: ").append(toIndentedString(pageLayout)).append("\n");
     sb.append("    pageMode: ").append(toIndentedString(pageMode)).append("\n");
-    sb.append("    bookmarksOutlineLevel: ").append(toIndentedString(bookmarksOutlineLevel)).append("\n");
-    sb.append("    headingsOutlineLevels: ").append(toIndentedString(headingsOutlineLevels)).append("\n");
-    sb.append("    expandedOutlineLevels: ").append(toIndentedString(expandedOutlineLevels)).append("\n");
     sb.append("    rotate: ").append(toIndentedString(rotate)).append("\n");
     sb.append("    watermarkOptions: ").append(toIndentedString(watermarkOptions)).append("\n");
     sb.append("}");

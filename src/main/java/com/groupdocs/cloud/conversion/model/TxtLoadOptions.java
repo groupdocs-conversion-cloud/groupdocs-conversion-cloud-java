@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="TxtLoadOptions.java">
- *   Copyright (c) 2003-2019 Aspose Pty Ltd
+ *   Copyright (c) 2003-2020 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -148,6 +148,9 @@ public class TxtLoadOptions extends LoadOptions {
   @SerializedName("leadingSpacesOptions")
   private LeadingSpacesOptionsEnum leadingSpacesOptions = null;
 
+  @SerializedName("encoding")
+  private String encoding = null;
+
   public TxtLoadOptions detectNumberingWithWhitespaces(Boolean detectNumberingWithWhitespaces) {
     this.detectNumberingWithWhitespaces = detectNumberingWithWhitespaces;
     return this;
@@ -202,6 +205,24 @@ public class TxtLoadOptions extends LoadOptions {
     this.leadingSpacesOptions = leadingSpacesOptions;
   }
 
+  public TxtLoadOptions encoding(String encoding) {
+    this.encoding = encoding;
+    return this;
+  }
+
+   /**
+   * Gets or sets the encoding that will be used when loading Txt document. Can be null. Default is null.
+   * @return encoding
+  **/
+  @ApiModelProperty(value = "Gets or sets the encoding that will be used when loading Txt document. Can be null. Default is null.")
+  public String getEncoding() {
+    return encoding;
+  }
+
+  public void setEncoding(String encoding) {
+    this.encoding = encoding;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -215,12 +236,13 @@ public class TxtLoadOptions extends LoadOptions {
     return Objects.equals(this.detectNumberingWithWhitespaces, txtLoadOptions.detectNumberingWithWhitespaces) &&
         Objects.equals(this.trailingSpacesOptions, txtLoadOptions.trailingSpacesOptions) &&
         Objects.equals(this.leadingSpacesOptions, txtLoadOptions.leadingSpacesOptions) &&
+        Objects.equals(this.encoding, txtLoadOptions.encoding) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(detectNumberingWithWhitespaces, trailingSpacesOptions, leadingSpacesOptions, super.hashCode());
+    return Objects.hash(detectNumberingWithWhitespaces, trailingSpacesOptions, leadingSpacesOptions, encoding, super.hashCode());
   }
 
 
@@ -232,6 +254,7 @@ public class TxtLoadOptions extends LoadOptions {
     sb.append("    detectNumberingWithWhitespaces: ").append(toIndentedString(detectNumberingWithWhitespaces)).append("\n");
     sb.append("    trailingSpacesOptions: ").append(toIndentedString(trailingSpacesOptions)).append("\n");
     sb.append("    leadingSpacesOptions: ").append(toIndentedString(leadingSpacesOptions)).append("\n");
+    sb.append("    encoding: ").append(toIndentedString(encoding)).append("\n");
     sb.append("}");
     return sb.toString();
   }
