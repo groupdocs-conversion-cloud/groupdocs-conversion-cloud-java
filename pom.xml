@@ -5,7 +5,7 @@
     <artifactId>groupdocs-conversion-cloud</artifactId>
     <packaging>jar</packaging>
     <name>groupdocs-conversion-cloud</name>
-    <version>20.2</version>
+    <version>20.3</version>
     <url>https://github.com/groupdocs-conversion-cloud/groupdocs-conversion-cloud-java</url>
     <description>Java library for communicating with the GroupDocs.Conversion Cloud API</description>
     <scm>

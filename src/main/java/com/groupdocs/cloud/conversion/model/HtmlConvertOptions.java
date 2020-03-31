@@ -51,6 +51,9 @@ public class HtmlConvertOptions extends ConvertOptions {
   @SerializedName("fixedLayout")
   private Boolean fixedLayout = null;
 
+  @SerializedName("fixedLayoutShowBorders")
+  private Boolean fixedLayoutShowBorders = null;
+
   @SerializedName("zoom")
   private Integer zoom = null;
 
@@ -91,6 +94,24 @@ public class HtmlConvertOptions extends ConvertOptions {
 
   public void setFixedLayout(Boolean fixedLayout) {
     this.fixedLayout = fixedLayout;
+  }
+
+  public HtmlConvertOptions fixedLayoutShowBorders(Boolean fixedLayoutShowBorders) {
+    this.fixedLayoutShowBorders = fixedLayoutShowBorders;
+    return this;
+  }
+
+   /**
+   * Show page borders when converting to fixed layout. Default is True
+   * @return fixedLayoutShowBorders
+  **/
+  @ApiModelProperty(required = true, value = "Show page borders when converting to fixed layout. Default is True")
+  public Boolean getFixedLayoutShowBorders() {
+    return fixedLayoutShowBorders;
+  }
+
+  public void setFixedLayoutShowBorders(Boolean fixedLayoutShowBorders) {
+    this.fixedLayoutShowBorders = fixedLayoutShowBorders;
   }
 
   public HtmlConvertOptions zoom(Integer zoom) {
@@ -141,6 +162,7 @@ public class HtmlConvertOptions extends ConvertOptions {
     HtmlConvertOptions htmlConvertOptions = (HtmlConvertOptions) o;
     return Objects.equals(this.usePdf, htmlConvertOptions.usePdf) &&
         Objects.equals(this.fixedLayout, htmlConvertOptions.fixedLayout) &&
+        Objects.equals(this.fixedLayoutShowBorders, htmlConvertOptions.fixedLayoutShowBorders) &&
         Objects.equals(this.zoom, htmlConvertOptions.zoom) &&
         Objects.equals(this.watermarkOptions, htmlConvertOptions.watermarkOptions) &&
         super.equals(o);
@@ -148,7 +170,7 @@ public class HtmlConvertOptions extends ConvertOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(usePdf, fixedLayout, zoom, watermarkOptions, super.hashCode());
+    return Objects.hash(usePdf, fixedLayout, fixedLayoutShowBorders, zoom, watermarkOptions, super.hashCode());
   }
 
 
@@ -159,6 +181,7 @@ public class HtmlConvertOptions extends ConvertOptions {
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    usePdf: ").append(toIndentedString(usePdf)).append("\n");
     sb.append("    fixedLayout: ").append(toIndentedString(fixedLayout)).append("\n");
+    sb.append("    fixedLayoutShowBorders: ").append(toIndentedString(fixedLayoutShowBorders)).append("\n");
     sb.append("    zoom: ").append(toIndentedString(zoom)).append("\n");
     sb.append("    watermarkOptions: ").append(toIndentedString(watermarkOptions)).append("\n");
     sb.append("}");

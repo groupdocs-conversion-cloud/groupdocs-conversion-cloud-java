@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="EmlxLoadOptions.java">
+ * <copyright company="Aspose Pty Ltd" file="HtmlLoadOptions.java">
  *   Copyright (c) 2003-2020 Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -28,16 +28,42 @@
 package com.groupdocs.cloud.conversion.model;
 
 import java.util.Objects;
-import com.groupdocs.cloud.conversion.model.EmailLoadOptions;
-import com.groupdocs.cloud.conversion.model.FieldLabel;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import com.groupdocs.cloud.conversion.model.LoadOptions;
 import io.swagger.annotations.ApiModel;
-import java.util.List;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
- * Emlx load options
+ * Html document load options
  */
-@ApiModel(description = "Emlx load options")
-public class EmlxLoadOptions extends EmailLoadOptions {
+@ApiModel(description = "Html document load options")
+public class HtmlLoadOptions extends LoadOptions {
+  @SerializedName("pageNumbering")
+  private Boolean pageNumbering = null;
+
+  public HtmlLoadOptions pageNumbering(Boolean pageNumbering) {
+    this.pageNumbering = pageNumbering;
+    return this;
+  }
+
+   /**
+   * Enable or disable generation of page numbering in converted document. Default: false
+   * @return pageNumbering
+  **/
+  @ApiModelProperty(required = true, value = "Enable or disable generation of page numbering in converted document. Default: false")
+  public Boolean getPageNumbering() {
+    return pageNumbering;
+  }
+
+  public void setPageNumbering(Boolean pageNumbering) {
+    this.pageNumbering = pageNumbering;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -47,20 +73,23 @@ public class EmlxLoadOptions extends EmailLoadOptions {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    return super.equals(o);
+    HtmlLoadOptions htmlLoadOptions = (HtmlLoadOptions) o;
+    return Objects.equals(this.pageNumbering, htmlLoadOptions.pageNumbering) &&
+        super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode());
+    return Objects.hash(pageNumbering, super.hashCode());
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class EmlxLoadOptions {\n");
+    sb.append("class HtmlLoadOptions {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("    pageNumbering: ").append(toIndentedString(pageNumbering)).append("\n");
     sb.append("}");
     return sb.toString();
   }

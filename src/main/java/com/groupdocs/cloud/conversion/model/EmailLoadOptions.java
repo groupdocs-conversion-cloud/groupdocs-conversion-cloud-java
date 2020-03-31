@@ -33,10 +33,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.groupdocs.cloud.conversion.model.FieldLabel;
 import com.groupdocs.cloud.conversion.model.LoadOptions;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Options for loading Email documents
@@ -66,6 +69,12 @@ public class EmailLoadOptions extends LoadOptions {
 
   @SerializedName("convertAttachments")
   private Boolean convertAttachments = null;
+
+  @SerializedName("fieldLabels")
+  private List<FieldLabel> fieldLabels = null;
+
+  @SerializedName("preserveOriginalDate")
+  private Boolean preserveOriginalDate = null;
 
   public EmailLoadOptions displayHeader(Boolean displayHeader) {
     this.displayHeader = displayHeader;
@@ -211,6 +220,50 @@ public class EmailLoadOptions extends LoadOptions {
     this.convertAttachments = convertAttachments;
   }
 
+  public EmailLoadOptions fieldLabels(List<FieldLabel> fieldLabels) {
+    this.fieldLabels = fieldLabels;
+    return this;
+  }
+
+  public EmailLoadOptions addFieldLabelsItem(FieldLabel fieldLabelsItem) {
+    if (this.fieldLabels == null) {
+      this.fieldLabels = new ArrayList<FieldLabel>();
+    }
+    this.fieldLabels.add(fieldLabelsItem);
+    return this;
+  }
+
+   /**
+   * The mapping between email message field and field text representation
+   * @return fieldLabels
+  **/
+  @ApiModelProperty(value = "The mapping between email message field and field text representation")
+  public List<FieldLabel> getFieldLabels() {
+    return fieldLabels;
+  }
+
+  public void setFieldLabels(List<FieldLabel> fieldLabels) {
+    this.fieldLabels = fieldLabels;
+  }
+
+  public EmailLoadOptions preserveOriginalDate(Boolean preserveOriginalDate) {
+    this.preserveOriginalDate = preserveOriginalDate;
+    return this;
+  }
+
+   /**
+   * Defines whether need to keep original date header string in mail message when saving or not (Default value is true)
+   * @return preserveOriginalDate
+  **/
+  @ApiModelProperty(required = true, value = "Defines whether need to keep original date header string in mail message when saving or not (Default value is true)")
+  public Boolean getPreserveOriginalDate() {
+    return preserveOriginalDate;
+  }
+
+  public void setPreserveOriginalDate(Boolean preserveOriginalDate) {
+    this.preserveOriginalDate = preserveOriginalDate;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -229,12 +282,14 @@ public class EmailLoadOptions extends LoadOptions {
         Objects.equals(this.displayBccEmailAddress, emailLoadOptions.displayBccEmailAddress) &&
         Objects.equals(this.timeZoneOffset, emailLoadOptions.timeZoneOffset) &&
         Objects.equals(this.convertAttachments, emailLoadOptions.convertAttachments) &&
+        Objects.equals(this.fieldLabels, emailLoadOptions.fieldLabels) &&
+        Objects.equals(this.preserveOriginalDate, emailLoadOptions.preserveOriginalDate) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayHeader, displayFromEmailAddress, displayEmailAddress, displayToEmailAddress, displayCcEmailAddress, displayBccEmailAddress, timeZoneOffset, convertAttachments, super.hashCode());
+    return Objects.hash(displayHeader, displayFromEmailAddress, displayEmailAddress, displayToEmailAddress, displayCcEmailAddress, displayBccEmailAddress, timeZoneOffset, convertAttachments, fieldLabels, preserveOriginalDate, super.hashCode());
   }
 
 
@@ -251,6 +306,8 @@ public class EmailLoadOptions extends LoadOptions {
     sb.append("    displayBccEmailAddress: ").append(toIndentedString(displayBccEmailAddress)).append("\n");
     sb.append("    timeZoneOffset: ").append(toIndentedString(timeZoneOffset)).append("\n");
     sb.append("    convertAttachments: ").append(toIndentedString(convertAttachments)).append("\n");
+    sb.append("    fieldLabels: ").append(toIndentedString(fieldLabels)).append("\n");
+    sb.append("    preserveOriginalDate: ").append(toIndentedString(preserveOriginalDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }
