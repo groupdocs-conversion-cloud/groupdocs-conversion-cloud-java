@@ -31,11 +31,12 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.List;
 
 import com.groupdocs.cloud.conversion.client.ApiException;
 import com.groupdocs.cloud.conversion.model.*;
-import com.groupdocs.cloud.conversion.model.requests.ConvertDocumentRequest;
+import com.groupdocs.cloud.conversion.model.requests.*;
 
 import org.junit.Test;
 
@@ -56,9 +57,9 @@ public class ConvertApiTests extends BaseApiTest {
         convertSettings.setFormat("jpg");
         convertSettings.setConvertOptions(new JpgConvertOptions());
         convertSettings.setOutputPath("converted");
-        
+
         ConvertDocumentRequest request = new ConvertDocumentRequest(convertSettings);
-        
+
         List<StoredConvertedResult> result = convertApi.convertDocument(request);
 
         assertNotNull(result);
@@ -76,12 +77,33 @@ public class ConvertApiTests extends BaseApiTest {
         convertSettings.setFilePath(TestFiles.OnePageDocx.getPath());
         convertSettings.setFormat("pdf");
         convertSettings.setConvertOptions(new PdfConvertOptions());
-        
+
         ConvertDocumentRequest request = new ConvertDocumentRequest(convertSettings);
-        
+
         File file = convertApi.convertDocumentDownload(request);
 
         assertNotNull(file);
         assertTrue(file.length() > 0);
     }
+
+    /**
+     * Converts source document to specified type without cloud storage
+     *
+     * @throws ApiException          if the Api call fails
+     * @throws FileNotFoundException
+     */
+    @Test
+    public void convertDocumentDirectTest() throws ApiException, FileNotFoundException {
+
+        String format = "pdf";
+        TestFile testFile = TestFiles.FourPagesDocx;
+        File fileObj = getTestFile(testFile);
+
+        ConvertDocumentDirectRequest request = new ConvertDocumentDirectRequest(format, fileObj, 1, 0);
+        
+        File file = convertApi.convertDocumentDirect(request);
+
+        assertNotNull(file);
+        assertTrue(file.length() > 0);
+    }    
 }

@@ -1,4 +1,5 @@
 # GroupDocs.Conversion Cloud SDK for Java
+
 This repository contains GroupDocs.Conversion Cloud SDK for Java source code. This SDK allows you to work with GroupDocs.Conversion Cloud REST APIs in your Java applications.
 
 ## Requirements
@@ -37,7 +38,7 @@ Add following repository and dependency to your project's POM
 <dependency>
     <groupId>com.groupdocs</groupId>
     <artifactId>groupdocs-conversion-cloud</artifactId>
-    <version>20.3</version>
+    <version>20.11</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -50,7 +51,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/groupdocs-conversion-cloud-20.3.jar
+* target/groupdocs-conversion-cloud-20.11.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -92,6 +93,17 @@ public class ApiExample {
 ```
 
 ## Licensing
+
 All GroupDocs.Conversion Cloud SDKs are licensed under [MIT License](LICENSE).
 
-[Home](https://www.groupdocs.cloud/) | [Product Page](https://products.groupdocs.cloud/conversion/java) | [Docs](https://docs.groupdocs.cloud/conversion/) | [Demos](https://products.groupdocs.app/conversion/family) | [API Reference](https://apireference.groupdocs.cloud/conversion/) | [Examples](https://github.com/groupdocs-conversion-cloud/groupdocs-conversion-cloud-java-samples) | [Blog](https://blog.groupdocs.cloud/category/conversion/) | [Free Support](https://forum.groupdocs.cloud/c/conversion) | [Free Trial](https://purchase.groupdocs.cloud/trial)
+## Resources
+
++[**Website**](https://www.groupdocs.cloud)
++[**Product Home**](https://products.groupdocs.cloud/conversion)
++[**Documentation**](https://docs.groupdocs.cloud/conversion)
++[**Free Support Forum**](https://forum.groupdocs.cloud/c/conversion)
++[**Blog**](https://blog.groupdocs.cloud/category/conversion)
+
+## Contact Us
+
+Your feedback is very important to us. Please feel free to contact us using our [Support Forums](https://forum.groupdocs.cloud/c/conversion).
