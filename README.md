@@ -101,13 +101,12 @@ First generate the JAR by executing `mvn package`, then manually install the fol
 ## Convert DOCX to PDF in the Cloud
 
 ```java
-// Get application information from https://dashboard.groupdocs.cloud
-String MyAppKey = ""; 
-String MyAppSid = "";
+// Get Client Id and Client Secret from https://dashboard.groupdocs.cloud
+String MyClientId = "";
+String MyClientSecret = "";
 
-Configuration configuration = new Configuration(MyAppSid, MyAppKey);
-
-// Create API instance
+// Create instance of the API
+Configuration configuration = new Configuration(MyClientId, MyClientSecret);
 ConvertApi apiInstance = new ConvertApi(configuration);
 
 // Prepare convert settings
