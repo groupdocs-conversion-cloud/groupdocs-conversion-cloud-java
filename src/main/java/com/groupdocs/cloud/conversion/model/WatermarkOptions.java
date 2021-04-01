@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="WatermarkOptions.java">
- *   Copyright (c) 2003-2020 Aspose Pty Ltd
+ *   Copyright (c) 2003-2021 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -50,6 +50,12 @@ public class WatermarkOptions {
 
   @SerializedName("fontSize")
   private Integer fontSize = null;
+
+  @SerializedName("bold")
+  private Boolean bold = null;
+
+  @SerializedName("italic")
+  private Boolean italic = null;
 
   @SerializedName("color")
   private String color = null;
@@ -130,6 +136,42 @@ public class WatermarkOptions {
 
   public void setFontSize(Integer fontSize) {
     this.fontSize = fontSize;
+  }
+
+  public WatermarkOptions bold(Boolean bold) {
+    this.bold = bold;
+    return this;
+  }
+
+   /**
+   * Watermark font bold style if text watermark is applied
+   * @return bold
+  **/
+  @ApiModelProperty(required = true, value = "Watermark font bold style if text watermark is applied")
+  public Boolean getBold() {
+    return bold;
+  }
+
+  public void setBold(Boolean bold) {
+    this.bold = bold;
+  }
+
+  public WatermarkOptions italic(Boolean italic) {
+    this.italic = italic;
+    return this;
+  }
+
+   /**
+   * Watermark font italic style if text watermark is applied
+   * @return italic
+  **/
+  @ApiModelProperty(required = true, value = "Watermark font italic style if text watermark is applied")
+  public Boolean getItalic() {
+    return italic;
+  }
+
+  public void setItalic(Boolean italic) {
+    this.italic = italic;
   }
 
   public WatermarkOptions color(String color) {
@@ -307,6 +349,8 @@ public class WatermarkOptions {
     return Objects.equals(this.text, watermarkOptions.text) &&
         Objects.equals(this.fontName, watermarkOptions.fontName) &&
         Objects.equals(this.fontSize, watermarkOptions.fontSize) &&
+        Objects.equals(this.bold, watermarkOptions.bold) &&
+        Objects.equals(this.italic, watermarkOptions.italic) &&
         Objects.equals(this.color, watermarkOptions.color) &&
         Objects.equals(this.width, watermarkOptions.width) &&
         Objects.equals(this.height, watermarkOptions.height) &&
@@ -320,7 +364,7 @@ public class WatermarkOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(text, fontName, fontSize, color, width, height, top, left, rotationAngle, transparency, background, image);
+    return Objects.hash(text, fontName, fontSize, bold, italic, color, width, height, top, left, rotationAngle, transparency, background, image);
   }
 
 
@@ -332,6 +376,8 @@ public class WatermarkOptions {
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("    fontName: ").append(toIndentedString(fontName)).append("\n");
     sb.append("    fontSize: ").append(toIndentedString(fontSize)).append("\n");
+    sb.append("    bold: ").append(toIndentedString(bold)).append("\n");
+    sb.append("    italic: ").append(toIndentedString(italic)).append("\n");
     sb.append("    color: ").append(toIndentedString(color)).append("\n");
     sb.append("    width: ").append(toIndentedString(width)).append("\n");
     sb.append("    height: ").append(toIndentedString(height)).append("\n");

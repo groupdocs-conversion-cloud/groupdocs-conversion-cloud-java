@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="ConvertSettings.java">
- *   Copyright (c) 2003-2020 Aspose Pty Ltd
+ *   Copyright (c) 2003-2021 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -61,6 +61,9 @@ public class ConvertSettings {
 
   @SerializedName("outputPath")
   private String outputPath = null;
+
+  @SerializedName("fontsPath")
+  private String fontsPath = null;
 
   public ConvertSettings storageName(String storageName) {
     this.storageName = storageName;
@@ -170,6 +173,24 @@ public class ConvertSettings {
     this.outputPath = outputPath;
   }
 
+  public ConvertSettings fontsPath(String fontsPath) {
+    this.fontsPath = fontsPath;
+    return this;
+  }
+
+   /**
+   * The path to directory containing custom fonts in storage
+   * @return fontsPath
+  **/
+  @ApiModelProperty(value = "The path to directory containing custom fonts in storage")
+  public String getFontsPath() {
+    return fontsPath;
+  }
+
+  public void setFontsPath(String fontsPath) {
+    this.fontsPath = fontsPath;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -185,12 +206,13 @@ public class ConvertSettings {
         Objects.equals(this.format, convertSettings.format) &&
         Objects.equals(this.loadOptions, convertSettings.loadOptions) &&
         Objects.equals(this.convertOptions, convertSettings.convertOptions) &&
-        Objects.equals(this.outputPath, convertSettings.outputPath);
+        Objects.equals(this.outputPath, convertSettings.outputPath) &&
+        Objects.equals(this.fontsPath, convertSettings.fontsPath);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(storageName, filePath, format, loadOptions, convertOptions, outputPath);
+    return Objects.hash(storageName, filePath, format, loadOptions, convertOptions, outputPath, fontsPath);
   }
 
 
@@ -205,6 +227,7 @@ public class ConvertSettings {
     sb.append("    loadOptions: ").append(toIndentedString(loadOptions)).append("\n");
     sb.append("    convertOptions: ").append(toIndentedString(convertOptions)).append("\n");
     sb.append("    outputPath: ").append(toIndentedString(outputPath)).append("\n");
+    sb.append("    fontsPath: ").append(toIndentedString(fontsPath)).append("\n");
     sb.append("}");
     return sb.toString();
   }
