@@ -27,8 +27,7 @@
 
 package com.groupdocs.cloud.conversion.api;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.List;
 
@@ -72,4 +71,15 @@ public class InfoApiTests extends BaseApiTest {
 
         assertTrue(4 == response.getPageCount());
     }
+
+    @Test
+    public void getInfoReturnsFileNotFoundTest()
+    {
+        try {
+            infoApi.getDocumentMetadata(new GetDocumentMetadataRequest(TestFiles.NotExist.getPath(), ""));
+            fail("Expected ApiException was not thrown.");
+        } catch (ApiException ex) {
+            assertTrue(ex.getMessage().contains("AmazonS3 Storage exception: The specified key does not exist"));
+        }  
+    }        
 }

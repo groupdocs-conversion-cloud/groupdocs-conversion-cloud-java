@@ -39,7 +39,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(description = "Describes API error.")
 public class Error {
-  @SerializedName("Code")
+  @SerializedName("code")
   private String code = null;
 
   public Error code(String code) {
@@ -60,7 +60,7 @@ public class Error {
     this.code = code;
   }
 
-  @SerializedName("Message")
+  @SerializedName("message")
   private String message = null;
 
   public Error message(String message) {

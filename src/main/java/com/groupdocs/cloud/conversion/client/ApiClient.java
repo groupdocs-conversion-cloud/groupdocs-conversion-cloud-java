@@ -868,15 +868,25 @@ public class ApiClient {
                   throw new ApiException(response.message(), response.code());
                 }
     
-                ApiError apiError = null;
+                com.groupdocs.cloud.conversion.model.Error Error = null;
                 try {
-                  apiError = json.deserialize(respBody, ApiError.class);
+                  Error = json.deserialize(respBody, com.groupdocs.cloud.conversion.model.Error.class);
                 } catch (Exception e) {
                   //NOTE: ignore
                 }
-                if(apiError != null && apiError.getError() != null) {
-                  throw new ApiException(apiError.getError().getMessage(), response.code());
+               if(Error != null && Error.getCode() != null) {
+                  throw new ApiException(Error.getMessage(), response.code());
                 }   
+
+                com.groupdocs.cloud.conversion.model.ApiError apiError = null;
+                try {
+                  apiError = json.deserialize(respBody, com.groupdocs.cloud.conversion.model.ApiError.class);
+                } catch (Exception e) {
+                  //NOTE: ignore
+                }
+               if(apiError != null && apiError.getError().getCode() != null) {
+                  throw new ApiException(apiError.getError().getMessage(), response.code());
+                }
                 
                 AuthError authError = null;
                 try {
