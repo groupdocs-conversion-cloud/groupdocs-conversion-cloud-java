@@ -4,25 +4,11 @@ This repository contains GroupDocs.Conversion Cloud SDK for Java source code. Th
 
 ## Requirements
 
-Building the API client library requires [Maven](https://maven.apache.org/) to be installed.
+* Java SE Development Kit 8
 
 ## Installation
 
-To install the API client library to your local Maven repository, simply execute:
-
-```shell
-mvn install
-```
-
-To deploy it to a remote Maven repository instead, configure the settings of the repository and execute:
-
-```shell
-mvn deploy
-```
-
-Refer to the [official documentation](https://maven.apache.org/plugins/maven-deploy-plugin/usage.html) for more information.
-
-### Maven users
+### Maven
 
 Add following repository and dependency to your project's POM
 
@@ -38,30 +24,41 @@ Add following repository and dependency to your project's POM
 <dependency>
     <groupId>com.groupdocs</groupId>
     <artifactId>groupdocs-conversion-cloud</artifactId>
-    <version>21.4</version>
+    <version>21.9</version>
     <scope>compile</scope>
 </dependency>
 ```
 
-### Others
+### Gradle
 
-At first generate the JAR by executing:
+Add following repository and dependency to your build.gradle:
 
-    mvn package
+```javascript
+repositories {
+    maven {
+        url "https://repository.groupdocs.cloud/repo/"
+    }
+}
 
-Then manually install the following JARs:
-
-* target/groupdocs-conversion-cloud-21.4.jar
-* target/lib/*.jar
+...
+dependencies {
+    ...
+    implementation 'com.groupdocs:groupdocs-conversion-cloud:21.9'
+}
+```
 
 ## Getting Started
 
-Please follow the [installation](#installation) instruction and execute the following Java code:
+* Please follow the [installation](#installation) instruction
+* Get your AppSID and AppKey at [Dashboard](https://dashboard.groupdocs.cloud) and use them in your code
+* Build and execute
+* Explore more samples at [GitHub](https://github.com/groupdocs-conversion-cloud/groupdocs-conversion-cloud-java-samples)
+
+Example:
 
 ```java
 import com.groupdocs.cloud.conversion.client.*;
 import com.groupdocs.cloud.conversion.model.*;
-import com.groupdocs.cloud.conversion.model.requests.*;
 import com.groupdocs.cloud.conversion.api.InfoApi;
 
 import java.util.*;
@@ -75,22 +72,36 @@ public class ApiExample {
 
         Configuration configuration = new Configuration(appSid, appKey);
         
-        InfoApi api = new InfoApi(configuration);
+        InfoApi infoApi = new InfoApi(configuration);
 
         try {
-            GetSupportedCibversionTypesRequest request = new GetSupportedConversionTypesRequest();
-            List<SupportedFormat> response = api.getSupportedConversionTypes(request);
-            
-            for (SupportedFormat format : response) {
-                System.out.println(format.getSourceFormat());
+            FormatsResult response = infoApi.getSupportedFileFormats();
+            for (Format format : response.getFormats()) {
+                System.out.println(format.getFileFormat());
             }
         } catch (ApiException e) {
-            System.err.println("Exception when calling FileApi#copyFile");
+            System.err.println("Failed to get supported file formats");
             e.printStackTrace();
         }
     }
 }
 ```
+
+## Manual build and installation from sources
+
+Building the API client library requires [Maven](https://maven.apache.org/) to be installed.
+Refer to the [official documentation](https://maven.apache.org/plugins/maven-deploy-plugin/usage.html) for more information.
+
+At first generate the JAR by executing following command in "/src" working directory:
+
+```shell
+mvn package -D maven.test.skip=true
+```
+
+Then manually install the following JARs:
+
+* target/groupdocs-conversion-cloud-21.9.jar
+* target/lib/*.jar
 
 ## Licensing
 
@@ -98,11 +109,11 @@ All GroupDocs.Conversion Cloud SDKs are licensed under [MIT License](LICENSE).
 
 ## Resources
 
-+[**Website**](https://www.groupdocs.cloud)
-+[**Product Home**](https://products.groupdocs.cloud/conversion)
-+[**Documentation**](https://docs.groupdocs.cloud/conversion)
-+[**Free Support Forum**](https://forum.groupdocs.cloud/c/conversion)
-+[**Blog**](https://blog.groupdocs.cloud/category/conversion)
+* [**Website**](https://www.groupdocs.cloud)
+* [**Product Home**](https://products.groupdocs.cloud/conversion)
+* [**Documentation**](https://docs.groupdocs.cloud/conversion/)
+* [**Free Support Forum**](https://forum.groupdocs.cloud/c/conversion)
+* [**Blog**](https://blog.groupdocs.cloud/category/conversion)
 
 ## Contact Us
 
