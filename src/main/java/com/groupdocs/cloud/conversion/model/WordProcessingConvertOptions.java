@@ -63,6 +63,56 @@ public class WordProcessingConvertOptions extends ConvertOptions {
   @SerializedName("watermarkOptions")
   private WatermarkOptions watermarkOptions = null;
 
+  /**
+   * Recognition mode when converting from pdf
+   */
+  @JsonAdapter(PdfRecognitionModeEnum.Adapter.class)
+  public enum PdfRecognitionModeEnum {
+    TEXTBOX("Textbox"),
+    
+    FLOW("Flow");
+
+    private String value;
+
+    PdfRecognitionModeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static PdfRecognitionModeEnum fromValue(String text) {
+      for (PdfRecognitionModeEnum b : PdfRecognitionModeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<PdfRecognitionModeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final PdfRecognitionModeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public PdfRecognitionModeEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return PdfRecognitionModeEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
+  @SerializedName("pdfRecognitionMode")
+  private PdfRecognitionModeEnum pdfRecognitionMode = null;
+
   public WordProcessingConvertOptions width(Integer width) {
     this.width = width;
     return this;
@@ -171,6 +221,24 @@ public class WordProcessingConvertOptions extends ConvertOptions {
     this.watermarkOptions = watermarkOptions;
   }
 
+  public WordProcessingConvertOptions pdfRecognitionMode(PdfRecognitionModeEnum pdfRecognitionMode) {
+    this.pdfRecognitionMode = pdfRecognitionMode;
+    return this;
+  }
+
+   /**
+   * Recognition mode when converting from pdf
+   * @return pdfRecognitionMode
+  **/
+  @ApiModelProperty(required = true, value = "Recognition mode when converting from pdf")
+  public PdfRecognitionModeEnum getPdfRecognitionMode() {
+    return pdfRecognitionMode;
+  }
+
+  public void setPdfRecognitionMode(PdfRecognitionModeEnum pdfRecognitionMode) {
+    this.pdfRecognitionMode = pdfRecognitionMode;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -187,12 +255,13 @@ public class WordProcessingConvertOptions extends ConvertOptions {
         Objects.equals(this.password, wordProcessingConvertOptions.password) &&
         Objects.equals(this.zoom, wordProcessingConvertOptions.zoom) &&
         Objects.equals(this.watermarkOptions, wordProcessingConvertOptions.watermarkOptions) &&
+        Objects.equals(this.pdfRecognitionMode, wordProcessingConvertOptions.pdfRecognitionMode) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(width, height, dpi, password, zoom, watermarkOptions, super.hashCode());
+    return Objects.hash(width, height, dpi, password, zoom, watermarkOptions, pdfRecognitionMode, super.hashCode());
   }
 
 
@@ -207,6 +276,7 @@ public class WordProcessingConvertOptions extends ConvertOptions {
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("    zoom: ").append(toIndentedString(zoom)).append("\n");
     sb.append("    watermarkOptions: ").append(toIndentedString(watermarkOptions)).append("\n");
+    sb.append("    pdfRecognitionMode: ").append(toIndentedString(pdfRecognitionMode)).append("\n");
     sb.append("}");
     return sb.toString();
   }

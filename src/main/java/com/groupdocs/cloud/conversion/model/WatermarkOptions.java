@@ -84,6 +84,9 @@ public class WatermarkOptions {
   @SerializedName("image")
   private String image = null;
 
+  @SerializedName("autoAlign")
+  private Boolean autoAlign = null;
+
   public WatermarkOptions text(String text) {
     this.text = text;
     return this;
@@ -336,6 +339,24 @@ public class WatermarkOptions {
     this.image = image;
   }
 
+  public WatermarkOptions autoAlign(Boolean autoAlign) {
+    this.autoAlign = autoAlign;
+    return this;
+  }
+
+   /**
+   * Auto scale the watermark. If the value is true the font size and the position is automatically calculated to fit the page size.
+   * @return autoAlign
+  **/
+  @ApiModelProperty(required = true, value = "Auto scale the watermark. If the value is true the font size and the position is automatically calculated to fit the page size.")
+  public Boolean getAutoAlign() {
+    return autoAlign;
+  }
+
+  public void setAutoAlign(Boolean autoAlign) {
+    this.autoAlign = autoAlign;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -359,12 +380,13 @@ public class WatermarkOptions {
         Objects.equals(this.rotationAngle, watermarkOptions.rotationAngle) &&
         Objects.equals(this.transparency, watermarkOptions.transparency) &&
         Objects.equals(this.background, watermarkOptions.background) &&
-        Objects.equals(this.image, watermarkOptions.image);
+        Objects.equals(this.image, watermarkOptions.image) &&
+        Objects.equals(this.autoAlign, watermarkOptions.autoAlign);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(text, fontName, fontSize, bold, italic, color, width, height, top, left, rotationAngle, transparency, background, image);
+    return Objects.hash(text, fontName, fontSize, bold, italic, color, width, height, top, left, rotationAngle, transparency, background, image, autoAlign);
   }
 
 
@@ -387,6 +409,7 @@ public class WatermarkOptions {
     sb.append("    transparency: ").append(toIndentedString(transparency)).append("\n");
     sb.append("    background: ").append(toIndentedString(background)).append("\n");
     sb.append("    image: ").append(toIndentedString(image)).append("\n");
+    sb.append("    autoAlign: ").append(toIndentedString(autoAlign)).append("\n");
     sb.append("}");
     return sb.toString();
   }
