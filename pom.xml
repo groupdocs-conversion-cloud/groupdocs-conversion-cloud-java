@@ -5,7 +5,7 @@
     <artifactId>groupdocs-conversion-cloud</artifactId>
     <packaging>jar</packaging>
     <name>groupdocs-conversion-cloud</name>
-    <version>21.10</version>
+    <version>21.12</version>
     <url>https://github.com/groupdocs-conversion-cloud/groupdocs-conversion-cloud-java</url>
     <description>Java library for communicating with the GroupDocs.Conversion Cloud API</description>
     <scm>
@@ -94,7 +94,9 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.10.4</version>
+                <configuration>
+                    <source>8</source>
+                </configuration>
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
