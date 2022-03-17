@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="ConvertDocumentDirectRequest.java">
- *   Copyright (c) 2003-2021 Aspose Pty Ltd
+ *   Copyright (c) 2003-2022 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -57,13 +57,17 @@ public class ConvertDocumentDirectRequest {
     * @param file Input file to convert
     * @param fromPage Page start conversion from
     * @param pagesCount Number of pages to convert
+    * @param loadOptions Input file load options
+    * @param convertOptions Conversion options
     */
-    public ConvertDocumentDirectRequest(String format, File file, Integer fromPage, Integer pagesCount)
+    public ConvertDocumentDirectRequest(String format, File file, Integer fromPage, Integer pagesCount, LoadOptions loadOptions, ConvertOptions convertOptions)
     {
         this.format = format;
         this.file = file;
         this.fromPage = fromPage;
         this.pagesCount = pagesCount;
+        this.loadOptions = loadOptions;
+        this.convertOptions = convertOptions;
     }
 
   @SerializedName("format")
@@ -77,6 +81,12 @@ public class ConvertDocumentDirectRequest {
 
   @SerializedName("pagesCount")
   private Integer pagesCount = null;
+
+  @SerializedName("loadOptions")
+  private LoadOptions loadOptions = null;
+
+  @SerializedName("convertOptions")
+  private ConvertOptions convertOptions = null;
 
   /**
    * Requested conversion format
@@ -130,6 +140,32 @@ public class ConvertDocumentDirectRequest {
     this.pagesCount = pagesCount;
   }
 
+  /**
+   * Input file load options
+   * @return Input file load options
+  **/
+  @ApiModelProperty(example = "loadOptions_example", value = "Input file load options")
+  public LoadOptions getloadOptions() {
+    return loadOptions;
+  }
+
+  public void setloadOptions(LoadOptions loadOptions) {
+    this.loadOptions = loadOptions;
+  }
+
+  /**
+   * Conversion options
+   * @return Conversion options
+  **/
+  @ApiModelProperty(example = "convertOptions_example", value = "Conversion options")
+  public ConvertOptions getconvertOptions() {
+    return convertOptions;
+  }
+
+  public void setconvertOptions(ConvertOptions convertOptions) {
+    this.convertOptions = convertOptions;
+  }
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -144,12 +180,14 @@ public class ConvertDocumentDirectRequest {
     return Objects.equals(this.format, request.format) &&
         Objects.equals(this.file, request.file) &&
         Objects.equals(this.fromPage, request.fromPage) &&
-        Objects.equals(this.pagesCount, request.pagesCount);
+        Objects.equals(this.pagesCount, request.pagesCount) &&
+        Objects.equals(this.loadOptions, request.loadOptions) &&
+        Objects.equals(this.convertOptions, request.convertOptions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(format, file, fromPage, pagesCount);
+    return Objects.hash(format, file, fromPage, pagesCount, loadOptions, convertOptions);
   }
 
   @Override
@@ -160,6 +198,8 @@ public class ConvertDocumentDirectRequest {
     sb.append("    file: ").append(toIndentedString(file)).append("\n");
     sb.append("    fromPage: ").append(toIndentedString(fromPage)).append("\n");
     sb.append("    pagesCount: ").append(toIndentedString(pagesCount)).append("\n");
+    sb.append("    loadOptions: ").append(toIndentedString(loadOptions)).append("\n");
+    sb.append("    convertOptions: ").append(toIndentedString(convertOptions)).append("\n");
     sb.append("}");
     return sb.toString();
   }

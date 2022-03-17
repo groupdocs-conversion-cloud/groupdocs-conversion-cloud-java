@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="LoadOptions.java">
- *   Copyright (c) 2003-2021 Aspose Pty Ltd
+ *   Copyright (c) 2003-2022 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -28,13 +28,41 @@
 package com.groupdocs.cloud.conversion.model;
 
 import java.util.Objects;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
  * Load document options
  */
 @ApiModel(description = "Load document options")
 public class LoadOptions {
+  @SerializedName("format")
+  private String format = null;
+
+  public LoadOptions format(String format) {
+    this.format = format;
+    return this;
+  }
+
+   /**
+   * The format of input file, (\&quot;docx\&quot;, for example). This field must be filled with correct input file format when using ConvertDirect method, which accept input file as binary stream, and, because of that, API can correctly handle LoadOptions. In regular conversion, the input file format taken from the input file name and this field ignored.
+   * @return format
+  **/
+  @ApiModelProperty(value = "The format of input file, (\"docx\", for example). This field must be filled with correct input file format when using ConvertDirect method, which accept input file as binary stream, and, because of that, API can correctly handle LoadOptions. In regular conversion, the input file format taken from the input file name and this field ignored.")
+  public String getFormat() {
+    return format;
+  }
+
+  public void setFormat(String format) {
+    this.format = format;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -44,12 +72,13 @@ public class LoadOptions {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    return true;
+    LoadOptions loadOptions = (LoadOptions) o;
+    return Objects.equals(this.format, loadOptions.format);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash();
+    return Objects.hash(format);
   }
 
 
@@ -58,6 +87,7 @@ public class LoadOptions {
     StringBuilder sb = new StringBuilder();
     sb.append("class LoadOptions {\n");
     
+    sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("}");
     return sb.toString();
   }

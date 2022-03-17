@@ -5,7 +5,7 @@
     <artifactId>groupdocs-conversion-cloud</artifactId>
     <packaging>jar</packaging>
     <name>groupdocs-conversion-cloud</name>
-    <version>21.12</version>
+    <version>22.3</version>
     <url>https://github.com/groupdocs-conversion-cloud/groupdocs-conversion-cloud-java</url>
     <description>Java library for communicating with the GroupDocs.Conversion Cloud API</description>
     <scm>
@@ -265,7 +265,7 @@
                             </goals>
                             <configuration>
                               <repositoryId>Groupdocs-Cloud-PROD</repositoryId>
-                              <url>https://repository.groupdocs.cloud/repo</url>
+                              <url>https://repository.groupdocs.cloud/internal</url>
                               <file>target/groupdocs-conversion-cloud-${project.version}.jar</file>
                               <javadoc>target/groupdocs-conversion-cloud-${project.version}-javadoc.jar</javadoc>                              
                               <pomFile>simplified-pom.xml</pomFile>
@@ -280,7 +280,7 @@
               <repository>
                 <id>Groupdocs-Cloud-PROD</id>
                 <name>artifactory-cloud-prod</name>
-                <url>https://repository.groupdocs.cloud/repo</url>
+                <url>https://repository.groupdocs.cloud/internal</url>
               </repository>
             </distributionManagement>
         </profile>     

@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd">
- *   Copyright (c) 2003-2021 Aspose Pty Ltd
+ *   Copyright (c) 2003-2022 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -99,11 +99,39 @@ public class ConvertApiTests extends BaseApiTest {
         TestFile testFile = TestFiles.FourPagesDocx;
         File fileObj = getTestFile(testFile);
 
-        ConvertDocumentDirectRequest request = new ConvertDocumentDirectRequest(format, fileObj, 1, 0);
+        ConvertDocumentDirectRequest request = new ConvertDocumentDirectRequest(format, fileObj, 1, 0, null, null);
         
         File file = convertApi.convertDocumentDirect(request);
 
         assertNotNull(file);
         assertTrue(file.length() > 0);
     }    
+
+    /**
+     * Converts source document to specified type without cloud storage
+     * with LoadOptions and ConvertOptions
+     *
+     * @throws ApiException          if the Api call fails
+     * @throws FileNotFoundException
+     */
+    @Test
+    public void convertDocumentDirectWithOptionsTest() throws ApiException, FileNotFoundException {
+
+        String format = "pdf";
+        TestFile testFile = TestFiles.PasswordProtectedDocx;
+        File fileObj = getTestFile(testFile);
+        
+        DocxLoadOptions loadOptions = new DocxLoadOptions();
+        loadOptions.setFormat("docx");
+        loadOptions.setPassword(testFile.getPassword());
+        PdfConvertOptions convertOptions = new PdfConvertOptions();
+        convertOptions.setMarginTop(5);
+
+        ConvertDocumentDirectRequest request = new ConvertDocumentDirectRequest(format, fileObj, 1, 0, loadOptions, convertOptions);
+        
+        File file = convertApi.convertDocumentDirect(request);
+
+        assertNotNull(file);
+        assertTrue(file.length() > 0);
+    }     
 }

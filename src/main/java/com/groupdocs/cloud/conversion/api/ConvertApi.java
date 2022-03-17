@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="ConvertApi.java">
- *   Copyright (c) 2003-2021 Aspose Pty Ltd
+ *   Copyright (c) 2003-2022 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -350,6 +350,10 @@ public class ConvertApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         if (request.getFile() != null)
             localVarFormParams.put("File", request.getFile());
+        if (request.getloadOptions() != null)
+            localVarFormParams.put("loadOptions", request.getloadOptions());
+        if (request.getconvertOptions() != null)
+            localVarFormParams.put("convertOptions", request.getconvertOptions());
 
         final String[] localVarAccepts = {
             "application/json"
