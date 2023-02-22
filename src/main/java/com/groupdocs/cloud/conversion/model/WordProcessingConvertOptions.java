@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="WordProcessingConvertOptions.java">
- *   Copyright (c) 2003-2022 Aspose Pty Ltd
+ *   Copyright (c) 2003-2023 Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -112,6 +112,140 @@ public class WordProcessingConvertOptions extends ConvertOptions {
 
   @SerializedName("pdfRecognitionMode")
   private PdfRecognitionModeEnum pdfRecognitionMode = null;
+
+  /**
+   * Page size
+   */
+  @JsonAdapter(PageSizeEnum.Adapter.class)
+  public enum PageSizeEnum {
+    DEFAULT("Default"),
+    
+    A3("A3"),
+    
+    STATEMENT("Statement"),
+    
+    QUARTO("Quarto"),
+    
+    PAPER11X17("Paper11x17"),
+    
+    PAPER10X14("Paper10x14"),
+    
+    LETTER("Letter"),
+    
+    LEGAL("Legal"),
+    
+    LEDGER("Ledger"),
+    
+    FOLIO("Folio"),
+    
+    EXECUTIVE("Executive"),
+    
+    ENVELOPEDL("EnvelopeDL"),
+    
+    CUSTOM("Custom"),
+    
+    B5("B5"),
+    
+    B4("B4"),
+    
+    A5("A5"),
+    
+    A4("A4"),
+    
+    TABLOID("Tabloid");
+
+    private String value;
+
+    PageSizeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static PageSizeEnum fromValue(String text) {
+      for (PageSizeEnum b : PageSizeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<PageSizeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final PageSizeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public PageSizeEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return PageSizeEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
+  @SerializedName("pageSize")
+  private PageSizeEnum pageSize = null;
+
+  /**
+   * Specifies page orientation
+   */
+  @JsonAdapter(PageOrientationEnum.Adapter.class)
+  public enum PageOrientationEnum {
+    DEFAULT("Default"),
+    
+    LANDSCAPE("Landscape"),
+    
+    PORTRAIT("Portrait");
+
+    private String value;
+
+    PageOrientationEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static PageOrientationEnum fromValue(String text) {
+      for (PageOrientationEnum b : PageOrientationEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<PageOrientationEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final PageOrientationEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public PageOrientationEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return PageOrientationEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
+  @SerializedName("pageOrientation")
+  private PageOrientationEnum pageOrientation = null;
 
   public WordProcessingConvertOptions width(Integer width) {
     this.width = width;
@@ -239,6 +373,42 @@ public class WordProcessingConvertOptions extends ConvertOptions {
     this.pdfRecognitionMode = pdfRecognitionMode;
   }
 
+  public WordProcessingConvertOptions pageSize(PageSizeEnum pageSize) {
+    this.pageSize = pageSize;
+    return this;
+  }
+
+   /**
+   * Page size
+   * @return pageSize
+  **/
+  @ApiModelProperty(required = true, value = "Page size")
+  public PageSizeEnum getPageSize() {
+    return pageSize;
+  }
+
+  public void setPageSize(PageSizeEnum pageSize) {
+    this.pageSize = pageSize;
+  }
+
+  public WordProcessingConvertOptions pageOrientation(PageOrientationEnum pageOrientation) {
+    this.pageOrientation = pageOrientation;
+    return this;
+  }
+
+   /**
+   * Specifies page orientation
+   * @return pageOrientation
+  **/
+  @ApiModelProperty(required = true, value = "Specifies page orientation")
+  public PageOrientationEnum getPageOrientation() {
+    return pageOrientation;
+  }
+
+  public void setPageOrientation(PageOrientationEnum pageOrientation) {
+    this.pageOrientation = pageOrientation;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -256,12 +426,14 @@ public class WordProcessingConvertOptions extends ConvertOptions {
         Objects.equals(this.zoom, wordProcessingConvertOptions.zoom) &&
         Objects.equals(this.watermarkOptions, wordProcessingConvertOptions.watermarkOptions) &&
         Objects.equals(this.pdfRecognitionMode, wordProcessingConvertOptions.pdfRecognitionMode) &&
+        Objects.equals(this.pageSize, wordProcessingConvertOptions.pageSize) &&
+        Objects.equals(this.pageOrientation, wordProcessingConvertOptions.pageOrientation) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(width, height, dpi, password, zoom, watermarkOptions, pdfRecognitionMode, super.hashCode());
+    return Objects.hash(width, height, dpi, password, zoom, watermarkOptions, pdfRecognitionMode, pageSize, pageOrientation, super.hashCode());
   }
 
 
@@ -277,6 +449,8 @@ public class WordProcessingConvertOptions extends ConvertOptions {
     sb.append("    zoom: ").append(toIndentedString(zoom)).append("\n");
     sb.append("    watermarkOptions: ").append(toIndentedString(watermarkOptions)).append("\n");
     sb.append("    pdfRecognitionMode: ").append(toIndentedString(pdfRecognitionMode)).append("\n");
+    sb.append("    pageSize: ").append(toIndentedString(pageSize)).append("\n");
+    sb.append("    pageOrientation: ").append(toIndentedString(pageOrientation)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -24,7 +24,7 @@ Add following repository and dependency to your project's POM
 <dependency>
     <groupId>com.groupdocs</groupId>
     <artifactId>groupdocs-conversion-cloud</artifactId>
-    <version>22.10</version>
+    <version>23.2</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -43,7 +43,7 @@ repositories {
 ...
 dependencies {
     ...
-    implementation 'com.groupdocs:groupdocs-conversion-cloud:22.10'
+    implementation 'com.groupdocs:groupdocs-conversion-cloud:23.2'
 }
 ```
 
@@ -100,7 +100,7 @@ mvn package -D maven.test.skip=true
 
 Then manually install the following JARs:
 
-* target/groupdocs-conversion-cloud-22.10.jar
+* target/groupdocs-conversion-cloud-23.2.jar
 * target/lib/*.jar
 
 ## Licensing
