@@ -33,6 +33,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.groupdocs.cloud.conversion.model.WatermarkOptions;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -52,6 +53,9 @@ public class ConvertOptions {
 
   @SerializedName("pages")
   private List<Integer> pages = null;
+
+  @SerializedName("watermarkOptions")
+  private WatermarkOptions watermarkOptions = null;
 
   public ConvertOptions fromPage(Integer fromPage) {
     this.fromPage = fromPage;
@@ -115,6 +119,24 @@ public class ConvertOptions {
     this.pages = pages;
   }
 
+  public ConvertOptions watermarkOptions(WatermarkOptions watermarkOptions) {
+    this.watermarkOptions = watermarkOptions;
+    return this;
+  }
+
+   /**
+   * Watermark specific options
+   * @return watermarkOptions
+  **/
+  @ApiModelProperty(value = "Watermark specific options")
+  public WatermarkOptions getWatermarkOptions() {
+    return watermarkOptions;
+  }
+
+  public void setWatermarkOptions(WatermarkOptions watermarkOptions) {
+    this.watermarkOptions = watermarkOptions;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -127,12 +149,13 @@ public class ConvertOptions {
     ConvertOptions convertOptions = (ConvertOptions) o;
     return Objects.equals(this.fromPage, convertOptions.fromPage) &&
         Objects.equals(this.pagesCount, convertOptions.pagesCount) &&
-        Objects.equals(this.pages, convertOptions.pages);
+        Objects.equals(this.pages, convertOptions.pages) &&
+        Objects.equals(this.watermarkOptions, convertOptions.watermarkOptions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(fromPage, pagesCount, pages);
+    return Objects.hash(fromPage, pagesCount, pages, watermarkOptions);
   }
 
 
@@ -144,6 +167,7 @@ public class ConvertOptions {
     sb.append("    fromPage: ").append(toIndentedString(fromPage)).append("\n");
     sb.append("    pagesCount: ").append(toIndentedString(pagesCount)).append("\n");
     sb.append("    pages: ").append(toIndentedString(pages)).append("\n");
+    sb.append("    watermarkOptions: ").append(toIndentedString(watermarkOptions)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -475,9 +475,6 @@ public class PdfConvertOptions extends ConvertOptions {
   @SerializedName("rotate")
   private RotateEnum rotate = null;
 
-  @SerializedName("watermarkOptions")
-  private WatermarkOptions watermarkOptions = null;
-
   public PdfConvertOptions width(Integer width) {
     this.width = width;
     return this;
@@ -1018,24 +1015,6 @@ public class PdfConvertOptions extends ConvertOptions {
     this.rotate = rotate;
   }
 
-  public PdfConvertOptions watermarkOptions(WatermarkOptions watermarkOptions) {
-    this.watermarkOptions = watermarkOptions;
-    return this;
-  }
-
-   /**
-   * Watermark specific options
-   * @return watermarkOptions
-  **/
-  @ApiModelProperty(value = "Watermark specific options")
-  public WatermarkOptions getWatermarkOptions() {
-    return watermarkOptions;
-  }
-
-  public void setWatermarkOptions(WatermarkOptions watermarkOptions) {
-    this.watermarkOptions = watermarkOptions;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -1076,13 +1055,12 @@ public class PdfConvertOptions extends ConvertOptions {
         Objects.equals(this.pageLayout, pdfConvertOptions.pageLayout) &&
         Objects.equals(this.pageMode, pdfConvertOptions.pageMode) &&
         Objects.equals(this.rotate, pdfConvertOptions.rotate) &&
-        Objects.equals(this.watermarkOptions, pdfConvertOptions.watermarkOptions) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(width, height, dpi, password, marginTop, marginBottom, marginLeft, marginRight, pdfFormat, removePdfaCompliance, zoom, linearize, linkDuplicateStreams, removeUnusedObjects, removeUnusedStreams, compressImages, imageQuality, unembedFonts, grayscale, centerWindow, direction, displayDocTitle, fitWindow, hideMenuBar, hideToolBar, hideWindowUI, nonFullScreenPageMode, pageLayout, pageMode, rotate, watermarkOptions, super.hashCode());
+    return Objects.hash(width, height, dpi, password, marginTop, marginBottom, marginLeft, marginRight, pdfFormat, removePdfaCompliance, zoom, linearize, linkDuplicateStreams, removeUnusedObjects, removeUnusedStreams, compressImages, imageQuality, unembedFonts, grayscale, centerWindow, direction, displayDocTitle, fitWindow, hideMenuBar, hideToolBar, hideWindowUI, nonFullScreenPageMode, pageLayout, pageMode, rotate, super.hashCode());
   }
 
 
@@ -1121,7 +1099,6 @@ public class PdfConvertOptions extends ConvertOptions {
     sb.append("    pageLayout: ").append(toIndentedString(pageLayout)).append("\n");
     sb.append("    pageMode: ").append(toIndentedString(pageMode)).append("\n");
     sb.append("    rotate: ").append(toIndentedString(rotate)).append("\n");
-    sb.append("    watermarkOptions: ").append(toIndentedString(watermarkOptions)).append("\n");
     sb.append("}");
     return sb.toString();
   }

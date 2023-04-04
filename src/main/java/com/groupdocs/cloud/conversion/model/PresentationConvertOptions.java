@@ -51,9 +51,6 @@ public class PresentationConvertOptions extends ConvertOptions {
   @SerializedName("zoom")
   private Integer zoom = null;
 
-  @SerializedName("watermarkOptions")
-  private WatermarkOptions watermarkOptions = null;
-
   public PresentationConvertOptions password(String password) {
     this.password = password;
     return this;
@@ -90,24 +87,6 @@ public class PresentationConvertOptions extends ConvertOptions {
     this.zoom = zoom;
   }
 
-  public PresentationConvertOptions watermarkOptions(WatermarkOptions watermarkOptions) {
-    this.watermarkOptions = watermarkOptions;
-    return this;
-  }
-
-   /**
-   * Watermark specific options
-   * @return watermarkOptions
-  **/
-  @ApiModelProperty(value = "Watermark specific options")
-  public WatermarkOptions getWatermarkOptions() {
-    return watermarkOptions;
-  }
-
-  public void setWatermarkOptions(WatermarkOptions watermarkOptions) {
-    this.watermarkOptions = watermarkOptions;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -120,13 +99,12 @@ public class PresentationConvertOptions extends ConvertOptions {
     PresentationConvertOptions presentationConvertOptions = (PresentationConvertOptions) o;
     return Objects.equals(this.password, presentationConvertOptions.password) &&
         Objects.equals(this.zoom, presentationConvertOptions.zoom) &&
-        Objects.equals(this.watermarkOptions, presentationConvertOptions.watermarkOptions) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(password, zoom, watermarkOptions, super.hashCode());
+    return Objects.hash(password, zoom, super.hashCode());
   }
 
 
@@ -137,7 +115,6 @@ public class PresentationConvertOptions extends ConvertOptions {
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("    zoom: ").append(toIndentedString(zoom)).append("\n");
-    sb.append("    watermarkOptions: ").append(toIndentedString(watermarkOptions)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="EpubConvertOptions.java">
+ * <copyright company="Aspose Pty Ltd" file="PDLConvertOptions.java">
  *   Copyright (c) 2003-2023 Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -28,16 +28,16 @@
 package com.groupdocs.cloud.conversion.model;
 
 import java.util.Objects;
+import com.groupdocs.cloud.conversion.model.ConvertOptions;
 import com.groupdocs.cloud.conversion.model.WatermarkOptions;
-import com.groupdocs.cloud.conversion.model.XpsConvertOptions;
 import io.swagger.annotations.ApiModel;
 import java.util.List;
 
 /**
- * Epub convert options
+ * Page description langusge convert options
  */
-@ApiModel(description = "Epub convert options")
-public class EpubConvertOptions extends XpsConvertOptions {
+@ApiModel(description = "Page description langusge convert options")
+public class PDLConvertOptions extends ConvertOptions {
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -59,7 +59,7 @@ public class EpubConvertOptions extends XpsConvertOptions {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class EpubConvertOptions {\n");
+    sb.append("class PDLConvertOptions {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("}");
     return sb.toString();

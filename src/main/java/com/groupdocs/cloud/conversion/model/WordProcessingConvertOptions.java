@@ -60,9 +60,6 @@ public class WordProcessingConvertOptions extends ConvertOptions {
   @SerializedName("zoom")
   private Integer zoom = null;
 
-  @SerializedName("watermarkOptions")
-  private WatermarkOptions watermarkOptions = null;
-
   /**
    * Recognition mode when converting from pdf
    */
@@ -337,24 +334,6 @@ public class WordProcessingConvertOptions extends ConvertOptions {
     this.zoom = zoom;
   }
 
-  public WordProcessingConvertOptions watermarkOptions(WatermarkOptions watermarkOptions) {
-    this.watermarkOptions = watermarkOptions;
-    return this;
-  }
-
-   /**
-   * Watermark specific options
-   * @return watermarkOptions
-  **/
-  @ApiModelProperty(value = "Watermark specific options")
-  public WatermarkOptions getWatermarkOptions() {
-    return watermarkOptions;
-  }
-
-  public void setWatermarkOptions(WatermarkOptions watermarkOptions) {
-    this.watermarkOptions = watermarkOptions;
-  }
-
   public WordProcessingConvertOptions pdfRecognitionMode(PdfRecognitionModeEnum pdfRecognitionMode) {
     this.pdfRecognitionMode = pdfRecognitionMode;
     return this;
@@ -424,7 +403,6 @@ public class WordProcessingConvertOptions extends ConvertOptions {
         Objects.equals(this.dpi, wordProcessingConvertOptions.dpi) &&
         Objects.equals(this.password, wordProcessingConvertOptions.password) &&
         Objects.equals(this.zoom, wordProcessingConvertOptions.zoom) &&
-        Objects.equals(this.watermarkOptions, wordProcessingConvertOptions.watermarkOptions) &&
         Objects.equals(this.pdfRecognitionMode, wordProcessingConvertOptions.pdfRecognitionMode) &&
         Objects.equals(this.pageSize, wordProcessingConvertOptions.pageSize) &&
         Objects.equals(this.pageOrientation, wordProcessingConvertOptions.pageOrientation) &&
@@ -433,7 +411,7 @@ public class WordProcessingConvertOptions extends ConvertOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(width, height, dpi, password, zoom, watermarkOptions, pdfRecognitionMode, pageSize, pageOrientation, super.hashCode());
+    return Objects.hash(width, height, dpi, password, zoom, pdfRecognitionMode, pageSize, pageOrientation, super.hashCode());
   }
 
 
@@ -447,7 +425,6 @@ public class WordProcessingConvertOptions extends ConvertOptions {
     sb.append("    dpi: ").append(toIndentedString(dpi)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("    zoom: ").append(toIndentedString(zoom)).append("\n");
-    sb.append("    watermarkOptions: ").append(toIndentedString(watermarkOptions)).append("\n");
     sb.append("    pdfRecognitionMode: ").append(toIndentedString(pdfRecognitionMode)).append("\n");
     sb.append("    pageSize: ").append(toIndentedString(pageSize)).append("\n");
     sb.append("    pageOrientation: ").append(toIndentedString(pageOrientation)).append("\n");

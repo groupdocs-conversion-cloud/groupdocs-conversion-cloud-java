@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="HtmlLoadOptions.java">
+ * <copyright company="Aspose Pty Ltd" file="WebLoadOptions.java">
  *   Copyright (c) 2003-2023 Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -42,11 +42,11 @@ import java.io.IOException;
  * Html document load options
  */
 @ApiModel(description = "Html document load options")
-public class HtmlLoadOptions extends LoadOptions {
+public class WebLoadOptions extends LoadOptions {
   @SerializedName("pageNumbering")
   private Boolean pageNumbering = null;
 
-  public HtmlLoadOptions pageNumbering(Boolean pageNumbering) {
+  public WebLoadOptions pageNumbering(Boolean pageNumbering) {
     this.pageNumbering = pageNumbering;
     return this;
   }
@@ -73,8 +73,8 @@ public class HtmlLoadOptions extends LoadOptions {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    HtmlLoadOptions htmlLoadOptions = (HtmlLoadOptions) o;
-    return Objects.equals(this.pageNumbering, htmlLoadOptions.pageNumbering) &&
+    WebLoadOptions webLoadOptions = (WebLoadOptions) o;
+    return Objects.equals(this.pageNumbering, webLoadOptions.pageNumbering) &&
         super.equals(o);
   }
 
@@ -87,7 +87,7 @@ public class HtmlLoadOptions extends LoadOptions {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class HtmlLoadOptions {\n");
+    sb.append("class WebLoadOptions {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    pageNumbering: ").append(toIndentedString(pageNumbering)).append("\n");
     sb.append("}");

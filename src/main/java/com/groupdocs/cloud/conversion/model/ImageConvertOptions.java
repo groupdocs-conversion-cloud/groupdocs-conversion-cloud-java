@@ -66,9 +66,6 @@ public class ImageConvertOptions extends ConvertOptions {
   @SerializedName("usePdf")
   private Boolean usePdf = null;
 
-  @SerializedName("watermarkOptions")
-  private WatermarkOptions watermarkOptions = null;
-
   @SerializedName("brightness")
   private Integer brightness = null;
 
@@ -258,24 +255,6 @@ public class ImageConvertOptions extends ConvertOptions {
     this.usePdf = usePdf;
   }
 
-  public ImageConvertOptions watermarkOptions(WatermarkOptions watermarkOptions) {
-    this.watermarkOptions = watermarkOptions;
-    return this;
-  }
-
-   /**
-   * Watermark specific options
-   * @return watermarkOptions
-  **/
-  @ApiModelProperty(value = "Watermark specific options")
-  public WatermarkOptions getWatermarkOptions() {
-    return watermarkOptions;
-  }
-
-  public void setWatermarkOptions(WatermarkOptions watermarkOptions) {
-    this.watermarkOptions = watermarkOptions;
-  }
-
   public ImageConvertOptions brightness(Integer brightness) {
     this.brightness = brightness;
     return this;
@@ -365,7 +344,6 @@ public class ImageConvertOptions extends ConvertOptions {
         Objects.equals(this.grayscale, imageConvertOptions.grayscale) &&
         Objects.equals(this.rotateAngle, imageConvertOptions.rotateAngle) &&
         Objects.equals(this.usePdf, imageConvertOptions.usePdf) &&
-        Objects.equals(this.watermarkOptions, imageConvertOptions.watermarkOptions) &&
         Objects.equals(this.brightness, imageConvertOptions.brightness) &&
         Objects.equals(this.contrast, imageConvertOptions.contrast) &&
         Objects.equals(this.gamma, imageConvertOptions.gamma) &&
@@ -375,7 +353,7 @@ public class ImageConvertOptions extends ConvertOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(width, height, horizontalResolution, verticalResolution, grayscale, rotateAngle, usePdf, watermarkOptions, brightness, contrast, gamma, flipMode, super.hashCode());
+    return Objects.hash(width, height, horizontalResolution, verticalResolution, grayscale, rotateAngle, usePdf, brightness, contrast, gamma, flipMode, super.hashCode());
   }
 
 
@@ -391,7 +369,6 @@ public class ImageConvertOptions extends ConvertOptions {
     sb.append("    grayscale: ").append(toIndentedString(grayscale)).append("\n");
     sb.append("    rotateAngle: ").append(toIndentedString(rotateAngle)).append("\n");
     sb.append("    usePdf: ").append(toIndentedString(usePdf)).append("\n");
-    sb.append("    watermarkOptions: ").append(toIndentedString(watermarkOptions)).append("\n");
     sb.append("    brightness: ").append(toIndentedString(brightness)).append("\n");
     sb.append("    contrast: ").append(toIndentedString(contrast)).append("\n");
     sb.append("    gamma: ").append(toIndentedString(gamma)).append("\n");
