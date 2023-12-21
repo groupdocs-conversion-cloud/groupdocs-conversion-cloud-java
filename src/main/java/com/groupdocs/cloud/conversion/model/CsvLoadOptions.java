@@ -33,16 +33,18 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.groupdocs.cloud.conversion.model.LoadOptions;
+import com.groupdocs.cloud.conversion.model.SpreadsheetLoadOptions;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Csv document load options
  */
 @ApiModel(description = "Csv document load options")
-public class CsvLoadOptions extends LoadOptions {
+public class CsvLoadOptions extends SpreadsheetLoadOptions {
   @SerializedName("separator")
   private String separator = null;
 
