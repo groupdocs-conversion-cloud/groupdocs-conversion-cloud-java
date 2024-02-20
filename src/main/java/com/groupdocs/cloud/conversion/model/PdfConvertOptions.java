@@ -52,7 +52,7 @@ public class PdfConvertOptions extends ConvertOptions {
   private Integer height = null;
 
   @SerializedName("dpi")
-  private Double dpi = null;
+  private Integer dpi = null;
 
   @SerializedName("password")
   private String password = null;
@@ -475,6 +475,140 @@ public class PdfConvertOptions extends ConvertOptions {
   @SerializedName("rotate")
   private RotateEnum rotate = null;
 
+  /**
+   * Specifies page size
+   */
+  @JsonAdapter(PageSizeEnum.Adapter.class)
+  public enum PageSizeEnum {
+    DEFAULT("Default"),
+    
+    A3("A3"),
+    
+    STATEMENT("Statement"),
+    
+    QUARTO("Quarto"),
+    
+    PAPER11X17("Paper11x17"),
+    
+    PAPER10X14("Paper10x14"),
+    
+    LETTER("Letter"),
+    
+    LEGAL("Legal"),
+    
+    LEDGER("Ledger"),
+    
+    FOLIO("Folio"),
+    
+    EXECUTIVE("Executive"),
+    
+    ENVELOPEDL("EnvelopeDL"),
+    
+    CUSTOM("Custom"),
+    
+    B5("B5"),
+    
+    B4("B4"),
+    
+    A5("A5"),
+    
+    A4("A4"),
+    
+    TABLOID("Tabloid");
+
+    private String value;
+
+    PageSizeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static PageSizeEnum fromValue(String text) {
+      for (PageSizeEnum b : PageSizeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<PageSizeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final PageSizeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public PageSizeEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return PageSizeEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
+  @SerializedName("pageSize")
+  private PageSizeEnum pageSize = null;
+
+  /**
+   * Specifies page orientation
+   */
+  @JsonAdapter(PageOrientationEnum.Adapter.class)
+  public enum PageOrientationEnum {
+    DEFAULT("Default"),
+    
+    LANDSCAPE("Landscape"),
+    
+    PORTRAIT("Portrait");
+
+    private String value;
+
+    PageOrientationEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static PageOrientationEnum fromValue(String text) {
+      for (PageOrientationEnum b : PageOrientationEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<PageOrientationEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final PageOrientationEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public PageOrientationEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return PageOrientationEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
+  @SerializedName("pageOrientation")
+  private PageOrientationEnum pageOrientation = null;
+
   public PdfConvertOptions width(Integer width) {
     this.width = width;
     return this;
@@ -511,7 +645,7 @@ public class PdfConvertOptions extends ConvertOptions {
     this.height = height;
   }
 
-  public PdfConvertOptions dpi(Double dpi) {
+  public PdfConvertOptions dpi(Integer dpi) {
     this.dpi = dpi;
     return this;
   }
@@ -521,11 +655,11 @@ public class PdfConvertOptions extends ConvertOptions {
    * @return dpi
   **/
   @ApiModelProperty(required = true, value = "Desired page DPI after conversion. The default resolution is: 96dpi")
-  public Double getDpi() {
+  public Integer getDpi() {
     return dpi;
   }
 
-  public void setDpi(Double dpi) {
+  public void setDpi(Integer dpi) {
     this.dpi = dpi;
   }
 
@@ -1015,6 +1149,42 @@ public class PdfConvertOptions extends ConvertOptions {
     this.rotate = rotate;
   }
 
+  public PdfConvertOptions pageSize(PageSizeEnum pageSize) {
+    this.pageSize = pageSize;
+    return this;
+  }
+
+   /**
+   * Specifies page size
+   * @return pageSize
+  **/
+  @ApiModelProperty(required = true, value = "Specifies page size")
+  public PageSizeEnum getPageSize() {
+    return pageSize;
+  }
+
+  public void setPageSize(PageSizeEnum pageSize) {
+    this.pageSize = pageSize;
+  }
+
+  public PdfConvertOptions pageOrientation(PageOrientationEnum pageOrientation) {
+    this.pageOrientation = pageOrientation;
+    return this;
+  }
+
+   /**
+   * Specifies page orientation
+   * @return pageOrientation
+  **/
+  @ApiModelProperty(required = true, value = "Specifies page orientation")
+  public PageOrientationEnum getPageOrientation() {
+    return pageOrientation;
+  }
+
+  public void setPageOrientation(PageOrientationEnum pageOrientation) {
+    this.pageOrientation = pageOrientation;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -1055,12 +1225,14 @@ public class PdfConvertOptions extends ConvertOptions {
         Objects.equals(this.pageLayout, pdfConvertOptions.pageLayout) &&
         Objects.equals(this.pageMode, pdfConvertOptions.pageMode) &&
         Objects.equals(this.rotate, pdfConvertOptions.rotate) &&
+        Objects.equals(this.pageSize, pdfConvertOptions.pageSize) &&
+        Objects.equals(this.pageOrientation, pdfConvertOptions.pageOrientation) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(width, height, dpi, password, marginTop, marginBottom, marginLeft, marginRight, pdfFormat, removePdfaCompliance, zoom, linearize, linkDuplicateStreams, removeUnusedObjects, removeUnusedStreams, compressImages, imageQuality, unembedFonts, grayscale, centerWindow, direction, displayDocTitle, fitWindow, hideMenuBar, hideToolBar, hideWindowUI, nonFullScreenPageMode, pageLayout, pageMode, rotate, super.hashCode());
+    return Objects.hash(width, height, dpi, password, marginTop, marginBottom, marginLeft, marginRight, pdfFormat, removePdfaCompliance, zoom, linearize, linkDuplicateStreams, removeUnusedObjects, removeUnusedStreams, compressImages, imageQuality, unembedFonts, grayscale, centerWindow, direction, displayDocTitle, fitWindow, hideMenuBar, hideToolBar, hideWindowUI, nonFullScreenPageMode, pageLayout, pageMode, rotate, pageSize, pageOrientation, super.hashCode());
   }
 
 
@@ -1099,6 +1271,8 @@ public class PdfConvertOptions extends ConvertOptions {
     sb.append("    pageLayout: ").append(toIndentedString(pageLayout)).append("\n");
     sb.append("    pageMode: ").append(toIndentedString(pageMode)).append("\n");
     sb.append("    rotate: ").append(toIndentedString(rotate)).append("\n");
+    sb.append("    pageSize: ").append(toIndentedString(pageSize)).append("\n");
+    sb.append("    pageOrientation: ").append(toIndentedString(pageOrientation)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -62,11 +62,9 @@ import java.util.regex.Pattern;
 
 import com.groupdocs.cloud.conversion.client.auth.Authentication;
 import com.groupdocs.cloud.conversion.client.auth.OAuth;
-import com.groupdocs.cloud.conversion.model.ApiError;
 import com.groupdocs.cloud.conversion.model.AuthError;
 
-public class ApiClient {
-    private Configuration configuration = null;
+public class ApiClient {    
 
     private String serverUrl = null;
     private boolean debugging = false;
@@ -90,14 +88,14 @@ public class ApiClient {
      * Constructor for ApiClient
      */
     public ApiClient(Configuration configuration) {
-        this.configuration = configuration;
+
         this.serverUrl = configuration.getServerUrl();
         this.httpClient = new OkHttpClient();
         this.verifyingSsl = true;
         this.json = new JSON();
 
         // Set default User-Agent.
-        setUserAgent("java-sdk/24.1");
+        setUserAgent("java-sdk/24.2");
 
         // Set connection timeout
         setConnectTimeout(configuration.getTimeout());

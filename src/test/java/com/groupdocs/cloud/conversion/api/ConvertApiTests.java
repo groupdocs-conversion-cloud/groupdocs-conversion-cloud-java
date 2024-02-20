@@ -36,6 +36,7 @@ import java.util.List;
 
 import com.groupdocs.cloud.conversion.client.ApiException;
 import com.groupdocs.cloud.conversion.model.*;
+import com.groupdocs.cloud.conversion.model.PdfConvertOptions.PageSizeEnum;
 import com.groupdocs.cloud.conversion.model.requests.*;
 
 import org.junit.Test;
@@ -125,6 +126,7 @@ public class ConvertApiTests extends BaseApiTest {
         loadOptions.setFormat("docx");
         loadOptions.setPassword(testFile.getPassword());
         PdfConvertOptions convertOptions = new PdfConvertOptions();
+        convertOptions.setPageSize(PageSizeEnum.A4);
         convertOptions.setMarginTop(5);
 
         ConvertDocumentDirectRequest request = new ConvertDocumentDirectRequest(format, fileObj, 1, 0, loadOptions, convertOptions);

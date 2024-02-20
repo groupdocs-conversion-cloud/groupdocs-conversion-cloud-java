@@ -52,7 +52,7 @@ public class WordProcessingConvertOptions extends ConvertOptions {
   private Integer height = null;
 
   @SerializedName("dpi")
-  private Double dpi = null;
+  private Integer dpi = null;
 
   @SerializedName("password")
   private String password = null;
@@ -280,7 +280,7 @@ public class WordProcessingConvertOptions extends ConvertOptions {
     this.height = height;
   }
 
-  public WordProcessingConvertOptions dpi(Double dpi) {
+  public WordProcessingConvertOptions dpi(Integer dpi) {
     this.dpi = dpi;
     return this;
   }
@@ -290,11 +290,11 @@ public class WordProcessingConvertOptions extends ConvertOptions {
    * @return dpi
   **/
   @ApiModelProperty(required = true, value = "Desired page DPI after conversion. The default resolution is: 96dpi")
-  public Double getDpi() {
+  public Integer getDpi() {
     return dpi;
   }
 
-  public void setDpi(Double dpi) {
+  public void setDpi(Integer dpi) {
     this.dpi = dpi;
   }
 
