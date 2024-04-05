@@ -45,50 +45,61 @@ import java.util.List;
  */
 @ApiModel(description = "Options for loading CAD documents")
 public class CadLoadOptions extends LoadOptions {
-  @SerializedName("width")
-  private Integer width = null;
-
-  @SerializedName("height")
-  private Integer height = null;
-
   @SerializedName("layoutNames")
   private List<String> layoutNames = null;
 
-  public CadLoadOptions width(Integer width) {
-    this.width = width;
-    return this;
+  @SerializedName("backgroundColor")
+  private String backgroundColor = null;
+
+  /**
+   * Gets or sets type of drawing.
+   */
+  @JsonAdapter(DrawTypeEnum.Adapter.class)
+  public enum DrawTypeEnum {
+    USEDRAWCOLOR("UseDrawColor"),
+    
+    USEOBJECTCOLOR("UseObjectColor");
+
+    private String value;
+
+    DrawTypeEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static DrawTypeEnum fromValue(String text) {
+      for (DrawTypeEnum b : DrawTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<DrawTypeEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final DrawTypeEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public DrawTypeEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return DrawTypeEnum.fromValue(String.valueOf(value));
+      }
+    }
   }
 
-   /**
-   * Set desired page width for converting CAD document
-   * @return width
-  **/
-  @ApiModelProperty(required = true, value = "Set desired page width for converting CAD document")
-  public Integer getWidth() {
-    return width;
-  }
-
-  public void setWidth(Integer width) {
-    this.width = width;
-  }
-
-  public CadLoadOptions height(Integer height) {
-    this.height = height;
-    return this;
-  }
-
-   /**
-   * Set desired page height for converting CAD document
-   * @return height
-  **/
-  @ApiModelProperty(required = true, value = "Set desired page height for converting CAD document")
-  public Integer getHeight() {
-    return height;
-  }
-
-  public void setHeight(Integer height) {
-    this.height = height;
-  }
+  @SerializedName("drawType")
+  private DrawTypeEnum drawType = null;
 
   public CadLoadOptions layoutNames(List<String> layoutNames) {
     this.layoutNames = layoutNames;
@@ -116,6 +127,42 @@ public class CadLoadOptions extends LoadOptions {
     this.layoutNames = layoutNames;
   }
 
+  public CadLoadOptions backgroundColor(String backgroundColor) {
+    this.backgroundColor = backgroundColor;
+    return this;
+  }
+
+   /**
+   * Gets or sets a background color.
+   * @return backgroundColor
+  **/
+  @ApiModelProperty(value = "Gets or sets a background color.")
+  public String getBackgroundColor() {
+    return backgroundColor;
+  }
+
+  public void setBackgroundColor(String backgroundColor) {
+    this.backgroundColor = backgroundColor;
+  }
+
+  public CadLoadOptions drawType(DrawTypeEnum drawType) {
+    this.drawType = drawType;
+    return this;
+  }
+
+   /**
+   * Gets or sets type of drawing.
+   * @return drawType
+  **/
+  @ApiModelProperty(required = true, value = "Gets or sets type of drawing.")
+  public DrawTypeEnum getDrawType() {
+    return drawType;
+  }
+
+  public void setDrawType(DrawTypeEnum drawType) {
+    this.drawType = drawType;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -126,15 +173,15 @@ public class CadLoadOptions extends LoadOptions {
       return false;
     }
     CadLoadOptions cadLoadOptions = (CadLoadOptions) o;
-    return Objects.equals(this.width, cadLoadOptions.width) &&
-        Objects.equals(this.height, cadLoadOptions.height) &&
-        Objects.equals(this.layoutNames, cadLoadOptions.layoutNames) &&
+    return Objects.equals(this.layoutNames, cadLoadOptions.layoutNames) &&
+        Objects.equals(this.backgroundColor, cadLoadOptions.backgroundColor) &&
+        Objects.equals(this.drawType, cadLoadOptions.drawType) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(width, height, layoutNames, super.hashCode());
+    return Objects.hash(layoutNames, backgroundColor, drawType, super.hashCode());
   }
 
 
@@ -143,9 +190,9 @@ public class CadLoadOptions extends LoadOptions {
     StringBuilder sb = new StringBuilder();
     sb.append("class CadLoadOptions {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    width: ").append(toIndentedString(width)).append("\n");
-    sb.append("    height: ").append(toIndentedString(height)).append("\n");
     sb.append("    layoutNames: ").append(toIndentedString(layoutNames)).append("\n");
+    sb.append("    backgroundColor: ").append(toIndentedString(backgroundColor)).append("\n");
+    sb.append("    drawType: ").append(toIndentedString(drawType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
