@@ -52,9 +52,6 @@ public class EmailLoadOptions extends LoadOptions {
   @SerializedName("displayFromEmailAddress")
   private Boolean displayFromEmailAddress = null;
 
-  @SerializedName("displayEmailAddress")
-  private Boolean displayEmailAddress = null;
-
   @SerializedName("displayToEmailAddress")
   private Boolean displayToEmailAddress = null;
 
@@ -110,24 +107,6 @@ public class EmailLoadOptions extends LoadOptions {
 
   public void setDisplayFromEmailAddress(Boolean displayFromEmailAddress) {
     this.displayFromEmailAddress = displayFromEmailAddress;
-  }
-
-  public EmailLoadOptions displayEmailAddress(Boolean displayEmailAddress) {
-    this.displayEmailAddress = displayEmailAddress;
-    return this;
-  }
-
-   /**
-   * Option to display or hide email address. Default: true
-   * @return displayEmailAddress
-  **/
-  @ApiModelProperty(required = true, value = "Option to display or hide email address. Default: true")
-  public Boolean getDisplayEmailAddress() {
-    return displayEmailAddress;
-  }
-
-  public void setDisplayEmailAddress(Boolean displayEmailAddress) {
-    this.displayEmailAddress = displayEmailAddress;
   }
 
   public EmailLoadOptions displayToEmailAddress(Boolean displayToEmailAddress) {
@@ -276,7 +255,6 @@ public class EmailLoadOptions extends LoadOptions {
     EmailLoadOptions emailLoadOptions = (EmailLoadOptions) o;
     return Objects.equals(this.displayHeader, emailLoadOptions.displayHeader) &&
         Objects.equals(this.displayFromEmailAddress, emailLoadOptions.displayFromEmailAddress) &&
-        Objects.equals(this.displayEmailAddress, emailLoadOptions.displayEmailAddress) &&
         Objects.equals(this.displayToEmailAddress, emailLoadOptions.displayToEmailAddress) &&
         Objects.equals(this.displayCcEmailAddress, emailLoadOptions.displayCcEmailAddress) &&
         Objects.equals(this.displayBccEmailAddress, emailLoadOptions.displayBccEmailAddress) &&
@@ -289,7 +267,7 @@ public class EmailLoadOptions extends LoadOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayHeader, displayFromEmailAddress, displayEmailAddress, displayToEmailAddress, displayCcEmailAddress, displayBccEmailAddress, timeZoneOffset, convertAttachments, fieldLabels, preserveOriginalDate, super.hashCode());
+    return Objects.hash(displayHeader, displayFromEmailAddress, displayToEmailAddress, displayCcEmailAddress, displayBccEmailAddress, timeZoneOffset, convertAttachments, fieldLabels, preserveOriginalDate, super.hashCode());
   }
 
 
@@ -300,7 +278,6 @@ public class EmailLoadOptions extends LoadOptions {
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    displayHeader: ").append(toIndentedString(displayHeader)).append("\n");
     sb.append("    displayFromEmailAddress: ").append(toIndentedString(displayFromEmailAddress)).append("\n");
-    sb.append("    displayEmailAddress: ").append(toIndentedString(displayEmailAddress)).append("\n");
     sb.append("    displayToEmailAddress: ").append(toIndentedString(displayToEmailAddress)).append("\n");
     sb.append("    displayCcEmailAddress: ").append(toIndentedString(displayCcEmailAddress)).append("\n");
     sb.append("    displayBccEmailAddress: ").append(toIndentedString(displayBccEmailAddress)).append("\n");
