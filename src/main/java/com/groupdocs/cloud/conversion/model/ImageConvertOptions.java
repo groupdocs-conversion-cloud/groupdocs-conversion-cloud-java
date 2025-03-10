@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
  * <copyright company="Aspose Pty Ltd" file="ImageConvertOptions.java">
- *   Copyright (c) 2003-2024 Aspose Pty Ltd
+ *   Copyright (c) Aspose Pty Ltd
  * </copyright>
  * <summary>
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -128,6 +128,9 @@ public class ImageConvertOptions extends ConvertOptions {
 
   @SerializedName("flipMode")
   private FlipModeEnum flipMode = null;
+
+  @SerializedName("backgroundColor")
+  private String backgroundColor = null;
 
   public ImageConvertOptions width(Integer width) {
     this.width = width;
@@ -327,6 +330,24 @@ public class ImageConvertOptions extends ConvertOptions {
     this.flipMode = flipMode;
   }
 
+  public ImageConvertOptions backgroundColor(String backgroundColor) {
+    this.backgroundColor = backgroundColor;
+    return this;
+  }
+
+   /**
+   * Gets or sets a background color.
+   * @return backgroundColor
+  **/
+  @ApiModelProperty(value = "Gets or sets a background color.")
+  public String getBackgroundColor() {
+    return backgroundColor;
+  }
+
+  public void setBackgroundColor(String backgroundColor) {
+    this.backgroundColor = backgroundColor;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -348,12 +369,13 @@ public class ImageConvertOptions extends ConvertOptions {
         Objects.equals(this.contrast, imageConvertOptions.contrast) &&
         Objects.equals(this.gamma, imageConvertOptions.gamma) &&
         Objects.equals(this.flipMode, imageConvertOptions.flipMode) &&
+        Objects.equals(this.backgroundColor, imageConvertOptions.backgroundColor) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(width, height, horizontalResolution, verticalResolution, grayscale, rotateAngle, usePdf, brightness, contrast, gamma, flipMode, super.hashCode());
+    return Objects.hash(width, height, horizontalResolution, verticalResolution, grayscale, rotateAngle, usePdf, brightness, contrast, gamma, flipMode, backgroundColor, super.hashCode());
   }
 
 
@@ -373,6 +395,7 @@ public class ImageConvertOptions extends ConvertOptions {
     sb.append("    contrast: ").append(toIndentedString(contrast)).append("\n");
     sb.append("    gamma: ").append(toIndentedString(gamma)).append("\n");
     sb.append("    flipMode: ").append(toIndentedString(flipMode)).append("\n");
+    sb.append("    backgroundColor: ").append(toIndentedString(backgroundColor)).append("\n");
     sb.append("}");
     return sb.toString();
   }
