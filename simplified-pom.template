@@ -5,7 +5,7 @@
 
     <groupId>com.groupdocs</groupId>
     <artifactId>groupdocs-conversion-cloud</artifactId>
-    <version>25.3</version>
+    <version>25.4</version>
     <packaging>jar</packaging>
 
     <name>groupdocs-conversion-cloud</name>
