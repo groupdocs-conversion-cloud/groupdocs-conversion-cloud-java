@@ -70,8 +70,59 @@ public class SpreadsheetLoadOptions extends LoadOptions {
   @SerializedName("password")
   private String password = null;
 
-  @SerializedName("hideComments")
-  private Boolean hideComments = null;
+  /**
+   * Represents the way comments are printed with the sheet. Default is PrintNoComments.
+   */
+  @JsonAdapter(PrintCommentsEnum.Adapter.class)
+  public enum PrintCommentsEnum {
+    PRINTINPLACE("PrintInPlace"),
+    
+    PRINTNOCOMMENTS("PrintNoComments"),
+    
+    PRINTSHEETEND("PrintSheetEnd"),
+    
+    PRINTWITHTHREADEDCOMMENTS("PrintWithThreadedComments");
+
+    private String value;
+
+    PrintCommentsEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static PrintCommentsEnum fromValue(String text) {
+      for (PrintCommentsEnum b : PrintCommentsEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<PrintCommentsEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final PrintCommentsEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public PrintCommentsEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return PrintCommentsEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
+  @SerializedName("printComments")
+  private PrintCommentsEnum printComments = null;
 
   public SpreadsheetLoadOptions defaultFont(String defaultFont) {
     this.defaultFont = defaultFont;
@@ -225,22 +276,22 @@ public class SpreadsheetLoadOptions extends LoadOptions {
     this.password = password;
   }
 
-  public SpreadsheetLoadOptions hideComments(Boolean hideComments) {
-    this.hideComments = hideComments;
+  public SpreadsheetLoadOptions printComments(PrintCommentsEnum printComments) {
+    this.printComments = printComments;
     return this;
   }
 
    /**
-   * Hide comments
-   * @return hideComments
+   * Represents the way comments are printed with the sheet. Default is PrintNoComments.
+   * @return printComments
   **/
-  @ApiModelProperty(required = true, value = "Hide comments")
-  public Boolean getHideComments() {
-    return hideComments;
+  @ApiModelProperty(required = true, value = "Represents the way comments are printed with the sheet. Default is PrintNoComments.")
+  public PrintCommentsEnum getPrintComments() {
+    return printComments;
   }
 
-  public void setHideComments(Boolean hideComments) {
-    this.hideComments = hideComments;
+  public void setPrintComments(PrintCommentsEnum printComments) {
+    this.printComments = printComments;
   }
 
 
@@ -261,13 +312,13 @@ public class SpreadsheetLoadOptions extends LoadOptions {
         Objects.equals(this.convertRange, spreadsheetLoadOptions.convertRange) &&
         Objects.equals(this.skipEmptyRowsAndColumns, spreadsheetLoadOptions.skipEmptyRowsAndColumns) &&
         Objects.equals(this.password, spreadsheetLoadOptions.password) &&
-        Objects.equals(this.hideComments, spreadsheetLoadOptions.hideComments) &&
+        Objects.equals(this.printComments, spreadsheetLoadOptions.printComments) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultFont, fontSubstitutes, showGridLines, showHiddenSheets, onePagePerSheet, convertRange, skipEmptyRowsAndColumns, password, hideComments, super.hashCode());
+    return Objects.hash(defaultFont, fontSubstitutes, showGridLines, showHiddenSheets, onePagePerSheet, convertRange, skipEmptyRowsAndColumns, password, printComments, super.hashCode());
   }
 
 
@@ -284,7 +335,7 @@ public class SpreadsheetLoadOptions extends LoadOptions {
     sb.append("    convertRange: ").append(toIndentedString(convertRange)).append("\n");
     sb.append("    skipEmptyRowsAndColumns: ").append(toIndentedString(skipEmptyRowsAndColumns)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
-    sb.append("    hideComments: ").append(toIndentedString(hideComments)).append("\n");
+    sb.append("    printComments: ").append(toIndentedString(printComments)).append("\n");
     sb.append("}");
     return sb.toString();
   }

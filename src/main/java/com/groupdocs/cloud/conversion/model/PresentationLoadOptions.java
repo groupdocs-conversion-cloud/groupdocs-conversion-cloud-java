@@ -46,6 +46,27 @@ import java.util.Map;
  */
 @ApiModel(description = "Presentation document load options")
 public class PresentationLoadOptions extends LoadOptions {
+  @SerializedName("preserveDocumentStructure")
+  private Boolean preserveDocumentStructure = null;
+
+  @SerializedName("clearCustomDocumentProperties")
+  private Boolean clearCustomDocumentProperties = null;
+
+  @SerializedName("clearBuiltInDocumentProperties")
+  private Boolean clearBuiltInDocumentProperties = null;
+
+  @SerializedName("depth")
+  private Integer depth = null;
+
+  @SerializedName("convertOwned")
+  private Boolean convertOwned = null;
+
+  @SerializedName("convertOwner")
+  private Boolean convertOwner = null;
+
+  @SerializedName("showHiddenSlides")
+  private Boolean showHiddenSlides = null;
+
   @SerializedName("defaultFont")
   private String defaultFont = null;
 
@@ -55,11 +76,235 @@ public class PresentationLoadOptions extends LoadOptions {
   @SerializedName("password")
   private String password = null;
 
-  @SerializedName("hideComments")
-  private Boolean hideComments = null;
+  /**
+   * Represents the way comments are printed with the slide. Default is None.
+   */
+  @JsonAdapter(CommentsPositionEnum.Adapter.class)
+  public enum CommentsPositionEnum {
+    NONE("None"),
+    
+    BOTTOM("Bottom"),
+    
+    RIGHT("Right");
 
-  @SerializedName("showHiddenSlides")
-  private Boolean showHiddenSlides = null;
+    private String value;
+
+    CommentsPositionEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static CommentsPositionEnum fromValue(String text) {
+      for (CommentsPositionEnum b : CommentsPositionEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<CommentsPositionEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final CommentsPositionEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public CommentsPositionEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return CommentsPositionEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
+  @SerializedName("commentsPosition")
+  private CommentsPositionEnum commentsPosition = null;
+
+  /**
+   * Represents the way notes are printed with the slide. Default is None.
+   */
+  @JsonAdapter(NotesPositionEnum.Adapter.class)
+  public enum NotesPositionEnum {
+    NONE("None"),
+    
+    BOTTOMTRUNCATED("BottomTruncated"),
+    
+    BOTTOMFULL("BottomFull");
+
+    private String value;
+
+    NotesPositionEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static NotesPositionEnum fromValue(String text) {
+      for (NotesPositionEnum b : NotesPositionEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<NotesPositionEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final NotesPositionEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public NotesPositionEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return NotesPositionEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
+  @SerializedName("notesPosition")
+  private NotesPositionEnum notesPosition = null;
+
+  public PresentationLoadOptions preserveDocumentStructure(Boolean preserveDocumentStructure) {
+    this.preserveDocumentStructure = preserveDocumentStructure;
+    return this;
+  }
+
+   /**
+   * Determines whether the document structure should be preserved when converting     to PDF (default is false).
+   * @return preserveDocumentStructure
+  **/
+  @ApiModelProperty(required = true, value = "Determines whether the document structure should be preserved when converting     to PDF (default is false).")
+  public Boolean getPreserveDocumentStructure() {
+    return preserveDocumentStructure;
+  }
+
+  public void setPreserveDocumentStructure(Boolean preserveDocumentStructure) {
+    this.preserveDocumentStructure = preserveDocumentStructure;
+  }
+
+  public PresentationLoadOptions clearCustomDocumentProperties(Boolean clearCustomDocumentProperties) {
+    this.clearCustomDocumentProperties = clearCustomDocumentProperties;
+    return this;
+  }
+
+   /**
+   * Value indicating whether custom document properties should be cleared.
+   * @return clearCustomDocumentProperties
+  **/
+  @ApiModelProperty(required = true, value = "Value indicating whether custom document properties should be cleared.")
+  public Boolean getClearCustomDocumentProperties() {
+    return clearCustomDocumentProperties;
+  }
+
+  public void setClearCustomDocumentProperties(Boolean clearCustomDocumentProperties) {
+    this.clearCustomDocumentProperties = clearCustomDocumentProperties;
+  }
+
+  public PresentationLoadOptions clearBuiltInDocumentProperties(Boolean clearBuiltInDocumentProperties) {
+    this.clearBuiltInDocumentProperties = clearBuiltInDocumentProperties;
+    return this;
+  }
+
+   /**
+   * Value indicating whether built in document properties should be cleared.
+   * @return clearBuiltInDocumentProperties
+  **/
+  @ApiModelProperty(required = true, value = "Value indicating whether built in document properties should be cleared.")
+  public Boolean getClearBuiltInDocumentProperties() {
+    return clearBuiltInDocumentProperties;
+  }
+
+  public void setClearBuiltInDocumentProperties(Boolean clearBuiltInDocumentProperties) {
+    this.clearBuiltInDocumentProperties = clearBuiltInDocumentProperties;
+  }
+
+  public PresentationLoadOptions depth(Integer depth) {
+    this.depth = depth;
+    return this;
+  }
+
+   /**
+   * Implements GroupDocs.Conversion.Contracts.IDocumentsContainerLoadOptions.Depth     Default: 1
+   * @return depth
+  **/
+  @ApiModelProperty(required = true, value = "Implements GroupDocs.Conversion.Contracts.IDocumentsContainerLoadOptions.Depth     Default: 1")
+  public Integer getDepth() {
+    return depth;
+  }
+
+  public void setDepth(Integer depth) {
+    this.depth = depth;
+  }
+
+  public PresentationLoadOptions convertOwned(Boolean convertOwned) {
+    this.convertOwned = convertOwned;
+    return this;
+  }
+
+   /**
+   * Implements GroupDocs.Conversion.Contracts.IDocumentsContainerLoadOptions.ConvertOwned     Default is false
+   * @return convertOwned
+  **/
+  @ApiModelProperty(required = true, value = "Implements GroupDocs.Conversion.Contracts.IDocumentsContainerLoadOptions.ConvertOwned     Default is false")
+  public Boolean getConvertOwned() {
+    return convertOwned;
+  }
+
+  public void setConvertOwned(Boolean convertOwned) {
+    this.convertOwned = convertOwned;
+  }
+
+  public PresentationLoadOptions convertOwner(Boolean convertOwner) {
+    this.convertOwner = convertOwner;
+    return this;
+  }
+
+   /**
+   * Implements GroupDocs.Conversion.Contracts.IDocumentsContainerLoadOptions.ConvertOwner     Default is true
+   * @return convertOwner
+  **/
+  @ApiModelProperty(required = true, value = "Implements GroupDocs.Conversion.Contracts.IDocumentsContainerLoadOptions.ConvertOwner     Default is true")
+  public Boolean getConvertOwner() {
+    return convertOwner;
+  }
+
+  public void setConvertOwner(Boolean convertOwner) {
+    this.convertOwner = convertOwner;
+  }
+
+  public PresentationLoadOptions showHiddenSlides(Boolean showHiddenSlides) {
+    this.showHiddenSlides = showHiddenSlides;
+    return this;
+  }
+
+   /**
+   * Show hidden slides.
+   * @return showHiddenSlides
+  **/
+  @ApiModelProperty(required = true, value = "Show hidden slides.")
+  public Boolean getShowHiddenSlides() {
+    return showHiddenSlides;
+  }
+
+  public void setShowHiddenSlides(Boolean showHiddenSlides) {
+    this.showHiddenSlides = showHiddenSlides;
+  }
 
   public PresentationLoadOptions defaultFont(String defaultFont) {
     this.defaultFont = defaultFont;
@@ -123,40 +368,40 @@ public class PresentationLoadOptions extends LoadOptions {
     this.password = password;
   }
 
-  public PresentationLoadOptions hideComments(Boolean hideComments) {
-    this.hideComments = hideComments;
+  public PresentationLoadOptions commentsPosition(CommentsPositionEnum commentsPosition) {
+    this.commentsPosition = commentsPosition;
     return this;
   }
 
    /**
-   * Hide comments
-   * @return hideComments
+   * Represents the way comments are printed with the slide. Default is None.
+   * @return commentsPosition
   **/
-  @ApiModelProperty(required = true, value = "Hide comments")
-  public Boolean getHideComments() {
-    return hideComments;
+  @ApiModelProperty(required = true, value = "Represents the way comments are printed with the slide. Default is None.")
+  public CommentsPositionEnum getCommentsPosition() {
+    return commentsPosition;
   }
 
-  public void setHideComments(Boolean hideComments) {
-    this.hideComments = hideComments;
+  public void setCommentsPosition(CommentsPositionEnum commentsPosition) {
+    this.commentsPosition = commentsPosition;
   }
 
-  public PresentationLoadOptions showHiddenSlides(Boolean showHiddenSlides) {
-    this.showHiddenSlides = showHiddenSlides;
+  public PresentationLoadOptions notesPosition(NotesPositionEnum notesPosition) {
+    this.notesPosition = notesPosition;
     return this;
   }
 
    /**
-   * Show hidden slides
-   * @return showHiddenSlides
+   * Represents the way notes are printed with the slide. Default is None.
+   * @return notesPosition
   **/
-  @ApiModelProperty(required = true, value = "Show hidden slides")
-  public Boolean getShowHiddenSlides() {
-    return showHiddenSlides;
+  @ApiModelProperty(required = true, value = "Represents the way notes are printed with the slide. Default is None.")
+  public NotesPositionEnum getNotesPosition() {
+    return notesPosition;
   }
 
-  public void setShowHiddenSlides(Boolean showHiddenSlides) {
-    this.showHiddenSlides = showHiddenSlides;
+  public void setNotesPosition(NotesPositionEnum notesPosition) {
+    this.notesPosition = notesPosition;
   }
 
 
@@ -169,17 +414,24 @@ public class PresentationLoadOptions extends LoadOptions {
       return false;
     }
     PresentationLoadOptions presentationLoadOptions = (PresentationLoadOptions) o;
-    return Objects.equals(this.defaultFont, presentationLoadOptions.defaultFont) &&
+    return Objects.equals(this.preserveDocumentStructure, presentationLoadOptions.preserveDocumentStructure) &&
+        Objects.equals(this.clearCustomDocumentProperties, presentationLoadOptions.clearCustomDocumentProperties) &&
+        Objects.equals(this.clearBuiltInDocumentProperties, presentationLoadOptions.clearBuiltInDocumentProperties) &&
+        Objects.equals(this.depth, presentationLoadOptions.depth) &&
+        Objects.equals(this.convertOwned, presentationLoadOptions.convertOwned) &&
+        Objects.equals(this.convertOwner, presentationLoadOptions.convertOwner) &&
+        Objects.equals(this.showHiddenSlides, presentationLoadOptions.showHiddenSlides) &&
+        Objects.equals(this.defaultFont, presentationLoadOptions.defaultFont) &&
         Objects.equals(this.fontSubstitutes, presentationLoadOptions.fontSubstitutes) &&
         Objects.equals(this.password, presentationLoadOptions.password) &&
-        Objects.equals(this.hideComments, presentationLoadOptions.hideComments) &&
-        Objects.equals(this.showHiddenSlides, presentationLoadOptions.showHiddenSlides) &&
+        Objects.equals(this.commentsPosition, presentationLoadOptions.commentsPosition) &&
+        Objects.equals(this.notesPosition, presentationLoadOptions.notesPosition) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(defaultFont, fontSubstitutes, password, hideComments, showHiddenSlides, super.hashCode());
+    return Objects.hash(preserveDocumentStructure, clearCustomDocumentProperties, clearBuiltInDocumentProperties, depth, convertOwned, convertOwner, showHiddenSlides, defaultFont, fontSubstitutes, password, commentsPosition, notesPosition, super.hashCode());
   }
 
 
@@ -188,11 +440,18 @@ public class PresentationLoadOptions extends LoadOptions {
     StringBuilder sb = new StringBuilder();
     sb.append("class PresentationLoadOptions {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("    preserveDocumentStructure: ").append(toIndentedString(preserveDocumentStructure)).append("\n");
+    sb.append("    clearCustomDocumentProperties: ").append(toIndentedString(clearCustomDocumentProperties)).append("\n");
+    sb.append("    clearBuiltInDocumentProperties: ").append(toIndentedString(clearBuiltInDocumentProperties)).append("\n");
+    sb.append("    depth: ").append(toIndentedString(depth)).append("\n");
+    sb.append("    convertOwned: ").append(toIndentedString(convertOwned)).append("\n");
+    sb.append("    convertOwner: ").append(toIndentedString(convertOwner)).append("\n");
+    sb.append("    showHiddenSlides: ").append(toIndentedString(showHiddenSlides)).append("\n");
     sb.append("    defaultFont: ").append(toIndentedString(defaultFont)).append("\n");
     sb.append("    fontSubstitutes: ").append(toIndentedString(fontSubstitutes)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
-    sb.append("    hideComments: ").append(toIndentedString(hideComments)).append("\n");
-    sb.append("    showHiddenSlides: ").append(toIndentedString(showHiddenSlides)).append("\n");
+    sb.append("    commentsPosition: ").append(toIndentedString(commentsPosition)).append("\n");
+    sb.append("    notesPosition: ").append(toIndentedString(notesPosition)).append("\n");
     sb.append("}");
     return sb.toString();
   }
