@@ -240,10 +240,10 @@ public class PresentationLoadOptions extends LoadOptions {
   }
 
    /**
-   * Implements GroupDocs.Conversion.Contracts.IDocumentsContainerLoadOptions.Depth     Default: 1
+   * Option to control how many levels in depth to perform conversion     Default: 1
    * @return depth
   **/
-  @ApiModelProperty(required = true, value = "Implements GroupDocs.Conversion.Contracts.IDocumentsContainerLoadOptions.Depth     Default: 1")
+  @ApiModelProperty(required = true, value = "Option to control how many levels in depth to perform conversion     Default: 1")
   public Integer getDepth() {
     return depth;
   }
@@ -258,10 +258,10 @@ public class PresentationLoadOptions extends LoadOptions {
   }
 
    /**
-   * Implements GroupDocs.Conversion.Contracts.IDocumentsContainerLoadOptions.ConvertOwned     Default is false
+   * Option to control whether the owned documents in the documents container must     be converted
    * @return convertOwned
   **/
-  @ApiModelProperty(required = true, value = "Implements GroupDocs.Conversion.Contracts.IDocumentsContainerLoadOptions.ConvertOwned     Default is false")
+  @ApiModelProperty(required = true, value = "Option to control whether the owned documents in the documents container must     be converted")
   public Boolean getConvertOwned() {
     return convertOwned;
   }
@@ -276,10 +276,10 @@ public class PresentationLoadOptions extends LoadOptions {
   }
 
    /**
-   * Implements GroupDocs.Conversion.Contracts.IDocumentsContainerLoadOptions.ConvertOwner     Default is true
+   * Option to control whether the documents container itself must be converted If     this property is true the documents container will be the first converted document     Default is true
    * @return convertOwner
   **/
-  @ApiModelProperty(required = true, value = "Implements GroupDocs.Conversion.Contracts.IDocumentsContainerLoadOptions.ConvertOwner     Default is true")
+  @ApiModelProperty(required = true, value = "Option to control whether the documents container itself must be converted If     this property is true the documents container will be the first converted document     Default is true")
   public Boolean getConvertOwner() {
     return convertOwner;
   }
