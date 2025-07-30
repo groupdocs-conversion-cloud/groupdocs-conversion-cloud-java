@@ -1,6 +1,6 @@
 # GroupDocs.Conversion Cloud SDK for Java
 
-This repository contains GroupDocs.Conversion Cloud SDK for Java source code. This SDK allows you to work with GroupDocs.Conversion Cloud REST APIs in your Java applications.
+This repository contains GroupDocs.Conversion Cloud SDK for Java source code. This SDK has been developed to help you get started with using our document conversion REST API, allowing to seamlessly convert your documents to any format you need. With this single API, you can convert back and forth between over 50 types of documents and images, including all Microsoft Office and OpenDocument file formats, PDF documents, HTML, CAD, raster images and many more.
 
 ## Requirements
 
@@ -47,61 +47,86 @@ dependencies {
 }
 ```
 
-## Getting Started
+### Create an account
+Creating an account is very simple. Go to Dashboard to create a free account.
+We’re using Single Sign On across our websites, therefore, if you already have an account with our services, you can use it to also acccess the [Dashboard](https://dashboard.groupdocs.cloud).
 
-* Please follow the [installation](#installation) instruction
-* Get your AppSID and AppKey at [Dashboard](https://dashboard.groupdocs.cloud) and use them in your code
-* Build and execute
-* Explore more samples at [GitHub](https://github.com/groupdocs-conversion-cloud/groupdocs-conversion-cloud-java-samples)
+### Create an API client app
+Before you can make any requests to GroupDocs Cloud API you need to get a Client Id and a Client Secret. This will will be used to invoke GroupDocs Cloud API. You can get it by creating a new [Application](https://dashboard.groupdocs.cloud/applicationsV).
 
-Example:
+## Convert document
 
 ```java
 import com.groupdocs.cloud.conversion.client.*;
-import com.groupdocs.cloud.conversion.model.*;
-import com.groupdocs.cloud.conversion.api.InfoApi;
-
+import com.groupdocs.cloud.conversion.model.requests.*;
+import com.groupdocs.cloud.conversion.api.*;
+import java.io.File;
 import java.util.*;
 
 public class ApiExample {
 
     public static void main(String[] args) {
-        //TODO: Get your AppSID and AppKey at https://dashboard.groupdocs.cloud (free registration is required).
-        String appSid = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX";
-        String appKey = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+        //TODO: Get your ClientId and ClientSecret at https://dashboard.groupdocs.cloud (free registration is required).
+        String ClientId = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX";
+        String ClientSecret = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
 
-        Configuration configuration = new Configuration(appSid, appKey);
-        
-        InfoApi infoApi = new InfoApi(configuration);
+        Configuration configuration = new Configuration(ClientId, ClientSecret);
 
-        try {
-            FormatsResult response = infoApi.getSupportedFileFormats();
-            for (Format format : response.getFormats()) {
-                System.out.println(format.getFileFormat());
-            }
-        } catch (ApiException e) {
-            System.err.println("Failed to get supported file formats");
-            e.printStackTrace();
-        }
+        ConvertApi apiInstance = new ConvertApi(configuration);
+
+        File file = new File("myFile.docx");
+
+        ConvertDocumentDirectRequest request = new ConvertDocumentDirectRequest("pdf", file, 1, 0, null, null);
+
+        File result = apiInstance.convertDocumentDirect(request);
+
+        System.out.println("Document converted: " + result.length());
     }
 }
 ```
 
-## Manual build and installation from sources
+## Convert document using cloud storage
 
-Building the API client library requires [Maven](https://maven.apache.org/) to be installed.
-Refer to the [official documentation](https://maven.apache.org/plugins/maven-deploy-plugin/usage.html) for more information.
+```java
+import com.groupdocs.cloud.conversion.client.*;
+import com.groupdocs.cloud.conversion.model.requests.*;
+import com.groupdocs.cloud.conversion.api.*;
+import java.io.File;
+import java.util.*;
 
-At first generate the JAR by executing following command in "/src" working directory:
+public class ApiExample {
 
-```shell
-mvn package -D maven.test.skip=true
+    public static void main(String[] args) {
+        //TODO: Get your ClientId and ClientSecret at https://dashboard.groupdocs.cloud (free registration is required).
+        String ClientId = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX";
+        String ClientSecret = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+
+        Configuration configuration = new Configuration(ClientId, ClientSecret);
+
+        FileApi fileApiInstance = new FileApi(configuration);
+        ConvertApi apiInstance = new ConvertApi(configuration);
+
+        // Upload file to cloud storage
+        File file = new File("myFile.docx");
+        UploadFileRequest request = new UploadFileRequest("myFile.docx", file, null);
+		fileApiInstance.uploadFileWithHttpInfo(request);
+
+        // Convert document
+        ConvertSettings settings = new ConvertSettings();
+        settings.setFilePath("myFile.docx");
+        settings.setFormat("pdf");			
+		settings.setOutputPath("converted");
+
+		List<StoredConvertedResult> result = apiInstance.convertDocument(new ConvertDocumentRequest(settings));
+		System.out.println("Document converted: " + result.get(0).getUrl());
+
+        // Download the result
+        DownloadFileRequest request = new DownloadFileRequest("converted/myFile.pdf", null, null);
+        File response = fileApiInstance.downloadFile(request);
+        System.err.println("Expected response type is File: " + response.length());
+    }
+}
 ```
-
-Then manually install the following JARs:
-
-* target/groupdocs-conversion-cloud-25.6.jar
-* target/lib/*.jar
 
 ## Licensing
 
