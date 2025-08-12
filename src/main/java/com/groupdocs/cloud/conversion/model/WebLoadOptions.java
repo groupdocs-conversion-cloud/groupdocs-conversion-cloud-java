@@ -46,8 +46,14 @@ public class WebLoadOptions extends LoadOptions {
   @SerializedName("pageNumbering")
   private Boolean pageNumbering = null;
 
+  @SerializedName("basePath")
+  private String basePath = null;
+
   @SerializedName("encoding")
   private String encoding = null;
+
+  @SerializedName("skipExternalResources")
+  private Boolean skipExternalResources = null;
 
   @SerializedName("usePdf")
   private Boolean usePdf = null;
@@ -102,6 +108,64 @@ public class WebLoadOptions extends LoadOptions {
   @SerializedName("renderingMode")
   private RenderingModeEnum renderingMode = null;
 
+  @SerializedName("zoom")
+  private Integer zoom = null;
+
+  /**
+   * Specifies the page layout options when loading web documents
+   */
+  @JsonAdapter(PageLayoutEnum.Adapter.class)
+  public enum PageLayoutEnum {
+    NONE("None"),
+    
+    SCALETOPAGEWIDTH("ScaleToPageWidth"),
+    
+    SCALETOPAGEHEIGHT("ScaleToPageHeight");
+
+    private String value;
+
+    PageLayoutEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static PageLayoutEnum fromValue(String text) {
+      for (PageLayoutEnum b : PageLayoutEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<PageLayoutEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final PageLayoutEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public PageLayoutEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return PageLayoutEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
+  @SerializedName("pageLayout")
+  private PageLayoutEnum pageLayout = null;
+
+  @SerializedName("customCssStyle")
+  private String customCssStyle = null;
+
   public WebLoadOptions pageNumbering(Boolean pageNumbering) {
     this.pageNumbering = pageNumbering;
     return this;
@@ -120,6 +184,24 @@ public class WebLoadOptions extends LoadOptions {
     this.pageNumbering = pageNumbering;
   }
 
+  public WebLoadOptions basePath(String basePath) {
+    this.basePath = basePath;
+    return this;
+  }
+
+   /**
+   * The base path/url for the html
+   * @return basePath
+  **/
+  @ApiModelProperty(value = "The base path/url for the html")
+  public String getBasePath() {
+    return basePath;
+  }
+
+  public void setBasePath(String basePath) {
+    this.basePath = basePath;
+  }
+
   public WebLoadOptions encoding(String encoding) {
     this.encoding = encoding;
     return this;
@@ -136,6 +218,24 @@ public class WebLoadOptions extends LoadOptions {
 
   public void setEncoding(String encoding) {
     this.encoding = encoding;
+  }
+
+  public WebLoadOptions skipExternalResources(Boolean skipExternalResources) {
+    this.skipExternalResources = skipExternalResources;
+    return this;
+  }
+
+   /**
+   * If true all external resource will not be loading
+   * @return skipExternalResources
+  **/
+  @ApiModelProperty(required = true, value = "If true all external resource will not be loading")
+  public Boolean getSkipExternalResources() {
+    return skipExternalResources;
+  }
+
+  public void setSkipExternalResources(Boolean skipExternalResources) {
+    this.skipExternalResources = skipExternalResources;
   }
 
   public WebLoadOptions usePdf(Boolean usePdf) {
@@ -174,6 +274,60 @@ public class WebLoadOptions extends LoadOptions {
     this.renderingMode = renderingMode;
   }
 
+  public WebLoadOptions zoom(Integer zoom) {
+    this.zoom = zoom;
+    return this;
+  }
+
+   /**
+   * Get zoom
+   * @return zoom
+  **/
+  @ApiModelProperty(required = true, value = "")
+  public Integer getZoom() {
+    return zoom;
+  }
+
+  public void setZoom(Integer zoom) {
+    this.zoom = zoom;
+  }
+
+  public WebLoadOptions pageLayout(PageLayoutEnum pageLayout) {
+    this.pageLayout = pageLayout;
+    return this;
+  }
+
+   /**
+   * Specifies the page layout options when loading web documents
+   * @return pageLayout
+  **/
+  @ApiModelProperty(required = true, value = "Specifies the page layout options when loading web documents")
+  public PageLayoutEnum getPageLayout() {
+    return pageLayout;
+  }
+
+  public void setPageLayout(PageLayoutEnum pageLayout) {
+    this.pageLayout = pageLayout;
+  }
+
+  public WebLoadOptions customCssStyle(String customCssStyle) {
+    this.customCssStyle = customCssStyle;
+    return this;
+  }
+
+   /**
+   * Get customCssStyle
+   * @return customCssStyle
+  **/
+  @ApiModelProperty(value = "")
+  public String getCustomCssStyle() {
+    return customCssStyle;
+  }
+
+  public void setCustomCssStyle(String customCssStyle) {
+    this.customCssStyle = customCssStyle;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -185,15 +339,20 @@ public class WebLoadOptions extends LoadOptions {
     }
     WebLoadOptions webLoadOptions = (WebLoadOptions) o;
     return Objects.equals(this.pageNumbering, webLoadOptions.pageNumbering) &&
+        Objects.equals(this.basePath, webLoadOptions.basePath) &&
         Objects.equals(this.encoding, webLoadOptions.encoding) &&
+        Objects.equals(this.skipExternalResources, webLoadOptions.skipExternalResources) &&
         Objects.equals(this.usePdf, webLoadOptions.usePdf) &&
         Objects.equals(this.renderingMode, webLoadOptions.renderingMode) &&
+        Objects.equals(this.zoom, webLoadOptions.zoom) &&
+        Objects.equals(this.pageLayout, webLoadOptions.pageLayout) &&
+        Objects.equals(this.customCssStyle, webLoadOptions.customCssStyle) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(pageNumbering, encoding, usePdf, renderingMode, super.hashCode());
+    return Objects.hash(pageNumbering, basePath, encoding, skipExternalResources, usePdf, renderingMode, zoom, pageLayout, customCssStyle, super.hashCode());
   }
 
 
@@ -203,9 +362,14 @@ public class WebLoadOptions extends LoadOptions {
     sb.append("class WebLoadOptions {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    pageNumbering: ").append(toIndentedString(pageNumbering)).append("\n");
+    sb.append("    basePath: ").append(toIndentedString(basePath)).append("\n");
     sb.append("    encoding: ").append(toIndentedString(encoding)).append("\n");
+    sb.append("    skipExternalResources: ").append(toIndentedString(skipExternalResources)).append("\n");
     sb.append("    usePdf: ").append(toIndentedString(usePdf)).append("\n");
     sb.append("    renderingMode: ").append(toIndentedString(renderingMode)).append("\n");
+    sb.append("    zoom: ").append(toIndentedString(zoom)).append("\n");
+    sb.append("    pageLayout: ").append(toIndentedString(pageLayout)).append("\n");
+    sb.append("    customCssStyle: ").append(toIndentedString(customCssStyle)).append("\n");
     sb.append("}");
     return sb.toString();
   }

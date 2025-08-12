@@ -37,76 +37,97 @@ import com.groupdocs.cloud.conversion.model.LoadOptions;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Pdf document load options
  */
 @ApiModel(description = "Pdf document load options")
 public class PdfLoadOptions extends LoadOptions {
-  @SerializedName("removeEmbeddedFiles")
-  private Boolean removeEmbeddedFiles = null;
+  @SerializedName("clearBuiltInDocumentProperties")
+  private Boolean clearBuiltInDocumentProperties = null;
 
-  @SerializedName("password")
-  private String password = null;
+  @SerializedName("clearCustomDocumentProperties")
+  private Boolean clearCustomDocumentProperties = null;
 
-  @SerializedName("hidePdfAnnotations")
-  private Boolean hidePdfAnnotations = null;
+  @SerializedName("pageNumbering")
+  private Boolean pageNumbering = null;
 
   @SerializedName("flattenAllFields")
   private Boolean flattenAllFields = null;
 
-  public PdfLoadOptions removeEmbeddedFiles(Boolean removeEmbeddedFiles) {
-    this.removeEmbeddedFiles = removeEmbeddedFiles;
+  @SerializedName("hidePdfAnnotations")
+  private Boolean hidePdfAnnotations = null;
+
+  @SerializedName("defaultFont")
+  private String defaultFont = null;
+
+  @SerializedName("password")
+  private String password = null;
+
+  @SerializedName("removeJavascript")
+  private Boolean removeJavascript = null;
+
+  @SerializedName("removeEmbeddedFiles")
+  private Boolean removeEmbeddedFiles = null;
+
+  @SerializedName("fontSubstitutes")
+  private Map<String, String> fontSubstitutes = null;
+
+  public PdfLoadOptions clearBuiltInDocumentProperties(Boolean clearBuiltInDocumentProperties) {
+    this.clearBuiltInDocumentProperties = clearBuiltInDocumentProperties;
     return this;
   }
 
    /**
-   * Remove embedded files
-   * @return removeEmbeddedFiles
+   * Clear built-in document properties
+   * @return clearBuiltInDocumentProperties
   **/
-  @ApiModelProperty(required = true, value = "Remove embedded files")
-  public Boolean getRemoveEmbeddedFiles() {
-    return removeEmbeddedFiles;
+  @ApiModelProperty(required = true, value = "Clear built-in document properties")
+  public Boolean getClearBuiltInDocumentProperties() {
+    return clearBuiltInDocumentProperties;
   }
 
-  public void setRemoveEmbeddedFiles(Boolean removeEmbeddedFiles) {
-    this.removeEmbeddedFiles = removeEmbeddedFiles;
+  public void setClearBuiltInDocumentProperties(Boolean clearBuiltInDocumentProperties) {
+    this.clearBuiltInDocumentProperties = clearBuiltInDocumentProperties;
   }
 
-  public PdfLoadOptions password(String password) {
-    this.password = password;
+  public PdfLoadOptions clearCustomDocumentProperties(Boolean clearCustomDocumentProperties) {
+    this.clearCustomDocumentProperties = clearCustomDocumentProperties;
     return this;
   }
 
    /**
-   * Set password to unprotect protected document
-   * @return password
+   * Clear custom document properties
+   * @return clearCustomDocumentProperties
   **/
-  @ApiModelProperty(value = "Set password to unprotect protected document")
-  public String getPassword() {
-    return password;
+  @ApiModelProperty(required = true, value = "Clear custom document properties")
+  public Boolean getClearCustomDocumentProperties() {
+    return clearCustomDocumentProperties;
   }
 
-  public void setPassword(String password) {
-    this.password = password;
+  public void setClearCustomDocumentProperties(Boolean clearCustomDocumentProperties) {
+    this.clearCustomDocumentProperties = clearCustomDocumentProperties;
   }
 
-  public PdfLoadOptions hidePdfAnnotations(Boolean hidePdfAnnotations) {
-    this.hidePdfAnnotations = hidePdfAnnotations;
+  public PdfLoadOptions pageNumbering(Boolean pageNumbering) {
+    this.pageNumbering = pageNumbering;
     return this;
   }
 
    /**
-   * Hide annotations in Pdf documents
-   * @return hidePdfAnnotations
+   * Enable or disable generation of page numbering in converted document. Default:     false
+   * @return pageNumbering
   **/
-  @ApiModelProperty(required = true, value = "Hide annotations in Pdf documents")
-  public Boolean getHidePdfAnnotations() {
-    return hidePdfAnnotations;
+  @ApiModelProperty(required = true, value = "Enable or disable generation of page numbering in converted document. Default:     false")
+  public Boolean getPageNumbering() {
+    return pageNumbering;
   }
 
-  public void setHidePdfAnnotations(Boolean hidePdfAnnotations) {
-    this.hidePdfAnnotations = hidePdfAnnotations;
+  public void setPageNumbering(Boolean pageNumbering) {
+    this.pageNumbering = pageNumbering;
   }
 
   public PdfLoadOptions flattenAllFields(Boolean flattenAllFields) {
@@ -127,6 +148,122 @@ public class PdfLoadOptions extends LoadOptions {
     this.flattenAllFields = flattenAllFields;
   }
 
+  public PdfLoadOptions hidePdfAnnotations(Boolean hidePdfAnnotations) {
+    this.hidePdfAnnotations = hidePdfAnnotations;
+    return this;
+  }
+
+   /**
+   * Hide annotations in Pdf documents
+   * @return hidePdfAnnotations
+  **/
+  @ApiModelProperty(required = true, value = "Hide annotations in Pdf documents")
+  public Boolean getHidePdfAnnotations() {
+    return hidePdfAnnotations;
+  }
+
+  public void setHidePdfAnnotations(Boolean hidePdfAnnotations) {
+    this.hidePdfAnnotations = hidePdfAnnotations;
+  }
+
+  public PdfLoadOptions defaultFont(String defaultFont) {
+    this.defaultFont = defaultFont;
+    return this;
+  }
+
+   /**
+   * Default font for Pdf document. The following font will be used if a font is missing.
+   * @return defaultFont
+  **/
+  @ApiModelProperty(value = "Default font for Pdf document. The following font will be used if a font is missing.")
+  public String getDefaultFont() {
+    return defaultFont;
+  }
+
+  public void setDefaultFont(String defaultFont) {
+    this.defaultFont = defaultFont;
+  }
+
+  public PdfLoadOptions password(String password) {
+    this.password = password;
+    return this;
+  }
+
+   /**
+   * Set password to unprotect protected document
+   * @return password
+  **/
+  @ApiModelProperty(value = "Set password to unprotect protected document")
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+  public PdfLoadOptions removeJavascript(Boolean removeJavascript) {
+    this.removeJavascript = removeJavascript;
+    return this;
+  }
+
+   /**
+   * Remove javascript
+   * @return removeJavascript
+  **/
+  @ApiModelProperty(required = true, value = "Remove javascript")
+  public Boolean getRemoveJavascript() {
+    return removeJavascript;
+  }
+
+  public void setRemoveJavascript(Boolean removeJavascript) {
+    this.removeJavascript = removeJavascript;
+  }
+
+  public PdfLoadOptions removeEmbeddedFiles(Boolean removeEmbeddedFiles) {
+    this.removeEmbeddedFiles = removeEmbeddedFiles;
+    return this;
+  }
+
+   /**
+   * Remove embedded files
+   * @return removeEmbeddedFiles
+  **/
+  @ApiModelProperty(required = true, value = "Remove embedded files")
+  public Boolean getRemoveEmbeddedFiles() {
+    return removeEmbeddedFiles;
+  }
+
+  public void setRemoveEmbeddedFiles(Boolean removeEmbeddedFiles) {
+    this.removeEmbeddedFiles = removeEmbeddedFiles;
+  }
+
+  public PdfLoadOptions fontSubstitutes(Map<String, String> fontSubstitutes) {
+    this.fontSubstitutes = fontSubstitutes;
+    return this;
+  }
+
+  public PdfLoadOptions putFontSubstitutesItem(String key, String fontSubstitutesItem) {
+    if (this.fontSubstitutes == null) {
+      this.fontSubstitutes = new HashMap<String, String>();
+    }
+    this.fontSubstitutes.put(key, fontSubstitutesItem);
+    return this;
+  }
+
+   /**
+   * Substitute specific fonts when converting Words document.
+   * @return fontSubstitutes
+  **/
+  @ApiModelProperty(value = "Substitute specific fonts when converting Words document.")
+  public Map<String, String> getFontSubstitutes() {
+    return fontSubstitutes;
+  }
+
+  public void setFontSubstitutes(Map<String, String> fontSubstitutes) {
+    this.fontSubstitutes = fontSubstitutes;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -137,16 +274,22 @@ public class PdfLoadOptions extends LoadOptions {
       return false;
     }
     PdfLoadOptions pdfLoadOptions = (PdfLoadOptions) o;
-    return Objects.equals(this.removeEmbeddedFiles, pdfLoadOptions.removeEmbeddedFiles) &&
-        Objects.equals(this.password, pdfLoadOptions.password) &&
-        Objects.equals(this.hidePdfAnnotations, pdfLoadOptions.hidePdfAnnotations) &&
+    return Objects.equals(this.clearBuiltInDocumentProperties, pdfLoadOptions.clearBuiltInDocumentProperties) &&
+        Objects.equals(this.clearCustomDocumentProperties, pdfLoadOptions.clearCustomDocumentProperties) &&
+        Objects.equals(this.pageNumbering, pdfLoadOptions.pageNumbering) &&
         Objects.equals(this.flattenAllFields, pdfLoadOptions.flattenAllFields) &&
+        Objects.equals(this.hidePdfAnnotations, pdfLoadOptions.hidePdfAnnotations) &&
+        Objects.equals(this.defaultFont, pdfLoadOptions.defaultFont) &&
+        Objects.equals(this.password, pdfLoadOptions.password) &&
+        Objects.equals(this.removeJavascript, pdfLoadOptions.removeJavascript) &&
+        Objects.equals(this.removeEmbeddedFiles, pdfLoadOptions.removeEmbeddedFiles) &&
+        Objects.equals(this.fontSubstitutes, pdfLoadOptions.fontSubstitutes) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(removeEmbeddedFiles, password, hidePdfAnnotations, flattenAllFields, super.hashCode());
+    return Objects.hash(clearBuiltInDocumentProperties, clearCustomDocumentProperties, pageNumbering, flattenAllFields, hidePdfAnnotations, defaultFont, password, removeJavascript, removeEmbeddedFiles, fontSubstitutes, super.hashCode());
   }
 
 
@@ -155,10 +298,16 @@ public class PdfLoadOptions extends LoadOptions {
     StringBuilder sb = new StringBuilder();
     sb.append("class PdfLoadOptions {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    removeEmbeddedFiles: ").append(toIndentedString(removeEmbeddedFiles)).append("\n");
-    sb.append("    password: ").append(toIndentedString(password)).append("\n");
-    sb.append("    hidePdfAnnotations: ").append(toIndentedString(hidePdfAnnotations)).append("\n");
+    sb.append("    clearBuiltInDocumentProperties: ").append(toIndentedString(clearBuiltInDocumentProperties)).append("\n");
+    sb.append("    clearCustomDocumentProperties: ").append(toIndentedString(clearCustomDocumentProperties)).append("\n");
+    sb.append("    pageNumbering: ").append(toIndentedString(pageNumbering)).append("\n");
     sb.append("    flattenAllFields: ").append(toIndentedString(flattenAllFields)).append("\n");
+    sb.append("    hidePdfAnnotations: ").append(toIndentedString(hidePdfAnnotations)).append("\n");
+    sb.append("    defaultFont: ").append(toIndentedString(defaultFont)).append("\n");
+    sb.append("    password: ").append(toIndentedString(password)).append("\n");
+    sb.append("    removeJavascript: ").append(toIndentedString(removeJavascript)).append("\n");
+    sb.append("    removeEmbeddedFiles: ").append(toIndentedString(removeEmbeddedFiles)).append("\n");
+    sb.append("    fontSubstitutes: ").append(toIndentedString(fontSubstitutes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

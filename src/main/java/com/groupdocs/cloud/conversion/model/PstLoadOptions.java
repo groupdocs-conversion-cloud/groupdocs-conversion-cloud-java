@@ -32,6 +32,7 @@ import com.groupdocs.cloud.conversion.model.EmailLoadOptions;
 import com.groupdocs.cloud.conversion.model.FieldLabel;
 import io.swagger.annotations.ApiModel;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Pst load options

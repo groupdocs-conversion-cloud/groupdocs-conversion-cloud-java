@@ -48,11 +48,8 @@ public class CadLoadOptions extends LoadOptions {
   @SerializedName("layoutNames")
   private List<String> layoutNames = null;
 
-  @SerializedName("backgroundColor")
-  private String backgroundColor = null;
-
   /**
-   * Gets or sets type of drawing.
+   * A type of drawing.
    */
   @JsonAdapter(DrawTypeEnum.Adapter.class)
   public enum DrawTypeEnum {
@@ -101,6 +98,12 @@ public class CadLoadOptions extends LoadOptions {
   @SerializedName("drawType")
   private DrawTypeEnum drawType = null;
 
+  @SerializedName("drawColor")
+  private String drawColor = null;
+
+  @SerializedName("backgroundColor")
+  private String backgroundColor = null;
+
   public CadLoadOptions layoutNames(List<String> layoutNames) {
     this.layoutNames = layoutNames;
     return this;
@@ -127,40 +130,58 @@ public class CadLoadOptions extends LoadOptions {
     this.layoutNames = layoutNames;
   }
 
-  public CadLoadOptions backgroundColor(String backgroundColor) {
-    this.backgroundColor = backgroundColor;
-    return this;
-  }
-
-   /**
-   * Gets or sets a background color.
-   * @return backgroundColor
-  **/
-  @ApiModelProperty(value = "Gets or sets a background color.")
-  public String getBackgroundColor() {
-    return backgroundColor;
-  }
-
-  public void setBackgroundColor(String backgroundColor) {
-    this.backgroundColor = backgroundColor;
-  }
-
   public CadLoadOptions drawType(DrawTypeEnum drawType) {
     this.drawType = drawType;
     return this;
   }
 
    /**
-   * Gets or sets type of drawing.
+   * A type of drawing.
    * @return drawType
   **/
-  @ApiModelProperty(required = true, value = "Gets or sets type of drawing.")
+  @ApiModelProperty(required = true, value = "A type of drawing.")
   public DrawTypeEnum getDrawType() {
     return drawType;
   }
 
   public void setDrawType(DrawTypeEnum drawType) {
     this.drawType = drawType;
+  }
+
+  public CadLoadOptions drawColor(String drawColor) {
+    this.drawColor = drawColor;
+    return this;
+  }
+
+   /**
+   * A foreground color.             
+   * @return drawColor
+  **/
+  @ApiModelProperty(value = "A foreground color.             ")
+  public String getDrawColor() {
+    return drawColor;
+  }
+
+  public void setDrawColor(String drawColor) {
+    this.drawColor = drawColor;
+  }
+
+  public CadLoadOptions backgroundColor(String backgroundColor) {
+    this.backgroundColor = backgroundColor;
+    return this;
+  }
+
+   /**
+   * A background color.
+   * @return backgroundColor
+  **/
+  @ApiModelProperty(value = "A background color.")
+  public String getBackgroundColor() {
+    return backgroundColor;
+  }
+
+  public void setBackgroundColor(String backgroundColor) {
+    this.backgroundColor = backgroundColor;
   }
 
 
@@ -174,14 +195,15 @@ public class CadLoadOptions extends LoadOptions {
     }
     CadLoadOptions cadLoadOptions = (CadLoadOptions) o;
     return Objects.equals(this.layoutNames, cadLoadOptions.layoutNames) &&
-        Objects.equals(this.backgroundColor, cadLoadOptions.backgroundColor) &&
         Objects.equals(this.drawType, cadLoadOptions.drawType) &&
+        Objects.equals(this.drawColor, cadLoadOptions.drawColor) &&
+        Objects.equals(this.backgroundColor, cadLoadOptions.backgroundColor) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(layoutNames, backgroundColor, drawType, super.hashCode());
+    return Objects.hash(layoutNames, drawType, drawColor, backgroundColor, super.hashCode());
   }
 
 
@@ -191,8 +213,9 @@ public class CadLoadOptions extends LoadOptions {
     sb.append("class CadLoadOptions {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    layoutNames: ").append(toIndentedString(layoutNames)).append("\n");
-    sb.append("    backgroundColor: ").append(toIndentedString(backgroundColor)).append("\n");
     sb.append("    drawType: ").append(toIndentedString(drawType)).append("\n");
+    sb.append("    drawColor: ").append(toIndentedString(drawColor)).append("\n");
+    sb.append("    backgroundColor: ").append(toIndentedString(backgroundColor)).append("\n");
     sb.append("}");
     return sb.toString();
   }
