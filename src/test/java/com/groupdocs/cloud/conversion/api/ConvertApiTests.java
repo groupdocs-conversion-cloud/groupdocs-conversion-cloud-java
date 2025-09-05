@@ -122,7 +122,7 @@ public class ConvertApiTests extends BaseApiTest {
         TestFile testFile = TestFiles.PasswordProtectedDocx;
         File fileObj = getTestFile(testFile);
         
-        DocxLoadOptions loadOptions = new DocxLoadOptions();
+        WordProcessingLoadOptions loadOptions = new WordProcessingLoadOptions();
         loadOptions.setFormat("docx");
         loadOptions.setPassword(testFile.getPassword());
         PdfConvertOptions convertOptions = new PdfConvertOptions();
