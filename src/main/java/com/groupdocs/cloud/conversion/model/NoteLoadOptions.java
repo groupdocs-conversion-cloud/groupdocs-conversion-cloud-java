@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="OneLoadOptions.java">
+ * <copyright company="Aspose Pty Ltd" file="NoteLoadOptions.java">
  *   Copyright (c) Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -45,7 +45,7 @@ import java.util.Map;
  * One document load options
  */
 @ApiModel(description = "One document load options")
-public class OneLoadOptions extends LoadOptions {
+public class NoteLoadOptions extends LoadOptions {
   @SerializedName("defaultFont")
   private String defaultFont = null;
 
@@ -55,7 +55,7 @@ public class OneLoadOptions extends LoadOptions {
   @SerializedName("password")
   private String password = null;
 
-  public OneLoadOptions defaultFont(String defaultFont) {
+  public NoteLoadOptions defaultFont(String defaultFont) {
     this.defaultFont = defaultFont;
     return this;
   }
@@ -73,12 +73,12 @@ public class OneLoadOptions extends LoadOptions {
     this.defaultFont = defaultFont;
   }
 
-  public OneLoadOptions fontSubstitutes(Map<String, String> fontSubstitutes) {
+  public NoteLoadOptions fontSubstitutes(Map<String, String> fontSubstitutes) {
     this.fontSubstitutes = fontSubstitutes;
     return this;
   }
 
-  public OneLoadOptions putFontSubstitutesItem(String key, String fontSubstitutesItem) {
+  public NoteLoadOptions putFontSubstitutesItem(String key, String fontSubstitutesItem) {
     if (this.fontSubstitutes == null) {
       this.fontSubstitutes = new HashMap<String, String>();
     }
@@ -99,7 +99,7 @@ public class OneLoadOptions extends LoadOptions {
     this.fontSubstitutes = fontSubstitutes;
   }
 
-  public OneLoadOptions password(String password) {
+  public NoteLoadOptions password(String password) {
     this.password = password;
     return this;
   }
@@ -126,10 +126,10 @@ public class OneLoadOptions extends LoadOptions {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    OneLoadOptions oneLoadOptions = (OneLoadOptions) o;
-    return Objects.equals(this.defaultFont, oneLoadOptions.defaultFont) &&
-        Objects.equals(this.fontSubstitutes, oneLoadOptions.fontSubstitutes) &&
-        Objects.equals(this.password, oneLoadOptions.password) &&
+    NoteLoadOptions noteLoadOptions = (NoteLoadOptions) o;
+    return Objects.equals(this.defaultFont, noteLoadOptions.defaultFont) &&
+        Objects.equals(this.fontSubstitutes, noteLoadOptions.fontSubstitutes) &&
+        Objects.equals(this.password, noteLoadOptions.password) &&
         super.equals(o);
   }
 
@@ -142,7 +142,7 @@ public class OneLoadOptions extends LoadOptions {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class OneLoadOptions {\n");
+    sb.append("class NoteLoadOptions {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    defaultFont: ").append(toIndentedString(defaultFont)).append("\n");
     sb.append("    fontSubstitutes: ").append(toIndentedString(fontSubstitutes)).append("\n");
