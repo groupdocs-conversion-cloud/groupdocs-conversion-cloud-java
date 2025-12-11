@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="J2kConvertOptions.java">
+ * <copyright company="Aspose Pty Ltd" file="DiagramConvertOptions.java">
  *   Copyright (c) Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -28,16 +28,44 @@
 package com.groupdocs.cloud.conversion.model;
 
 import java.util.Objects;
-import com.groupdocs.cloud.conversion.model.JpgConvertOptions;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import com.groupdocs.cloud.conversion.model.ConvertOptions;
 import com.groupdocs.cloud.conversion.model.WatermarkOptions;
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.List;
 
 /**
- * J2k convert options
+ * Options for to Diagram conversion
  */
-@ApiModel(description = "J2k convert options")
-public class J2kConvertOptions extends JpgConvertOptions {
+@ApiModel(description = "Options for to Diagram conversion")
+public class DiagramConvertOptions extends ConvertOptions {
+  @SerializedName("autoFitPageToDrawingContent")
+  private Boolean autoFitPageToDrawingContent = null;
+
+  public DiagramConvertOptions autoFitPageToDrawingContent(Boolean autoFitPageToDrawingContent) {
+    this.autoFitPageToDrawingContent = autoFitPageToDrawingContent;
+    return this;
+  }
+
+   /**
+   * Gets or sets a value indicating whether to enlarge the page to fit the drawing content.
+   * @return autoFitPageToDrawingContent
+  **/
+  @ApiModelProperty(required = true, value = "Gets or sets a value indicating whether to enlarge the page to fit the drawing content.")
+  public Boolean getAutoFitPageToDrawingContent() {
+    return autoFitPageToDrawingContent;
+  }
+
+  public void setAutoFitPageToDrawingContent(Boolean autoFitPageToDrawingContent) {
+    this.autoFitPageToDrawingContent = autoFitPageToDrawingContent;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -47,20 +75,23 @@ public class J2kConvertOptions extends JpgConvertOptions {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    return super.equals(o);
+    DiagramConvertOptions diagramConvertOptions = (DiagramConvertOptions) o;
+    return Objects.equals(this.autoFitPageToDrawingContent, diagramConvertOptions.autoFitPageToDrawingContent) &&
+        super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode());
+    return Objects.hash(autoFitPageToDrawingContent, super.hashCode());
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class J2kConvertOptions {\n");
+    sb.append("class DiagramConvertOptions {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("    autoFitPageToDrawingContent: ").append(toIndentedString(autoFitPageToDrawingContent)).append("\n");
     sb.append("}");
     return sb.toString();
   }

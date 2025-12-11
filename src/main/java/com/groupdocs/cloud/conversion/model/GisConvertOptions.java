@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="PptxConvertOptions.java">
+ * <copyright company="Aspose Pty Ltd" file="GisConvertOptions.java">
  *   Copyright (c) Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -28,16 +28,16 @@
 package com.groupdocs.cloud.conversion.model;
 
 import java.util.Objects;
-import com.groupdocs.cloud.conversion.model.PresentationConvertOptions;
+import com.groupdocs.cloud.conversion.model.ConvertOptions;
 import com.groupdocs.cloud.conversion.model.WatermarkOptions;
 import io.swagger.annotations.ApiModel;
 import java.util.List;
 
 /**
- * Pptx convert options
+ * Options for to Gis conversion
  */
-@ApiModel(description = "Pptx convert options")
-public class PptxConvertOptions extends PresentationConvertOptions {
+@ApiModel(description = "Options for to Gis conversion")
+public class GisConvertOptions extends ConvertOptions {
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -59,7 +59,7 @@ public class PptxConvertOptions extends PresentationConvertOptions {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PptxConvertOptions {\n");
+    sb.append("class GisConvertOptions {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("}");
     return sb.toString();

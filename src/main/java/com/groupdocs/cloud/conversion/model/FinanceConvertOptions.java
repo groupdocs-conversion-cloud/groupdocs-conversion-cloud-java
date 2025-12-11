@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="IcoConvertOptions.java">
+ * <copyright company="Aspose Pty Ltd" file="FinanceConvertOptions.java">
  *   Copyright (c) Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -28,16 +28,16 @@
 package com.groupdocs.cloud.conversion.model;
 
 import java.util.Objects;
-import com.groupdocs.cloud.conversion.model.ImageConvertOptions;
+import com.groupdocs.cloud.conversion.model.ConvertOptions;
 import com.groupdocs.cloud.conversion.model.WatermarkOptions;
 import io.swagger.annotations.ApiModel;
 import java.util.List;
 
 /**
- * Ico convert options
+ * Options for to Finance conversion
  */
-@ApiModel(description = "Ico convert options")
-public class IcoConvertOptions extends ImageConvertOptions {
+@ApiModel(description = "Options for to Finance conversion")
+public class FinanceConvertOptions extends ConvertOptions {
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -59,7 +59,7 @@ public class IcoConvertOptions extends ImageConvertOptions {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class IcoConvertOptions {\n");
+    sb.append("class FinanceConvertOptions {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("}");
     return sb.toString();

@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="TxtConvertOptions.java">
+ * <copyright company="Aspose Pty Ltd" file="FontConvertOptions.java">
  *   Copyright (c) Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -34,10 +34,10 @@ import io.swagger.annotations.ApiModel;
 import java.util.List;
 
 /**
- * Txt convert options
+ * Options for to Font conversion
  */
-@ApiModel(description = "Txt convert options")
-public class TxtConvertOptions extends ConvertOptions {
+@ApiModel(description = "Options for to Font conversion")
+public class FontConvertOptions extends ConvertOptions {
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -59,7 +59,7 @@ public class TxtConvertOptions extends ConvertOptions {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class TxtConvertOptions {\n");
+    sb.append("class FontConvertOptions {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("}");
     return sb.toString();

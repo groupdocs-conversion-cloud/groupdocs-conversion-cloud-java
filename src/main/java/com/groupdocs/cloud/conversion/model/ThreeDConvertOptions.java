@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="OtsConvertOptions.java">
+ * <copyright company="Aspose Pty Ltd" file="ThreeDConvertOptions.java">
  *   Copyright (c) Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -28,16 +28,16 @@
 package com.groupdocs.cloud.conversion.model;
 
 import java.util.Objects;
-import com.groupdocs.cloud.conversion.model.SpreadsheetConvertOptions;
+import com.groupdocs.cloud.conversion.model.ConvertOptions;
 import com.groupdocs.cloud.conversion.model.WatermarkOptions;
 import io.swagger.annotations.ApiModel;
 import java.util.List;
 
 /**
- * Ots convert options
+ * Options for to 3d conversion
  */
-@ApiModel(description = "Ots convert options")
-public class OtsConvertOptions extends SpreadsheetConvertOptions {
+@ApiModel(description = "Options for to 3d conversion")
+public class ThreeDConvertOptions extends ConvertOptions {
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -59,7 +59,7 @@ public class OtsConvertOptions extends SpreadsheetConvertOptions {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class OtsConvertOptions {\n");
+    sb.append("class ThreeDConvertOptions {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("}");
     return sb.toString();

@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="OttConvertOptions.java">
+ * <copyright company="Aspose Pty Ltd" file="ProjectManagementConvertOptions.java">
  *   Copyright (c) Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -28,16 +28,16 @@
 package com.groupdocs.cloud.conversion.model;
 
 import java.util.Objects;
+import com.groupdocs.cloud.conversion.model.ConvertOptions;
 import com.groupdocs.cloud.conversion.model.WatermarkOptions;
-import com.groupdocs.cloud.conversion.model.WordProcessingConvertOptions;
 import io.swagger.annotations.ApiModel;
 import java.util.List;
 
 /**
- * Ott convert options
+ * Options for to ProjectManagement conversion
  */
-@ApiModel(description = "Ott convert options")
-public class OttConvertOptions extends WordProcessingConvertOptions {
+@ApiModel(description = "Options for to ProjectManagement conversion")
+public class ProjectManagementConvertOptions extends ConvertOptions {
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -59,7 +59,7 @@ public class OttConvertOptions extends WordProcessingConvertOptions {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class OttConvertOptions {\n");
+    sb.append("class ProjectManagementConvertOptions {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("}");
     return sb.toString();

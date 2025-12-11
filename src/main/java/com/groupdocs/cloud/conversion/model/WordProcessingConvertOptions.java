@@ -34,6 +34,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.groupdocs.cloud.conversion.model.ConvertOptions;
+import com.groupdocs.cloud.conversion.model.RtfConvertOptions;
 import com.groupdocs.cloud.conversion.model.WatermarkOptions;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -244,6 +245,9 @@ public class WordProcessingConvertOptions extends ConvertOptions {
   @SerializedName("pageOrientation")
   private PageOrientationEnum pageOrientation = null;
 
+  @SerializedName("rtfOptions")
+  private RtfConvertOptions rtfOptions = null;
+
   public WordProcessingConvertOptions width(Integer width) {
     this.width = width;
     return this;
@@ -388,6 +392,24 @@ public class WordProcessingConvertOptions extends ConvertOptions {
     this.pageOrientation = pageOrientation;
   }
 
+  public WordProcessingConvertOptions rtfOptions(RtfConvertOptions rtfOptions) {
+    this.rtfOptions = rtfOptions;
+    return this;
+  }
+
+   /**
+   * RTF specific convert options
+   * @return rtfOptions
+  **/
+  @ApiModelProperty(value = "RTF specific convert options")
+  public RtfConvertOptions getRtfOptions() {
+    return rtfOptions;
+  }
+
+  public void setRtfOptions(RtfConvertOptions rtfOptions) {
+    this.rtfOptions = rtfOptions;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -406,12 +428,13 @@ public class WordProcessingConvertOptions extends ConvertOptions {
         Objects.equals(this.pdfRecognitionMode, wordProcessingConvertOptions.pdfRecognitionMode) &&
         Objects.equals(this.pageSize, wordProcessingConvertOptions.pageSize) &&
         Objects.equals(this.pageOrientation, wordProcessingConvertOptions.pageOrientation) &&
+        Objects.equals(this.rtfOptions, wordProcessingConvertOptions.rtfOptions) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(width, height, dpi, password, zoom, pdfRecognitionMode, pageSize, pageOrientation, super.hashCode());
+    return Objects.hash(width, height, dpi, password, zoom, pdfRecognitionMode, pageSize, pageOrientation, rtfOptions, super.hashCode());
   }
 
 
@@ -428,6 +451,7 @@ public class WordProcessingConvertOptions extends ConvertOptions {
     sb.append("    pdfRecognitionMode: ").append(toIndentedString(pdfRecognitionMode)).append("\n");
     sb.append("    pageSize: ").append(toIndentedString(pageSize)).append("\n");
     sb.append("    pageOrientation: ").append(toIndentedString(pageOrientation)).append("\n");
+    sb.append("    rtfOptions: ").append(toIndentedString(rtfOptions)).append("\n");
     sb.append("}");
     return sb.toString();
   }

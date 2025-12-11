@@ -56,7 +56,7 @@ public class ConvertApiTests extends BaseApiTest {
         ConvertSettings convertSettings = new ConvertSettings();
         convertSettings.setFilePath(TestFiles.OnePageDocx.getPath());
         convertSettings.setFormat("jpg");
-        convertSettings.setConvertOptions(new JpgConvertOptions());
+        convertSettings.setConvertOptions(new ImageConvertOptions());
         convertSettings.setOutputPath("converted");
 
         ConvertDocumentRequest request = new ConvertDocumentRequest(convertSettings);

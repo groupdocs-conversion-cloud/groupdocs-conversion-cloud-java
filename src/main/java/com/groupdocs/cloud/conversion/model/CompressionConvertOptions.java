@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="Jp2ConvertOptions.java">
+ * <copyright company="Aspose Pty Ltd" file="CompressionConvertOptions.java">
  *   Copyright (c) Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -28,16 +28,44 @@
 package com.groupdocs.cloud.conversion.model;
 
 import java.util.Objects;
-import com.groupdocs.cloud.conversion.model.JpgConvertOptions;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import com.groupdocs.cloud.conversion.model.ConvertOptions;
 import com.groupdocs.cloud.conversion.model.WatermarkOptions;
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.List;
 
 /**
- * Jp2 convert options
+ * Options for to zip conversion
  */
-@ApiModel(description = "Jp2 convert options")
-public class Jp2ConvertOptions extends JpgConvertOptions {
+@ApiModel(description = "Options for to zip conversion")
+public class CompressionConvertOptions extends ConvertOptions {
+  @SerializedName("password")
+  private String password = null;
+
+  public CompressionConvertOptions password(String password) {
+    this.password = password;
+    return this;
+  }
+
+   /**
+   * Set this property if you want to protect the converted document with a password
+   * @return password
+  **/
+  @ApiModelProperty(value = "Set this property if you want to protect the converted document with a password")
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -47,20 +75,23 @@ public class Jp2ConvertOptions extends JpgConvertOptions {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    return super.equals(o);
+    CompressionConvertOptions compressionConvertOptions = (CompressionConvertOptions) o;
+    return Objects.equals(this.password, compressionConvertOptions.password) &&
+        super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode());
+    return Objects.hash(password, super.hashCode());
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Jp2ConvertOptions {\n");
+    sb.append("class CompressionConvertOptions {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -51,9 +51,6 @@ public class SpreadsheetConvertOptions extends ConvertOptions {
   @SerializedName("zoom")
   private Integer zoom = null;
 
-  @SerializedName("usePdf")
-  private Boolean usePdf = null;
-
   public SpreadsheetConvertOptions password(String password) {
     this.password = password;
     return this;
@@ -90,24 +87,6 @@ public class SpreadsheetConvertOptions extends ConvertOptions {
     this.zoom = zoom;
   }
 
-  public SpreadsheetConvertOptions usePdf(Boolean usePdf) {
-    this.usePdf = usePdf;
-    return this;
-  }
-
-   /**
-   * If true, the input firstly is converted to PDF and after that to desired format
-   * @return usePdf
-  **/
-  @ApiModelProperty(required = true, value = "If true, the input firstly is converted to PDF and after that to desired format")
-  public Boolean getUsePdf() {
-    return usePdf;
-  }
-
-  public void setUsePdf(Boolean usePdf) {
-    this.usePdf = usePdf;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -120,13 +99,12 @@ public class SpreadsheetConvertOptions extends ConvertOptions {
     SpreadsheetConvertOptions spreadsheetConvertOptions = (SpreadsheetConvertOptions) o;
     return Objects.equals(this.password, spreadsheetConvertOptions.password) &&
         Objects.equals(this.zoom, spreadsheetConvertOptions.zoom) &&
-        Objects.equals(this.usePdf, spreadsheetConvertOptions.usePdf) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(password, zoom, usePdf, super.hashCode());
+    return Objects.hash(password, zoom, super.hashCode());
   }
 
 
@@ -137,7 +115,6 @@ public class SpreadsheetConvertOptions extends ConvertOptions {
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("    zoom: ").append(toIndentedString(zoom)).append("\n");
-    sb.append("    usePdf: ").append(toIndentedString(usePdf)).append("\n");
     sb.append("}");
     return sb.toString();
   }

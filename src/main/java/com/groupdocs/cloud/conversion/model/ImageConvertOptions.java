@@ -34,7 +34,11 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.groupdocs.cloud.conversion.model.ConvertOptions;
+import com.groupdocs.cloud.conversion.model.JpgConvertOptions;
+import com.groupdocs.cloud.conversion.model.PsdConvertOptions;
+import com.groupdocs.cloud.conversion.model.TiffConvertOptions;
 import com.groupdocs.cloud.conversion.model.WatermarkOptions;
+import com.groupdocs.cloud.conversion.model.WebpConvertOptions;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -131,6 +135,18 @@ public class ImageConvertOptions extends ConvertOptions {
 
   @SerializedName("backgroundColor")
   private String backgroundColor = null;
+
+  @SerializedName("jpegOptions")
+  private JpgConvertOptions jpegOptions = null;
+
+  @SerializedName("psdOptions")
+  private PsdConvertOptions psdOptions = null;
+
+  @SerializedName("tiffOptions")
+  private TiffConvertOptions tiffOptions = null;
+
+  @SerializedName("webpOptions")
+  private WebpConvertOptions webpOptions = null;
 
   public ImageConvertOptions width(Integer width) {
     this.width = width;
@@ -348,6 +364,78 @@ public class ImageConvertOptions extends ConvertOptions {
     this.backgroundColor = backgroundColor;
   }
 
+  public ImageConvertOptions jpegOptions(JpgConvertOptions jpegOptions) {
+    this.jpegOptions = jpegOptions;
+    return this;
+  }
+
+   /**
+   * Options for converting to Jpeg-compatible image
+   * @return jpegOptions
+  **/
+  @ApiModelProperty(value = "Options for converting to Jpeg-compatible image")
+  public JpgConvertOptions getJpegOptions() {
+    return jpegOptions;
+  }
+
+  public void setJpegOptions(JpgConvertOptions jpegOptions) {
+    this.jpegOptions = jpegOptions;
+  }
+
+  public ImageConvertOptions psdOptions(PsdConvertOptions psdOptions) {
+    this.psdOptions = psdOptions;
+    return this;
+  }
+
+   /**
+   * Options for converting to PSD-compatible image
+   * @return psdOptions
+  **/
+  @ApiModelProperty(value = "Options for converting to PSD-compatible image")
+  public PsdConvertOptions getPsdOptions() {
+    return psdOptions;
+  }
+
+  public void setPsdOptions(PsdConvertOptions psdOptions) {
+    this.psdOptions = psdOptions;
+  }
+
+  public ImageConvertOptions tiffOptions(TiffConvertOptions tiffOptions) {
+    this.tiffOptions = tiffOptions;
+    return this;
+  }
+
+   /**
+   * Options for converting to Tiff-compatible image
+   * @return tiffOptions
+  **/
+  @ApiModelProperty(value = "Options for converting to Tiff-compatible image")
+  public TiffConvertOptions getTiffOptions() {
+    return tiffOptions;
+  }
+
+  public void setTiffOptions(TiffConvertOptions tiffOptions) {
+    this.tiffOptions = tiffOptions;
+  }
+
+  public ImageConvertOptions webpOptions(WebpConvertOptions webpOptions) {
+    this.webpOptions = webpOptions;
+    return this;
+  }
+
+   /**
+   * Options for converting to WebP-compatible image
+   * @return webpOptions
+  **/
+  @ApiModelProperty(value = "Options for converting to WebP-compatible image")
+  public WebpConvertOptions getWebpOptions() {
+    return webpOptions;
+  }
+
+  public void setWebpOptions(WebpConvertOptions webpOptions) {
+    this.webpOptions = webpOptions;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -370,12 +458,16 @@ public class ImageConvertOptions extends ConvertOptions {
         Objects.equals(this.gamma, imageConvertOptions.gamma) &&
         Objects.equals(this.flipMode, imageConvertOptions.flipMode) &&
         Objects.equals(this.backgroundColor, imageConvertOptions.backgroundColor) &&
+        Objects.equals(this.jpegOptions, imageConvertOptions.jpegOptions) &&
+        Objects.equals(this.psdOptions, imageConvertOptions.psdOptions) &&
+        Objects.equals(this.tiffOptions, imageConvertOptions.tiffOptions) &&
+        Objects.equals(this.webpOptions, imageConvertOptions.webpOptions) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(width, height, horizontalResolution, verticalResolution, grayscale, rotateAngle, usePdf, brightness, contrast, gamma, flipMode, backgroundColor, super.hashCode());
+    return Objects.hash(width, height, horizontalResolution, verticalResolution, grayscale, rotateAngle, usePdf, brightness, contrast, gamma, flipMode, backgroundColor, jpegOptions, psdOptions, tiffOptions, webpOptions, super.hashCode());
   }
 
 
@@ -396,6 +488,10 @@ public class ImageConvertOptions extends ConvertOptions {
     sb.append("    gamma: ").append(toIndentedString(gamma)).append("\n");
     sb.append("    flipMode: ").append(toIndentedString(flipMode)).append("\n");
     sb.append("    backgroundColor: ").append(toIndentedString(backgroundColor)).append("\n");
+    sb.append("    jpegOptions: ").append(toIndentedString(jpegOptions)).append("\n");
+    sb.append("    psdOptions: ").append(toIndentedString(psdOptions)).append("\n");
+    sb.append("    tiffOptions: ").append(toIndentedString(tiffOptions)).append("\n");
+    sb.append("    webpOptions: ").append(toIndentedString(webpOptions)).append("\n");
     sb.append("}");
     return sb.toString();
   }

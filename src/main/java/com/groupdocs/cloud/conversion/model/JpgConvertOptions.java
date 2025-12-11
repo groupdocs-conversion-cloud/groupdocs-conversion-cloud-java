@@ -33,18 +33,15 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.groupdocs.cloud.conversion.model.ImageConvertOptions;
-import com.groupdocs.cloud.conversion.model.WatermarkOptions;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.List;
 
 /**
  * Jpg convert options
  */
 @ApiModel(description = "Jpg convert options")
-public class JpgConvertOptions extends ImageConvertOptions {
+public class JpgConvertOptions {
   @SerializedName("quality")
   private Integer quality = null;
 
@@ -76,13 +73,12 @@ public class JpgConvertOptions extends ImageConvertOptions {
       return false;
     }
     JpgConvertOptions jpgConvertOptions = (JpgConvertOptions) o;
-    return Objects.equals(this.quality, jpgConvertOptions.quality) &&
-        super.equals(o);
+    return Objects.equals(this.quality, jpgConvertOptions.quality);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(quality, super.hashCode());
+    return Objects.hash(quality);
   }
 
 
@@ -90,7 +86,7 @@ public class JpgConvertOptions extends ImageConvertOptions {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class JpgConvertOptions {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
     sb.append("    quality: ").append(toIndentedString(quality)).append("\n");
     sb.append("}");
     return sb.toString();

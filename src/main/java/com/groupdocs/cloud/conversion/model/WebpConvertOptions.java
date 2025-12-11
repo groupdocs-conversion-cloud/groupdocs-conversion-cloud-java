@@ -33,18 +33,15 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.groupdocs.cloud.conversion.model.ImageConvertOptions;
-import com.groupdocs.cloud.conversion.model.WatermarkOptions;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.List;
 
 /**
  * Webp convert options
  */
 @ApiModel(description = "Webp convert options")
-public class WebpConvertOptions extends ImageConvertOptions {
+public class WebpConvertOptions {
   @SerializedName("lossless")
   private Boolean lossless = null;
 
@@ -76,13 +73,12 @@ public class WebpConvertOptions extends ImageConvertOptions {
       return false;
     }
     WebpConvertOptions webpConvertOptions = (WebpConvertOptions) o;
-    return Objects.equals(this.lossless, webpConvertOptions.lossless) &&
-        super.equals(o);
+    return Objects.equals(this.lossless, webpConvertOptions.lossless);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(lossless, super.hashCode());
+    return Objects.hash(lossless);
   }
 
 
@@ -90,7 +86,7 @@ public class WebpConvertOptions extends ImageConvertOptions {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class WebpConvertOptions {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
     sb.append("    lossless: ").append(toIndentedString(lossless)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -33,18 +33,15 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.groupdocs.cloud.conversion.model.WatermarkOptions;
-import com.groupdocs.cloud.conversion.model.WordProcessingConvertOptions;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.List;
 
 /**
  * Rtf convert options
  */
 @ApiModel(description = "Rtf convert options")
-public class RtfConvertOptions extends WordProcessingConvertOptions {
+public class RtfConvertOptions {
   @SerializedName("exportImagesForOldReaders")
   private Boolean exportImagesForOldReaders = null;
 
@@ -76,13 +73,12 @@ public class RtfConvertOptions extends WordProcessingConvertOptions {
       return false;
     }
     RtfConvertOptions rtfConvertOptions = (RtfConvertOptions) o;
-    return Objects.equals(this.exportImagesForOldReaders, rtfConvertOptions.exportImagesForOldReaders) &&
-        super.equals(o);
+    return Objects.equals(this.exportImagesForOldReaders, rtfConvertOptions.exportImagesForOldReaders);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(exportImagesForOldReaders, super.hashCode());
+    return Objects.hash(exportImagesForOldReaders);
   }
 
 
@@ -90,7 +86,7 @@ public class RtfConvertOptions extends WordProcessingConvertOptions {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class RtfConvertOptions {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
     sb.append("    exportImagesForOldReaders: ").append(toIndentedString(exportImagesForOldReaders)).append("\n");
     sb.append("}");
     return sb.toString();

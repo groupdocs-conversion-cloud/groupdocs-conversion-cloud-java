@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------------------------------------------------
- * <copyright company="Aspose Pty Ltd" file="JpxConvertOptions.java">
+ * <copyright company="Aspose Pty Ltd" file="EmailConvertOptions.java">
  *   Copyright (c) Aspose Pty Ltd
  * </copyright>
  * <summary>
@@ -28,16 +28,16 @@
 package com.groupdocs.cloud.conversion.model;
 
 import java.util.Objects;
-import com.groupdocs.cloud.conversion.model.JpgConvertOptions;
+import com.groupdocs.cloud.conversion.model.ConvertOptions;
 import com.groupdocs.cloud.conversion.model.WatermarkOptions;
 import io.swagger.annotations.ApiModel;
 import java.util.List;
 
 /**
- * Jpx convert options
+ * Options for to Email conversion
  */
-@ApiModel(description = "Jpx convert options")
-public class JpxConvertOptions extends JpgConvertOptions {
+@ApiModel(description = "Options for to Email conversion")
+public class EmailConvertOptions extends ConvertOptions {
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -59,7 +59,7 @@ public class JpxConvertOptions extends JpgConvertOptions {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class JpxConvertOptions {\n");
+    sb.append("class EmailConvertOptions {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("}");
     return sb.toString();

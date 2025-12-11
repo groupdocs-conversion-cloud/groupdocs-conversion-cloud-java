@@ -33,18 +33,15 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.groupdocs.cloud.conversion.model.ImageConvertOptions;
-import com.groupdocs.cloud.conversion.model.WatermarkOptions;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.List;
 
 /**
  * Tiff convert options
  */
 @ApiModel(description = "Tiff convert options")
-public class TiffConvertOptions extends ImageConvertOptions {
+public class TiffConvertOptions {
   /**
    * Set Tiff compression
    */
@@ -129,13 +126,12 @@ public class TiffConvertOptions extends ImageConvertOptions {
       return false;
     }
     TiffConvertOptions tiffConvertOptions = (TiffConvertOptions) o;
-    return Objects.equals(this.compression, tiffConvertOptions.compression) &&
-        super.equals(o);
+    return Objects.equals(this.compression, tiffConvertOptions.compression);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(compression, super.hashCode());
+    return Objects.hash(compression);
   }
 
 
@@ -143,7 +139,7 @@ public class TiffConvertOptions extends ImageConvertOptions {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class TiffConvertOptions {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    
     sb.append("    compression: ").append(toIndentedString(compression)).append("\n");
     sb.append("}");
     return sb.toString();

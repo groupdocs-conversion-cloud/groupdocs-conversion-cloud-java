@@ -32,10 +32,10 @@ import java.util.ArrayList;
 public class TestFiles {
 
     
-    public static TestFile OnePageDocx = new TestFile("one-page.docx", "WordProcessing\\");
+    public static TestFile OnePageDocx = new TestFile("one-page.docx", "WordProcessing/");
     public static TestFile NotExist = new TestFile("NotExist.docx", "some-folder/");
-    public static TestFile PasswordProtectedDocx = new TestFile("password-protected.docx", "WordProcessing\\");
-    public static TestFile FourPagesDocx = new TestFile("four-pages.docx", "WordProcessing\\");    
+    public static TestFile PasswordProtectedDocx = new TestFile("password-protected.docx", "WordProcessing/");
+    public static TestFile FourPagesDocx = new TestFile("four-pages.docx", "WordProcessing/");    
     
     static {
         PasswordProtectedDocx.setPassword("password");
