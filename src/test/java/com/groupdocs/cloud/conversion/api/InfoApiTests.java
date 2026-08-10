@@ -79,7 +79,8 @@ public class InfoApiTests extends BaseApiTest {
             infoApi.getDocumentMetadata(new GetDocumentMetadataRequest(TestFiles.NotExist.getPath(), ""));
             fail("Expected ApiException was not thrown.");
         } catch (ApiException ex) {
-            assertTrue(ex.getMessage().contains("AmazonS3 Storage exception: The specified key does not exist"));
+            assertTrue(ex.getMessage().contains("AmazonS3 Storage exception"));
+            assertTrue(ex.getMessage().contains(TestFiles.NotExist.getFileName()));
         }  
     }        
 }
